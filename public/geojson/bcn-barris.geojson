@@ -1,0 +1,260 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "01",
+        "nom": "El Raval",
+        "districte": "Ciutat Vella",
+        "poblacio": 47838,
+        "renda_mitjana": 9847,
+        "atur": 18.5,
+        "envelliment": 142.3,
+        "immigracio": 52.4
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.165, 41.378], [2.170, 41.378], [2.170, 41.383], [2.165, 41.383], [2.165, 41.378]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "02",
+        "nom": "El Gòtic",
+        "districte": "Ciutat Vella",
+        "poblacio": 15764,
+        "renda_mitjana": 14523,
+        "atur": 14.2,
+        "envelliment": 156.8,
+        "immigracio": 35.1
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.170, 41.378], [2.175, 41.378], [2.175, 41.383], [2.170, 41.383], [2.170, 41.378]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "03",
+        "nom": "La Barceloneta",
+        "districte": "Ciutat Vella",
+        "poblacio": 15226,
+        "renda_mitjana": 13245,
+        "atur": 16.8,
+        "envelliment": 178.4,
+        "immigracio": 28.3
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.185, 41.378], [2.190, 41.378], [2.190, 41.383], [2.185, 41.383], [2.185, 41.378]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "04",
+        "nom": "Sant Pere, Santa Caterina i la Ribera",
+        "districte": "Ciutat Vella",
+        "poblacio": 22619,
+        "renda_mitjana": 16789,
+        "atur": 12.4,
+        "envelliment": 134.2,
+        "immigracio": 42.7
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.175, 41.378], [2.180, 41.378], [2.180, 41.383], [2.175, 41.383], [2.175, 41.378]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "05",
+        "nom": "El Fort Pienc",
+        "districte": "Eixample",
+        "poblacio": 30468,
+        "renda_mitjana": 22456,
+        "atur": 9.8,
+        "envelliment": 165.3,
+        "immigracio": 31.2
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.175, 41.390], [2.180, 41.390], [2.180, 41.395], [2.175, 41.395], [2.175, 41.390]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "06",
+        "nom": "Sagrada Família",
+        "districte": "Eixample",
+        "poblacio": 51824,
+        "renda_mitjana": 24678,
+        "atur": 8.5,
+        "envelliment": 172.6,
+        "immigracio": 26.8
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.170, 41.395], [2.175, 41.395], [2.175, 41.400], [2.170, 41.400], [2.170, 41.395]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "07",
+        "nom": "Dreta de l'Eixample",
+        "districte": "Eixample",
+        "poblacio": 42434,
+        "renda_mitjana": 32145,
+        "atur": 6.2,
+        "envelliment": 184.5,
+        "immigracio": 18.4
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.165, 41.390], [2.170, 41.390], [2.170, 41.395], [2.165, 41.395], [2.165, 41.390]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "08",
+        "nom": "Antiga Esquerra de l'Eixample",
+        "districte": "Eixample",
+        "poblacio": 34562,
+        "renda_mitjana": 28934,
+        "atur": 7.4,
+        "envelliment": 176.2,
+        "immigracio": 22.1
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.160, 41.390], [2.165, 41.390], [2.165, 41.395], [2.160, 41.395], [2.160, 41.390]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "09",
+        "nom": "Pedralbes",
+        "districte": "Les Corts",
+        "poblacio": 13956,
+        "renda_mitjana": 58934,
+        "atur": 3.2,
+        "envelliment": 198.7,
+        "immigracio": 8.3
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.110, 41.390], [2.115, 41.390], [2.115, 41.395], [2.110, 41.395], [2.110, 41.390]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "10",
+        "nom": "Vallvidrera, el Tibidabo i les Planes",
+        "districte": "Sarrià-Sant Gervasi",
+        "poblacio": 4826,
+        "renda_mitjana": 62145,
+        "atur": 2.8,
+        "envelliment": 125.4,
+        "immigracio": 6.2
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.120, 41.410], [2.125, 41.410], [2.125, 41.415], [2.120, 41.415], [2.120, 41.410]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "11",
+        "nom": "Verdun",
+        "districte": "Nou Barris",
+        "poblacio": 26742,
+        "renda_mitjana": 15234,
+        "atur": 15.6,
+        "envelliment": 158.3,
+        "immigracio": 38.9
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.170, 41.440], [2.175, 41.440], [2.175, 41.445], [2.170, 41.445], [2.170, 41.440]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "12",
+        "nom": "Torre Baró",
+        "districte": "Nou Barris",
+        "poblacio": 2567,
+        "renda_mitjana": 11456,
+        "atur": 21.3,
+        "envelliment": 98.7,
+        "immigracio": 44.2
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.165, 41.445], [2.170, 41.445], [2.170, 41.450], [2.165, 41.450], [2.165, 41.445]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "13",
+        "nom": "La Verneda i la Pau",
+        "districte": "Sant Martí",
+        "poblacio": 28934,
+        "renda_mitjana": 17823,
+        "atur": 13.4,
+        "envelliment": 148.9,
+        "immigracio": 32.6
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.200, 41.410], [2.205, 41.410], [2.205, 41.415], [2.200, 41.415], [2.200, 41.410]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "14",
+        "nom": "El Poblenou",
+        "districte": "Sant Martí",
+        "poblacio": 34562,
+        "renda_mitjana": 25678,
+        "atur": 8.9,
+        "envelliment": 132.4,
+        "immigracio": 24.5
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.195, 41.400], [2.200, 41.400], [2.200, 41.405], [2.195, 41.405], [2.195, 41.400]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "15",
+        "nom": "Hostafrancs",
+        "districte": "Sants-Montjuïc",
+        "poblacio": 18456,
+        "renda_mitjana": 19234,
+        "atur": 11.2,
+        "envelliment": 167.8,
+        "immigracio": 29.4
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.145, 41.375], [2.150, 41.375], [2.150, 41.380], [2.145, 41.380], [2.145, 41.375]]]
+      }
+    }
+  ]
+}

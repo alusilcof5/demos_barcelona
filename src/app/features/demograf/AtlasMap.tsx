@@ -1,6 +1,15 @@
 import { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import { useDemografStore } from '../../demos.stores';
+import 'leaflet/dist/leaflet.css';
+
+// Fix per al problema dels marcadors de Leaflet
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+});
 
 export function AtlasMap() {
   const mapRef = useRef<L.Map | null>(null);
@@ -13,11 +22,15 @@ export function AtlasMap() {
       const map = L.map('atlas-map', {
         center: [41.3874, 2.1686],
         zoom: 12,
-        scrollWheelZoom: true
+        scrollWheelZoom: true,
+        zoomControl: true,
+        attributionControl: true
       });
 
+      // Capa base d'OpenStreetMap
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 19
       }).addTo(map);
 
       mapRef.current = map;
@@ -73,20 +86,32 @@ export function AtlasMap() {
         const barri = barrisWithVulnerability.find(b => b.id === barriId);
         
         if (barri) {
+          // Popup accessible
           layer.bindPopup(`
-            <div class="p-2">
-              <h3 class="font-bold text-lg">${barri.nom}</h3>
-              <p class="text-sm text-gray-600">${barri.districte}</p>
-              <div class="mt-2 space-y-1 text-sm">
+            <div class="p-3" role="dialog" aria-label="Informació del barri ${barri.nom}">
+              <h3 class="font-bold text-lg mb-1">${barri.nom}</h3>
+              <p class="text-sm text-gray-600 mb-2">${barri.districte}</p>
+              <div class="space-y-1 text-sm">
                 <div><strong>Vulnerabilitat:</strong> ${(barri.vulnerability_score * 100).toFixed(1)}%</div>
                 <div><strong>Ranking:</strong> #${barri.rank} de ${barrisWithVulnerability.length}</div>
-                <div><strong>Població:</strong> ${barri.poblacio.toLocaleString()}</div>
+                <div><strong>Població:</strong> ${barri.poblacio.toLocaleString()} habitants</div>
+                <div><strong>Renda mitjana:</strong> ${barri.renda_mitjana.toLocaleString()}€</div>
+                <div><strong>Atur:</strong> ${barri.atur.toFixed(1)}%</div>
               </div>
             </div>
           `);
 
+          // Events accessibles
           layer.on('click', () => {
             setSelectedBarri(barriId);
+            // Anuncia la selecció per a lectors de pantalla
+            const announcement = document.createElement('div');
+            announcement.setAttribute('role', 'status');
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.className = 'sr-only';
+            announcement.textContent = `Barri seleccionat: ${barri.nom}, vulnerabilitat ${(barri.vulnerability_score * 100).toFixed(1)}%`;
+            document.body.appendChild(announcement);
+            setTimeout(() => announcement.remove(), 1000);
           });
 
           layer.on('mouseover', (e) => {
@@ -106,6 +131,22 @@ export function AtlasMap() {
               });
             }
           });
+
+          // Afegeix atributs accessibles al layer
+          const element = (layer as any)._path;
+          if (element) {
+            element.setAttribute('role', 'button');
+            element.setAttribute('aria-label', `Barri ${barri.nom}, vulnerabilitat ${(barri.vulnerability_score * 100).toFixed(1)}%`);
+            element.setAttribute('tabindex', '0');
+            
+            // Suport per teclat
+            element.addEventListener('keydown', (e: KeyboardEvent) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setSelectedBarri(barriId);
+              }
+            });
+          }
         }
       }
     }).addTo(mapRef.current);
@@ -114,43 +155,61 @@ export function AtlasMap() {
 
     // Ajusta el zoom al contingut
     if (mapRef.current) {
-      mapRef.current.fitBounds(layer.getBounds());
+      mapRef.current.fitBounds(layer.getBounds(), {
+        padding: [20, 20]
+      });
     }
   }, [geojson, barrisWithVulnerability, selectedBarri, setSelectedBarri]);
 
   return (
-    <div className="relative">
-      <div id="atlas-map" className="w-full h-[600px] rounded-lg border border-gray-200" />
+    <div className="relative" role="region" aria-label="Mapa interactiu de vulnerabilitat urbana">
+      <div 
+        id="atlas-map" 
+        className="w-full h-[600px] rounded-lg border-2 border-gray-200 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+        role="application"
+        aria-label="Mapa interactiu dels barris de Barcelona amb índex de vulnerabilitat"
+        tabIndex={0}
+      />
       
-      {/* Llegenda */}
-      <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur p-4 rounded-lg shadow-lg border border-gray-200 z-[1000]">
-        <h4 className="font-medium text-sm mb-2">Índex de Vulnerabilitat</h4>
-        <div className="space-y-1 text-xs">
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded" style={{ backgroundColor: '#dc2626' }} />
+      {/* Llegenda accessible */}
+      <div 
+        className="absolute bottom-4 right-4 bg-white/95 backdrop-blur p-4 rounded-lg shadow-lg border border-gray-200 z-[1000]"
+        role="region"
+        aria-label="Llegenda del mapa"
+      >
+        <h4 className="font-medium text-sm mb-3 text-gray-900" id="legend-title">
+          Índex de Vulnerabilitat
+        </h4>
+        <div className="space-y-2 text-xs" role="list" aria-labelledby="legend-title">
+          <div className="flex items-center gap-2" role="listitem">
+            <div className="w-5 h-5 rounded border border-gray-300" style={{ backgroundColor: '#dc2626' }} aria-hidden="true" />
             <span>Molt Alta (&gt;70%)</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded" style={{ backgroundColor: '#ef4444' }} />
+          <div className="flex items-center gap-2" role="listitem">
+            <div className="w-5 h-5 rounded border border-gray-300" style={{ backgroundColor: '#ef4444' }} aria-hidden="true" />
             <span>Alta (60-70%)</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded" style={{ backgroundColor: '#f97316' }} />
+          <div className="flex items-center gap-2" role="listitem">
+            <div className="w-5 h-5 rounded border border-gray-300" style={{ backgroundColor: '#f97316' }} aria-hidden="true" />
             <span>Mitjana-Alta (50-60%)</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded" style={{ backgroundColor: '#facc15' }} />
+          <div className="flex items-center gap-2" role="listitem">
+            <div className="w-5 h-5 rounded border border-gray-300" style={{ backgroundColor: '#facc15' }} aria-hidden="true" />
             <span>Mitjana (40-50%)</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded" style={{ backgroundColor: '#a3e635' }} />
+          <div className="flex items-center gap-2" role="listitem">
+            <div className="w-5 h-5 rounded border border-gray-300" style={{ backgroundColor: '#a3e635' }} aria-hidden="true" />
             <span>Baixa (30-40%)</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded" style={{ backgroundColor: '#22c55e' }} />
+          <div className="flex items-center gap-2" role="listitem">
+            <div className="w-5 h-5 rounded border border-gray-300" style={{ backgroundColor: '#22c55e' }} aria-hidden="true" />
             <span>Molt Baixa (&lt;30%)</span>
           </div>
         </div>
+        
+        <p className="text-xs text-gray-600 mt-3 border-t border-gray-200 pt-2">
+          <strong>Consell:</strong> Fes clic o prem Enter sobre un barri per veure'n els detalls
+        </p>
       </div>
     </div>
   );

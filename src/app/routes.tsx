@@ -1,8 +1,10 @@
 import { createBrowserRouter } from 'react-router';
-import { DemografPage } from './pages/DemografPage';
+import { HomePage } from './pages/HomePage';
+import { RootLayout } from './pages/RootLayout';
 import { CorpusPage } from './pages/CorpusPage';
 import { MetodologiaPage } from './pages/MetodologiaPage';
-import { RootLayout } from './pages/RootLayout';
+import { DemografPage } from './pages/DemografPage';
+
 
 export const router = createBrowserRouter([
   {
@@ -11,6 +13,10 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
+        Component: HomePage
+      },
+      {
+        path: 'demograf',
         Component: DemografPage
       },
       {

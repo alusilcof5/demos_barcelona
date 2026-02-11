@@ -1,226 +1,487 @@
-import { OPENDATA_SOURCES, INDICADORS_INFO, DEFAULT_WEIGHTS } from '../core/datasets';
-import { DataBadge } from '../shared/components/DataBadge';
-import { BookOpen, Database, Calculator, Scale, ExternalLink, CheckCircle } from 'lucide-react';
+import { useState } from 'react';
+<BookOpen className="w-6 h-6 text-white" />
+import { BookOpen, BarChart3, Microscope, CheckCircle, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react';
+
+type NivelExplicacion = 'simple' | 'intermedio' | 'tecnico';
 
 export function MetodologiaPage() {
+  const [nivelActivo, setNivelActivo] = useState<NivelExplicacion>('simple');
+  const [seccionExpandida, setSeccionExpandida] = useState<string | null>('que-hacemos');
+
+  const toggleSeccion = (seccion: string) => {
+    setSeccionExpandida(seccionExpandida === seccion ? null : seccion);
+  };
+
   return (
-    <div className="container mx-auto px-4 py-8 max-w-5xl">
+    <div className="min-h-screen bg-gray-50">
+      
       {/* Header */}
-      <div className="mb-8">
-        <div className="flex items-center gap-3 mb-2">
-          <div className="p-2 bg-green-100 rounded-lg">
-            <BookOpen className="w-8 h-8 text-green-700" />
-          </div>
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900">
-              Metodologia i Fonts
+      <section className="bg-gradient-to-br from-green-600 to-blue-600 py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              📚 ¿Cómo funciona todo esto?
             </h1>
-            <p className="text-gray-600">
-              Transparència, reproducibilitat i auditabilitat
+            <p className="text-xl text-green-100">
+              Te explicamos de dónde salen los datos y cómo los calculamos.<br/>
+              <strong className="text-white">Todo transparente y verificable.</strong>
             </p>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="space-y-8">
-        {/* Introducció */}
-        <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-3">
-            🎯 Objectiu del Projecte
-          </h2>
-          <p className="text-gray-700 leading-relaxed">
-            L'<strong>Observatori de Vulnerabilitat BCN</strong> és una eina de codi obert per visualitzar 
-            i analitzar desigualtats urbanes a Barcelona utilitzant dades públiques. El projecte:
-          </p>
-          <ul className="mt-3 space-y-2 text-gray-700">
-            <li className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-              <span>Combat la desinformació amb dades verificables</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-              <span>Dóna suport a la presa de decisions basada en evidències</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-              <span>Millora la qualitat de la informació pública</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-              <span>Genera datasets fiables per IA responsable</span>
-            </li>
-          </ul>
-        </div>
-
-        {/* Fonts de dades */}
-        <section>
-          <div className="flex items-center gap-2 mb-4">
-            <Database className="w-6 h-6 text-blue-600" />
-            <h2 className="text-2xl font-bold text-gray-900">Fonts de Dades</h2>
-          </div>
-          <p className="text-gray-600 mb-4">
-            Tots els indicadors provenen de datasets oficials d'<strong>Open Data BCN</strong>, 
-            publicats per l'Ajuntament de Barcelona amb llicència <strong>CC BY 4.0</strong>.
-          </p>
-          <div className="space-y-3">
-            {OPENDATA_SOURCES.map((source) => (
-              <DataBadge key={source.id} source={source} />
-            ))}
-          </div>
-        </section>
-
-        {/* Indicadors */}
-        <section>
-          <div className="flex items-center gap-2 mb-4">
-            <Scale className="w-6 h-6 text-purple-600" />
-            <h2 className="text-2xl font-bold text-gray-900">Indicadors Utilitzats</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {Object.entries(INDICADORS_INFO).map(([key, info]) => (
-              <div key={key} className="border border-gray-200 rounded-lg p-4 bg-white">
-                <h3 className="font-semibold text-gray-900 mb-1">{info.name}</h3>
-                <p className="text-sm text-gray-600 mb-2">{info.description}</p>
-                <div className="text-xs space-y-1">
-                  <p className="text-gray-500">
-                    <strong>Unitat:</strong> {info.unit}
-                  </p>
-                  <p className="text-gray-500">
-                    <strong>Interpretació:</strong> {info.interpretation}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Càlcul de l'índex */}
-        <section>
-          <div className="flex items-center gap-2 mb-4">
-            <Calculator className="w-6 h-6 text-orange-600" />
-            <h2 className="text-2xl font-bold text-gray-900">Càlcul de l'Índex de Vulnerabilitat</h2>
-          </div>
-          
-          <div className="bg-white border border-gray-200 rounded-lg p-6 space-y-4">
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-2">1. Normalització</h3>
-              <p className="text-sm text-gray-700">
-                Cada indicador es normalitza entre 0 i 1 utilitzant la fórmula:
-              </p>
-              <div className="mt-2 p-3 bg-gray-50 rounded font-mono text-sm">
-                valor_normalitzat = (valor - min) / (max - min)
-              </div>
-              <p className="text-xs text-gray-600 mt-2">
-                Per a la renda, s'inverteix la normalització (menor renda = major vulnerabilitat)
+      {/* Selector de nivel */}
+      <section className="py-8 bg-white border-b-2 border-gray-200">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-bold text-gray-900 mb-3">
+                Elige tu nivel de detalle:
+              </h2>
+              <p className="text-gray-600">
+                Tenemos tres explicaciones según cuánto quieras profundizar
               </p>
             </div>
 
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-2">2. Ponderació</h3>
-              <p className="text-sm text-gray-700 mb-2">
-                Els pesos per defecte són:
-              </p>
-              <div className="grid grid-cols-2 gap-2">
-                <div className="p-2 bg-green-50 border border-green-200 rounded text-sm">
-                  <strong>Renda:</strong> {(DEFAULT_WEIGHTS.renda * 100).toFixed(0)}%
-                </div>
-                <div className="p-2 bg-orange-50 border border-orange-200 rounded text-sm">
-                  <strong>Atur:</strong> {(DEFAULT_WEIGHTS.atur * 100).toFixed(0)}%
-                </div>
-                <div className="p-2 bg-purple-50 border border-purple-200 rounded text-sm">
-                  <strong>Envelliment:</strong> {(DEFAULT_WEIGHTS.envelliment * 100).toFixed(0)}%
-                </div>
-                <div className="p-2 bg-blue-50 border border-blue-200 rounded text-sm">
-                  <strong>Immigració:</strong> {(DEFAULT_WEIGHTS.immigracio * 100).toFixed(0)}%
-                </div>
-              </div>
-              <p className="text-xs text-gray-600 mt-2">
-                Els pesos són configurables des de la interfície per explorar diferents perspectives
-              </p>
-            </div>
-
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-2">3. Suma Ponderada</h3>
-              <p className="text-sm text-gray-700">
-                L'índex final és la suma dels indicadors normalitzats multiplicats pels seus pesos:
-              </p>
-              <div className="mt-2 p-3 bg-gray-50 rounded font-mono text-xs">
-                vulnerabilitat = (renda_norm × 0.35) + (atur_norm × 0.30) + 
-                (envelliment_norm × 0.20) + (immigracio_norm × 0.15)
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Transparència */}
-        <section className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-3">
-            🔍 Garanties de Transparència
-          </h2>
-          <ul className="space-y-2 text-sm text-gray-700">
-            <li className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-              <span><strong>Codi obert:</strong> Tot el codi font és accessible i auditable</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-              <span><strong>Fonts trazables:</strong> Cada indicador enllaça amb el dataset original</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-              <span><strong>Metodologia reproducible:</strong> Qualsevol pot recalcular l'índex amb les mateixes dades</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-              <span><strong>Pesos configurables:</strong> Permet explorar diferents definicions de vulnerabilitat</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-              <span><strong>Exportació de dades:</strong> El corpus generat és descargable en format obert (JSON)</span>
-            </li>
-          </ul>
-        </section>
-
-        {/* Limitacions */}
-        <section className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-3">
-            ⚠️ Limitacions i Consideracions
-          </h2>
-          <ul className="space-y-2 text-sm text-gray-700">
-            <li>• Aquest índex és una <strong>simplificació</strong> de la realitat complexa de la vulnerabilitat urbana</li>
-            <li>• La selecció d'indicadors i pesos comporta decisions <strong>valoratives</strong></li>
-            <li>• Les dades tenen diferents dates d'actualització (veure fonts per a cada dataset)</li>
-            <li>• No substitueix anàlisis professionals o avaluacions institucionals</li>
-            <li>• És una eina de <strong>divulgació i exploració</strong>, no un instrument oficial de planificació</li>
-          </ul>
-        </section>
-
-        {/* Crèdits */}
-        <section className="border-t border-gray-200 pt-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-3">
-            🙏 Crèdits
-          </h2>
-          <div className="text-sm text-gray-700 space-y-2">
-            <p>
-              <strong>Dades:</strong>{' '}
-              <a 
-                href="https://opendata-ajuntament.barcelona.cat/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:underline inline-flex items-center gap-1"
+            <div className="grid md:grid-cols-3 gap-4">
+              
+              {/* Simple */}
+              <button
+                onClick={() => setNivelActivo('simple')}
+                className={`p-6 rounded-xl border-3 transition-all text-left ${
+                  nivelActivo === 'simple'
+                    ? 'bg-green-50 border-green-500 shadow-lg'
+                    : 'bg-white border-gray-200 hover:border-green-300'
+                }`}
               >
-                Open Data BCN (Ajuntament de Barcelona)
-                <ExternalLink className="w-3 h-3" />
-              </a>
-            </p>
-            <p>
-              <strong>Projecte creat per:</strong> Open Data Day 2026
-            </p>
-            <p className="text-xs text-gray-500">
-              Llicència: CC BY 4.0 · Codi obert · Contribucions benvingudes
-            </p>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                    nivelActivo === 'simple' ? 'bg-green-500' : 'bg-gray-200'
+                  }`}>
+                    <BookOpen className={`w-6 h-6 ${nivelActivo === 'simple' ? 'text-white' : 'text-gray-600'}`} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg text-gray-900">📖 Simple</h3>
+                    <p className="text-sm text-gray-600">Para ciudadanos</p>
+                  </div>
+                </div>
+                <p className="text-sm text-gray-700">
+                  Explicación básica sin tecnicismos. Perfecto si solo quieres entender cómo funciona.
+                </p>
+              </button>
+
+              {/* Intermedio */}
+              <button
+                onClick={() => setNivelActivo('intermedio')}
+                className={`p-6 rounded-xl border-3 transition-all text-left ${
+                  nivelActivo === 'intermedio'
+                    ? 'bg-blue-50 border-blue-500 shadow-lg'
+                    : 'bg-white border-gray-200 hover:border-blue-300'
+                }`}
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                    nivelActivo === 'intermedio' ? 'bg-blue-500' : 'bg-gray-200'
+                  }`}>
+                    <BarChart3 className={`w-6 h-6 ${nivelActivo === 'intermedio' ? 'text-white' : 'text-gray-600'}`} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg text-gray-900">📊 Intermedio</h3>
+                    <p className="text-sm text-gray-600">Para estudiantes/periodistas</p>
+                  </div>
+                </div>
+                <p className="text-sm text-gray-700">
+                  Más detalles sobre fuentes y cálculos. Para quien quiera profundizar un poco más.
+                </p>
+              </button>
+
+              {/* Técnico */}
+              <button
+                onClick={() => setNivelActivo('tecnico')}
+                className={`p-6 rounded-xl border-3 transition-all text-left ${
+                  nivelActivo === 'tecnico'
+                    ? 'bg-purple-50 border-purple-500 shadow-lg'
+                    : 'bg-white border-gray-200 hover:border-purple-300'
+                }`}
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                    nivelActivo === 'tecnico' ? 'bg-purple-500' : 'bg-gray-200'
+                  }`}>
+                    <Microscope className={`w-6 h-6 ${nivelActivo === 'tecnico' ? 'text-white' : 'text-gray-600'}`} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg text-gray-900">🔬 Técnico</h3>
+                    <p className="text-sm text-gray-600">Para investigadores</p>
+                  </div>
+                </div>
+                <p className="text-sm text-gray-700">
+                  Metodología completa con fórmulas y referencias. Para reproducir el análisis.
+                </p>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contenido SIMPLE */}
+      {nivelActivo === 'simple' && (
+        <section className="py-12 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto space-y-6">
+              
+              {/* ¿Qué hacemos? */}
+              <div className="bg-white rounded-xl shadow-lg border-2 border-green-200 overflow-hidden">
+                <button
+                  onClick={() => toggleSeccion('que-hacemos')}
+                  className="w-full p-6 flex items-center justify-between hover:bg-green-50 transition-all"
+                >
+                  <h3 className="text-2xl font-bold text-gray-900">🎯 ¿Qué hacemos?</h3>
+                  {seccionExpandida === 'que-hacemos' ? (
+                    <ChevronUp className="w-6 h-6 text-green-600" />
+                  ) : (
+                    <ChevronDown className="w-6 h-6 text-gray-400" />
+                  )}
+                </button>
+                
+                {seccionExpandida === 'que-hacemos' && (
+                  <div className="p-6 pt-0 border-t border-green-100">
+                    <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                      Recopilamos información oficial sobre los barrios de Barcelona y la mostramos de forma fácil de entender.
+                    </p>
+                    <div className="bg-green-50 rounded-lg p-4 border border-green-200">
+                      <p className="text-gray-700">
+                        <strong>En pocas palabras:</strong> Tomamos datos del Ayuntamiento, los organizamos y te los mostramos 
+                        con gráficos y explicaciones sencillas.
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* ¿De dónde salen los datos? */}
+              <div className="bg-white rounded-xl shadow-lg border-2 border-blue-200 overflow-hidden">
+                <button
+                  onClick={() => toggleSeccion('de-donde-salen')}
+                  className="w-full p-6 flex items-center justify-between hover:bg-blue-50 transition-all"
+                >
+                  <h3 className="text-2xl font-bold text-gray-900">🔍 ¿De dónde salen los datos?</h3>
+                  {seccionExpandida === 'de-donde-salen' ? (
+                    <ChevronUp className="w-6 h-6 text-blue-600" />
+                  ) : (
+                    <ChevronDown className="w-6 h-6 text-gray-400" />
+                  )}
+                </button>
+                
+                {seccionExpandida === 'de-donde-salen' && (
+                  <div className="p-6 pt-0 border-t border-blue-100">
+                    <p className="text-lg text-gray-700 mb-6">
+                      Todos los datos vienen del <strong>Ayuntamiento de Barcelona</strong>.<br/>
+                      Son públicos y cualquiera puede consultarlos.
+                    </p>
+
+                    <div className="bg-blue-50 rounded-lg p-6 border border-blue-200 mb-6">
+                      <h4 className="font-bold text-lg text-gray-900 mb-4">
+                        Usamos 4 tipos de información:
+                      </h4>
+                      
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-3">
+                          <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <span className="text-white text-xl">💰</span>
+                          </div>
+                          <div>
+                            <div className="font-semibold text-gray-900">1. INGRESOS</div>
+                            <div className="text-gray-700 text-sm">Cuánto dinero ganan las familias</div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start gap-3">
+                          <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <span className="text-white text-xl">💼</span>
+                          </div>
+                          <div>
+                            <div className="font-semibold text-gray-900">2. EMPLEO</div>
+                            <div className="text-gray-700 text-sm">Cuántas personas tienen trabajo</div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start gap-3">
+                          <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <span className="text-white text-xl">👴</span>
+                          </div>
+                          <div>
+                            <div className="font-semibold text-gray-900">3. EDAD</div>
+                            <div className="text-gray-700 text-sm">Cuántas personas mayores y jóvenes hay</div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start gap-3">
+                          <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <span className="text-white text-xl">🌍</span>
+                          </div>
+                          <div>
+                            <div className="font-semibold text-gray-900">4. ORIGEN</div>
+                            <div className="text-gray-700 text-sm">Cuántas personas vienen de otros países</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <a 
+                      href="https://opendata-ajuntament.barcelona.cat/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all"
+                    >
+                      Ver fuentes originales
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  </div>
+                )}
+              </div>
+
+              {/* ¿Cómo sabemos que son fiables? */}
+              <div className="bg-white rounded-xl shadow-lg border-2 border-purple-200 overflow-hidden">
+                <button
+                  onClick={() => toggleSeccion('fiabilidad')}
+                  className="w-full p-6 flex items-center justify-between hover:bg-purple-50 transition-all"
+                >
+                  <h3 className="text-2xl font-bold text-gray-900">✅ ¿Cómo sabemos que son fiables?</h3>
+                  {seccionExpandida === 'fiabilidad' ? (
+                    <ChevronUp className="w-6 h-6 text-purple-600" />
+                  ) : (
+                    <ChevronDown className="w-6 h-6 text-gray-400" />
+                  )}
+                </button>
+                
+                {seccionExpandida === 'fiabilidad' && (
+                  <div className="p-6 pt-0 border-t border-purple-100">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="flex items-start gap-3 p-4 bg-purple-50 rounded-lg border border-purple-200">
+                        <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+                        <div>
+                          <div className="font-semibold text-gray-900 mb-1">Fuente oficial</div>
+                          <div className="text-sm text-gray-700">Todos vienen del Ayuntamiento de Barcelona</div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-3 p-4 bg-purple-50 rounded-lg border border-purple-200">
+                        <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+                        <div>
+                          <div className="font-semibold text-gray-900 mb-1">Verificables</div>
+                          <div className="text-sm text-gray-700">Puedes ver la fuente original de cada dato</div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-3 p-4 bg-purple-50 rounded-lg border border-purple-200">
+                        <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+                        <div>
+                          <div className="font-semibold text-gray-900 mb-1">Actualizados</div>
+                          <div className="text-sm text-gray-700">Se actualizan regularmente</div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-3 p-4 bg-purple-50 rounded-lg border border-purple-200">
+                        <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+                        <div>
+                          <div className="font-semibold text-gray-900 mb-1">Sin manipulación</div>
+                          <div className="text-sm text-gray-700">No los modificamos, solo los mostramos claramente</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* ¿Cómo calculamos "necesidad"? */}
+              <div className="bg-white rounded-xl shadow-lg border-2 border-orange-200 overflow-hidden">
+                <button
+                  onClick={() => toggleSeccion('calculo-necesidad')}
+                  className="w-full p-6 flex items-center justify-between hover:bg-orange-50 transition-all"
+                >
+                  <h3 className="text-2xl font-bold text-gray-900">🎯 ¿Cómo calculamos "necesidad"?</h3>
+                  {seccionExpandida === 'calculo-necesidad' ? (
+                    <ChevronUp className="w-6 h-6 text-orange-600" />
+                  ) : (
+                    <ChevronDown className="w-6 h-6 text-gray-400" />
+                  )}
+                </button>
+                
+                {seccionExpandida === 'calculo-necesidad' && (
+                  <div className="p-6 pt-0 border-t border-orange-100">
+                    <p className="text-lg text-gray-700 mb-6">
+                      Combinamos los 4 tipos de información para crear un número del <strong>0 al 100</strong>:
+                    </p>
+
+                    <div className="space-y-4 mb-6">
+                      <div className="flex items-start gap-3 p-4 bg-orange-50 rounded-lg">
+                        <span className="text-2xl">📉</span>
+                        <div>
+                          <div className="font-semibold text-gray-900">Si los ingresos son bajos</div>
+                          <div className="text-gray-700">→ Más necesidad (las familias tienen menos recursos)</div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-3 p-4 bg-orange-50 rounded-lg">
+                        <span className="text-2xl">📈</span>
+                        <div>
+                          <div className="font-semibold text-gray-900">Si el paro es alto</div>
+                          <div className="text-gray-700">→ Más necesidad (más gente sin trabajo)</div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-3 p-4 bg-orange-50 rounded-lg">
+                        <span className="text-2xl">👴</span>
+                        <div>
+                          <div className="font-semibold text-gray-900">Si hay muchos mayores</div>
+                          <div className="text-gray-700">→ Más necesidad de servicios (salud, accesibilidad...)</div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-3 p-4 bg-orange-50 rounded-lg">
+                        <span className="text-2xl">🌍</span>
+                        <div>
+                          <div className="font-semibold text-gray-900">Si hay muchos extranjeros</div>
+                          <div className="text-gray-700">→ Más necesidad de integración (idioma, papeles...)</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6 mb-6">
+                      <h4 className="font-bold text-lg mb-4 text-gray-900">El resultado es un número:</h4>
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-16 h-8 bg-green-500 rounded"></div>
+                          <span className="font-semibold text-gray-900">0-30: Poca necesidad</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-16 h-8 bg-yellow-500 rounded"></div>
+                          <span className="font-semibold text-gray-900">30-60: Necesidad media</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-16 h-8 bg-red-500 rounded"></div>
+                          <span className="font-semibold text-gray-900">60-100: Mucha necesidad</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-xl p-6 border-2 border-red-200">
+                        <h4 className="font-bold text-lg text-gray-900 mb-3">
+                          💡 Ejemplo: El Raval = 82/100
+                        </h4>
+                        <ul className="space-y-2 text-sm text-gray-700">
+                          <li className="flex items-start gap-2">
+                            <span className="text-red-600">•</span>
+                            <span>Ingresos muy bajos</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-red-600">•</span>
+                            <span>Paro muy alto</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-red-600">•</span>
+                            <span>Muchas personas extranjeras</span>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 border-2 border-green-200">
+                        <h4 className="font-bold text-lg text-gray-900 mb-3">
+                          💡 Ejemplo: Pedralbes = 15/100
+                        </h4>
+                        <ul className="space-y-2 text-sm text-gray-700">
+                          <li className="flex items-start gap-2">
+                            <span className="text-green-600">•</span>
+                            <span>Ingresos muy altos</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-green-600">•</span>
+                            <span>Paro muy bajo</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-green-600">•</span>
+                            <span>Población más homogénea</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Botón para ver más detalles */}
+            <div className="mt-12 max-w-4xl mx-auto">
+              <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 text-white text-center">
+                <h3 className="text-2xl font-bold mb-4">¿Quieres más detalles?</h3>
+                <p className="text-blue-100 mb-6">
+                  Si eres estudiante, periodista o investigador, tenemos explicaciones más detalladas
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <button
+                    onClick={() => setNivelActivo('intermedio')}
+                    className="px-8 py-4 bg-white text-blue-600 rounded-xl font-bold hover:bg-blue-50 transition-all"
+                  >
+                    Ver explicación intermedia →
+                  </button>
+                  <button
+                    onClick={() => setNivelActivo('tecnico')}
+                    className="px-8 py-4 bg-white/20 backdrop-blur-sm border-2 border-white/50 text-white rounded-xl font-semibold hover:bg-white/30 transition-all"
+                  >
+                    Ver explicación técnica →
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
-      </div>
+      )}
+
+      {/* Contenido INTERMEDIO */}
+      {nivelActivo === 'intermedio' && (
+        <section className="py-12 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-8 text-center">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  📊 Nivel Intermedio
+                </h3>
+                <p className="text-gray-700">
+                  Esta sección contendrá información más técnica sobre fuentes de datos, metodología estadística, 
+                  y referencias bibliográficas para estudiantes y periodistas.
+                </p>
+                <p className="text-gray-600 mt-4 italic">
+                  (Contenido en desarrollo)
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Contenido TÉCNICO */}
+      {nivelActivo === 'tecnico' && (
+        <section className="py-12 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-purple-50 border-2 border-purple-200 rounded-xl p-8 text-center">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  🔬 Nivel Técnico
+                </h3>
+                <p className="text-gray-700">
+                  Esta sección contendrá la metodología completa con fórmulas matemáticas, ponderaciones, 
+                  normalización de datos, y toda la información necesaria para reproducir el análisis.
+                </p>
+                <p className="text-gray-600 mt-4 italic">
+                  (Contenido en desarrollo)
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   );
 }

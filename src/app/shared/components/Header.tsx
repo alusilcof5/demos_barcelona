@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router';
+import { Link, useLocation } from 'react-router-dom'; // ✅ CORREGIDO: Cambiado de 'react-router' a 'react-router-dom'
 import { BarChart3, X, Menu } from 'lucide-react';
 import { useState } from 'react';
 
@@ -67,18 +67,18 @@ export function Header() {
 
           {/* Mobile menu button */}
           <button
-  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-  className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
-  aria-label={mobileMenuOpen ? 'Tancar menú' : 'Obrir menú'}
-  aria-expanded={mobileMenuOpen}
-  aria-controls="mobile-menu"
->
-  {mobileMenuOpen ? (
-    <X className="w-6 h-6 text-gray-700" aria-hidden="true" />
-  ) : (
-    <Menu className="w-6 h-6 text-gray-700" aria-hidden="true" />
-  )}
-</button>
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            aria-label={mobileMenuOpen ? 'Tancar menú' : 'Obrir menú'}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+          >
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6 text-gray-700" aria-hidden="true" />
+            ) : (
+              <Menu className="w-6 h-6 text-gray-700" aria-hidden="true" />
+            )}
+          </button>
         </div>
 
         {/* Mobile Navigation */}
@@ -90,7 +90,6 @@ export function Header() {
           >
             {navItems.map((item) => {
               const isCurrentPage = isActive(item.path);
-           
               
               return (
                 <Link
@@ -105,7 +104,6 @@ export function Header() {
                       : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                   }`}
                 >
-                 
                   <span>{item.label}</span>
                 </Link>
               );

@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom'; // ✅ CORREGIDO: Cambiado de 'react-router' a 'react-router-dom'
 import { Database, Github, Mail, Heart, ExternalLink, FileText, BookOpen } from 'lucide-react';
 
 export function Footer() {

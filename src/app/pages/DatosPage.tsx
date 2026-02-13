@@ -5,19 +5,27 @@ export function DatosPage() {
     <div className="min-h-screen bg-white">
       
       {/* Header */}
-      <section className="bg-gradient-to-br from-purple-600 to-pink-600 py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              💾 Datos para Todos
-            </h1>
-            <p className="text-xl text-purple-100">
-              Información verificada y descargable sobre Barcelona.<br/>
-              <strong className="text-white">Gratis, abierta y para todos.</strong>
-            </p>
-          </div>
-        </div>
-      </section>
+<section 
+  className="py-16"
+  style={{
+    backgroundImage: 'linear-gradient(to bottom right, rgba(63, 80, 107, 0.9), rgba(118, 120, 124, 0.9)), url(../images/2.png)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }}
+>
+  <div className="container mx-auto px-4">
+    <div className="max-w-4xl mx-auto text-center">
+      <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+         Datos para Todos
+      </h1>
+      <p className="text-xl text-purple-100">
+        Información verificada y descargable sobre Barcelona.<br/>
+        <strong className="text-white">Gratis, abierta y para todos.</strong>
+      </p>
+    </div>
+  </div>
+</section>
 
       {/* ¿Qué son estos datos? */}
       <section className="py-16 bg-gray-50">
@@ -25,7 +33,7 @@ export function DatosPage() {
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-purple-200">
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                📊 ¿Qué encontrarás aquí?
+                ¿Qué encontrarás aquí?
               </h2>
               
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
@@ -35,7 +43,7 @@ export function DatosPage() {
 
               <div className="bg-purple-50 rounded-xl p-6 border-2 border-purple-200 mb-6">
                 <h3 className="font-bold text-lg text-gray-900 mb-4">
-                  📈 Incluye:
+                  Incluye:
                 </h3>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
@@ -62,7 +70,7 @@ export function DatosPage() {
                   <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
                     <CheckCircle className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900">🆓 GRATIS Y PARA TODOS</h3>
+                  <h3 className="text-xl font-bold text-gray-900">GRATIS Y PARA TODOS</h3>
                 </div>
                 <p className="text-gray-700">
                   No hace falta registro. No hay restricciones.<br/>
@@ -79,7 +87,7 @@ export function DatosPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-              🎯 ¿Para qué puedes usar estos datos?
+              ¿Para qué puedes usar estos datos?
             </h2>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -90,7 +98,7 @@ export function DatosPage() {
                   <Newspaper className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  📰 Periodismo
+                  - Periodismo
                 </h3>
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start gap-2">
@@ -114,7 +122,7 @@ export function DatosPage() {
                   <GraduationCap className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  🎓 Educación
+                  - Educación
                 </h3>
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start gap-2">
@@ -138,7 +146,7 @@ export function DatosPage() {
                   <Building2 className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  🏛️ Decisiones Públicas
+                  - Decisiones Públicas
                 </h3>
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start gap-2">
@@ -162,7 +170,7 @@ export function DatosPage() {
                   <Bot className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  🤖 Inteligencia Artificial
+                  - Inteligencia Artificial
                 </h3>
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start gap-2">
@@ -190,7 +198,7 @@ export function DatosPage() {
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-green-200">
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                ✅ Garantía de Calidad
+                - Garantía de Calidad
               </h2>
               
               <p className="text-lg text-gray-700 mb-6">
@@ -239,13 +247,19 @@ export function DatosPage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 text-white shadow-2xl">
+            <div 
+  className="rounded-2xl p-8 text-white"
+  style={{
+    backgroundImage: 'linear-gradient(to bottom right, rgba(63, 80, 107, 0.9), rgba(118, 120, 124, 0.9)), url(../images/2.png)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }}
+>
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
-                  <Bot className="w-8 h-8 text-white" />
-                </div>
+                
                 <h2 className="text-3xl font-bold">
-                  🤖 Uso Responsable en Inteligencia Artificial
+                   Uso Responsable en Inteligencia Artificial
                 </h2>
               </div>
               
@@ -315,7 +329,7 @@ export function DatosPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-              📥 Descarga los Datos
+              Descarga los Datos
             </h2>
 
             <div className="grid md:grid-cols-3 gap-6">
@@ -377,7 +391,7 @@ export function DatosPage() {
 
             <div className="mt-8 bg-blue-50 border-2 border-blue-200 rounded-xl p-6 text-center">
               <p className="text-gray-700">
-                💡 <strong>¿No sabes cuál elegir?</strong><br/>
+                <strong>¿No sabes cuál elegir?</strong><br/>
                 Usa Excel si trabajas con hojas de cálculo.<br/>
                 Usa CSV si necesitas importar a otros programas.<br/>
                 Usa JSON si eres desarrollador.

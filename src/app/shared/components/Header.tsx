@@ -30,9 +30,6 @@ export function Header() {
           >
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl blur-sm opacity-50 group-hover:opacity-75 transition-opacity"></div>
-              <div className="relative w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform">
-                <BarChart3 className="w-7 h-7 text-white" aria-hidden="true" />
-              </div>
             </div>
             <div>
               <h1 className="font-bold text-xl text-gray-900 group-hover:text-blue-600 transition-colors">

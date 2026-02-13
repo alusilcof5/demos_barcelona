@@ -16,11 +16,19 @@ export function MetodologiaPage() {
     <div className="min-h-screen bg-gray-50">
       
       {/* Header */}
-      <section className="bg-gradient-to-br from-green-600 to-blue-600 py-16">
+       {/* Header */}
+<section 
+  className="py-16"
+  style={{
+    backgroundImage: 'linear-gradient(to bottom right, rgba(63, 80, 107, 0.9), rgba(118, 120, 124, 0.9)), url(../images/4.png)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              📚 ¿Cómo funciona todo esto?
+              ¿Cómo funciona todo esto?
             </h1>
             <p className="text-xl text-green-100">
               Te explicamos de dónde salen los datos y cómo los calculamos.<br/>
@@ -61,7 +69,7 @@ export function MetodologiaPage() {
                     <BookOpen className={`w-6 h-6 ${nivelActivo === 'simple' ? 'text-white' : 'text-gray-600'}`} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg text-gray-900">📖 Simple</h3>
+                    <h3 className="font-bold text-lg text-gray-900">Simple</h3>
                     <p className="text-sm text-gray-600">Para ciudadanos</p>
                   </div>
                 </div>
@@ -86,7 +94,7 @@ export function MetodologiaPage() {
                     <BarChart3 className={`w-6 h-6 ${nivelActivo === 'intermedio' ? 'text-white' : 'text-gray-600'}`} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg text-gray-900">📊 Intermedio</h3>
+                    <h3 className="font-bold text-lg text-gray-900">Intermedio</h3>
                     <p className="text-sm text-gray-600">Para estudiantes/periodistas</p>
                   </div>
                 </div>
@@ -111,7 +119,7 @@ export function MetodologiaPage() {
                     <Microscope className={`w-6 h-6 ${nivelActivo === 'tecnico' ? 'text-white' : 'text-gray-600'}`} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg text-gray-900">🔬 Técnico</h3>
+                    <h3 className="font-bold text-lg text-gray-900">Técnico</h3>
                     <p className="text-sm text-gray-600">Para investigadores</p>
                   </div>
                 </div>
@@ -136,7 +144,7 @@ export function MetodologiaPage() {
                   onClick={() => toggleSeccion('que-hacemos')}
                   className="w-full p-6 flex items-center justify-between hover:bg-green-50 transition-all"
                 >
-                  <h3 className="text-2xl font-bold text-gray-900">🎯 ¿Qué hacemos?</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">¿Qué hacemos?</h3>
                   {seccionExpandida === 'que-hacemos' ? (
                     <ChevronUp className="w-6 h-6 text-green-600" />
                   ) : (
@@ -165,7 +173,7 @@ export function MetodologiaPage() {
                   onClick={() => toggleSeccion('de-donde-salen')}
                   className="w-full p-6 flex items-center justify-between hover:bg-blue-50 transition-all"
                 >
-                  <h3 className="text-2xl font-bold text-gray-900">🔍 ¿De dónde salen los datos?</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">¿De dónde salen los datos?</h3>
                   {seccionExpandida === 'de-donde-salen' ? (
                     <ChevronUp className="w-6 h-6 text-blue-600" />
                   ) : (
@@ -187,9 +195,6 @@ export function MetodologiaPage() {
                       
                       <div className="space-y-4">
                         <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <span className="text-white text-xl">💰</span>
-                          </div>
                           <div>
                             <div className="font-semibold text-gray-900">1. INGRESOS</div>
                             <div className="text-gray-700 text-sm">Cuánto dinero ganan las familias</div>
@@ -197,9 +202,6 @@ export function MetodologiaPage() {
                         </div>
 
                         <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <span className="text-white text-xl">💼</span>
-                          </div>
                           <div>
                             <div className="font-semibold text-gray-900">2. EMPLEO</div>
                             <div className="text-gray-700 text-sm">Cuántas personas tienen trabajo</div>
@@ -207,9 +209,6 @@ export function MetodologiaPage() {
                         </div>
 
                         <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <span className="text-white text-xl">👴</span>
-                          </div>
                           <div>
                             <div className="font-semibold text-gray-900">3. EDAD</div>
                             <div className="text-gray-700 text-sm">Cuántas personas mayores y jóvenes hay</div>
@@ -217,9 +216,6 @@ export function MetodologiaPage() {
                         </div>
 
                         <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <span className="text-white text-xl">🌍</span>
-                          </div>
                           <div>
                             <div className="font-semibold text-gray-900">4. ORIGEN</div>
                             <div className="text-gray-700 text-sm">Cuántas personas vienen de otros países</div>
@@ -247,7 +243,7 @@ export function MetodologiaPage() {
                   onClick={() => toggleSeccion('fiabilidad')}
                   className="w-full p-6 flex items-center justify-between hover:bg-purple-50 transition-all"
                 >
-                  <h3 className="text-2xl font-bold text-gray-900">✅ ¿Cómo sabemos que son fiables?</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">¿Cómo sabemos que son fiables?</h3>
                   {seccionExpandida === 'fiabilidad' ? (
                     <ChevronUp className="w-6 h-6 text-purple-600" />
                   ) : (
@@ -300,7 +296,7 @@ export function MetodologiaPage() {
                   onClick={() => toggleSeccion('calculo-necesidad')}
                   className="w-full p-6 flex items-center justify-between hover:bg-orange-50 transition-all"
                 >
-                  <h3 className="text-2xl font-bold text-gray-900">🎯 ¿Cómo calculamos "necesidad"?</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">¿Cómo calculamos "necesidad"?</h3>
                   {seccionExpandida === 'calculo-necesidad' ? (
                     <ChevronUp className="w-6 h-6 text-orange-600" />
                   ) : (
@@ -316,7 +312,6 @@ export function MetodologiaPage() {
 
                     <div className="space-y-4 mb-6">
                       <div className="flex items-start gap-3 p-4 bg-orange-50 rounded-lg">
-                        <span className="text-2xl">📉</span>
                         <div>
                           <div className="font-semibold text-gray-900">Si los ingresos son bajos</div>
                           <div className="text-gray-700">→ Más necesidad (las familias tienen menos recursos)</div>
@@ -324,7 +319,7 @@ export function MetodologiaPage() {
                       </div>
 
                       <div className="flex items-start gap-3 p-4 bg-orange-50 rounded-lg">
-                        <span className="text-2xl">📈</span>
+
                         <div>
                           <div className="font-semibold text-gray-900">Si el paro es alto</div>
                           <div className="text-gray-700">→ Más necesidad (más gente sin trabajo)</div>
@@ -332,7 +327,6 @@ export function MetodologiaPage() {
                       </div>
 
                       <div className="flex items-start gap-3 p-4 bg-orange-50 rounded-lg">
-                        <span className="text-2xl">👴</span>
                         <div>
                           <div className="font-semibold text-gray-900">Si hay muchos mayores</div>
                           <div className="text-gray-700">→ Más necesidad de servicios (salud, accesibilidad...)</div>
@@ -340,7 +334,7 @@ export function MetodologiaPage() {
                       </div>
 
                       <div className="flex items-start gap-3 p-4 bg-orange-50 rounded-lg">
-                        <span className="text-2xl">🌍</span>
+                        <span className="text-2xl"></span>
                         <div>
                           <div className="font-semibold text-gray-900">Si hay muchos extranjeros</div>
                           <div className="text-gray-700">→ Más necesidad de integración (idioma, papeles...)</div>
@@ -414,7 +408,15 @@ export function MetodologiaPage() {
 
             {/* Botón para ver más detalles */}
             <div className="mt-12 max-w-4xl mx-auto">
-              <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 text-white text-center">
+              <div 
+  className="rounded-2xl p-8 text-white"
+  style={{
+    backgroundImage: 'linear-gradient(to bottom right, rgba(63, 80, 107, 0.9), rgba(118, 120, 124, 0.9)), url(../images/2.png)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }}
+>
                 <h3 className="text-2xl font-bold mb-4">¿Quieres más detalles?</h3>
                 <p className="text-blue-100 mb-6">
                   Si eres estudiante, periodista o investigador, tenemos explicaciones más detalladas
@@ -446,7 +448,7 @@ export function MetodologiaPage() {
             <div className="max-w-4xl mx-auto">
               <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-8 text-center">
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  📊 Nivel Intermedio
+                  Nivel Intermedio
                 </h3>
                 <p className="text-gray-700">
                   Esta sección contendrá información más técnica sobre fuentes de datos, metodología estadística, 
@@ -468,7 +470,7 @@ export function MetodologiaPage() {
             <div className="max-w-4xl mx-auto">
               <div className="bg-purple-50 border-2 border-purple-200 rounded-xl p-8 text-center">
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  🔬 Nivel Técnico
+                  Nivel Técnico
                 </h3>
                 <p className="text-gray-700">
                   Esta sección contendrá la metodología completa con fórmulas matemáticas, ponderaciones, 

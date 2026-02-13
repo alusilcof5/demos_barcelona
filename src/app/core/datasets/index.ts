@@ -1,8 +1,3 @@
-/**
- * Definició dels datasets d'Open Data BCN
- * Aquestes dades permeten la trazabilitat completa del projecte
- */
-
 export interface DatasetSource {
   id: string;
   name: string;
@@ -13,10 +8,7 @@ export interface DatasetSource {
   license: string;
 }
 
-/**
- * Fonts de dades oficials d'Open Data BCN
- * Cada dataset inclou la URL de la font original per garantir la transparència
- */
+
 export const OPENDATA_SOURCES: DatasetSource[] = [
   {
     id: 'barris-geojson',
@@ -36,6 +28,18 @@ export const OPENDATA_SOURCES: DatasetSource[] = [
     description: 'Renda familiar disponible bruta per capita en euros',
     license: 'CC BY 4.0'
   },
+  
+
+  {
+    id: 'renda-per-sexe',
+    name: 'Renda Familiar per Sexe i Barri',
+    url: 'https://opendata-ajuntament.barcelona.cat/data/dataset/renda-sexe-barri',
+    format: 'CSV',
+    lastUpdate: '2024-12-15',
+    description: 'Renda familiar disponible bruta per capita desagregada per sexe',
+    license: 'CC BY 4.0'
+  },
+  
   {
     id: 'atur',
     name: 'Atur Registrat per Barri',
@@ -45,6 +49,18 @@ export const OPENDATA_SOURCES: DatasetSource[] = [
     description: 'Percentatge d\'atur registrat sobre població activa',
     license: 'CC BY 4.0'
   },
+  
+
+  {
+    id: 'atur-per-sexe',
+    name: 'Atur Registrat per Sexe i Barri',
+    url: 'https://opendata-ajuntament.barcelona.cat/data/dataset/atur-sexe-barri',
+    format: 'CSV',
+    lastUpdate: '2026-01-31',
+    description: 'Percentatge d\'atur registrat desagregat per sexe',
+    license: 'CC BY 4.0'
+  },
+  
   {
     id: 'envelliment',
     name: 'Índex d\'Envelliment per Barri',
@@ -71,13 +87,20 @@ export const OPENDATA_SOURCES: DatasetSource[] = [
     lastUpdate: '2025-12-31',
     description: 'Població empadronada total per barri',
     license: 'CC BY 4.0'
+  },
+  
+  {
+    id: 'poblacio-per-sexe',
+    name: 'Població per Sexe i Barri',
+    url: 'https://opendata-ajuntament.barcelona.cat/data/dataset/poblacio-sexe-barri',
+    format: 'CSV',
+    lastUpdate: '2025-12-31',
+    description: 'Població empadronada desagregada per sexe',
+    license: 'CC BY 4.0'
   }
 ];
 
-/**
- * Descripció de cada indicador utilitzat en el càlcul de vulnerabilitat
- * Aquesta transparència permet entendre i replicar la metodologia
- */
+
 export const INDICADORS_INFO = {
   renda: {
     name: 'Renda Mitjana',
@@ -86,6 +109,30 @@ export const INDICADORS_INFO = {
     interpretation: 'Menor renda → major vulnerabilitat',
     source: 'renda-familiar'
   },
+
+  renda_dones: {
+    name: 'Renda Mitjana Dones',
+    unit: '€/any',
+    description: 'Renda familiar disponible bruta per capita - Dones',
+    interpretation: 'Menor renda → major vulnerabilitat',
+    source: 'renda-per-sexe'
+  },
+  renda_homes: {
+    name: 'Renda Mitjana Homes',
+    unit: '€/any',
+    description: 'Renda familiar disponible bruta per capita - Homes',
+    interpretation: 'Menor renda → major vulnerabilitat',
+    source: 'renda-per-sexe'
+  },
+  brecha_salarial: {
+    name: 'Brecha Salarial de Gènere',
+    unit: '%',
+    description: 'Diferència percentual entre renda d\'homes i dones',
+    interpretation: 'Major brecha → major desigualtat',
+    source: 'renda-per-sexe',
+    formula: '(Renda_Homes - Renda_Dones) / Renda_Homes × 100'
+  },
+  
   atur: {
     name: 'Taxa d\'Atur',
     unit: '%',
@@ -93,6 +140,30 @@ export const INDICADORS_INFO = {
     interpretation: 'Major atur → major vulnerabilitat',
     source: 'atur'
   },
+ 
+  atur_dones: {
+    name: 'Taxa d\'Atur Dones',
+    unit: '%',
+    description: 'Percentatge d\'atur registrat - Dones',
+    interpretation: 'Major atur → major vulnerabilitat',
+    source: 'atur-per-sexe'
+  },
+  atur_homes: {
+    name: 'Taxa d\'Atur Homes',
+    unit: '%',
+    description: 'Percentatge d\'atur registrat - Homes',
+    interpretation: 'Major atur → major vulnerabilitat',
+    source: 'atur-per-sexe'
+  },
+  brecha_empleo: {
+    name: 'Brecha d\'Ocupació de Gènere',
+    unit: 'punts percentuals',
+    description: 'Diferència en punts entre taxa d\'atur de dones i homes',
+    interpretation: 'Major diferència → major desigualtat',
+    source: 'atur-per-sexe',
+    formula: 'Atur_Dones - Atur_Homes'
+  },
+  
   envelliment: {
     name: 'Índex d\'Envelliment',
     unit: 'ràtio',
@@ -109,13 +180,18 @@ export const INDICADORS_INFO = {
   }
 };
 
-/**
- * Pesos per defecte en el càlcul de l'índex de vulnerabilitat
- * Aquests pesos són configurables per permetre diferents anàlisis
- */
+
 export const DEFAULT_WEIGHTS = {
   renda: 0.35,
   atur: 0.30,
   envelliment: 0.20,
   immigracio: 0.15
+};
+
+export const GENDER_WEIGHTS = {
+  renda: 0.25,
+  atur: 0.20,
+  envelliment: 0.15,
+  immigracio: 0.15,
+  brecha_genero: 0.25  
 };

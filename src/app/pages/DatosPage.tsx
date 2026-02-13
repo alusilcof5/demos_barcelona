@@ -1,31 +1,45 @@
-import { Download, CheckCircle, Users, Newspaper, GraduationCap, Building2, Bot, FileSpreadsheet, FileJson, File } from 'lucide-react';
+import {
+  Download,
+  CheckCircle,
+  Users,
+  Newspaper,
+  GraduationCap,
+  Building2,
+  Bot,
+  FileSpreadsheet,
+  FileJson,
+  File,
+} from "lucide-react";
 
 export function DatosPage() {
   return (
     <div className="min-h-screen bg-white">
-      
       {/* Header */}
-<section 
-  className="py-16"
-  style={{
-    backgroundImage: 'linear-gradient(to bottom right, rgba(63, 80, 107, 0.9), rgba(118, 120, 124, 0.9)), url(../images/2.png)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat'
-  }}
->
-  <div className="container mx-auto px-4">
-    <div className="max-w-4xl mx-auto text-center">
-      <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-         Datos para Todos
-      </h1>
-      <p className="text-xl text-purple-100">
-        Información verificada y descargable sobre Barcelona.<br/>
-        <strong className="text-white">Gratis, abierta y para todos.</strong>
-      </p>
-    </div>
-  </div>
-</section>
+      <section
+        className="py-16"
+        style={{
+          backgroundImage:
+            "linear-gradient(to bottom right, rgba(63, 80, 107, 0.9), rgba(118, 120, 124, 0.9)), url(../images/2.png)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Datos para Todos
+            </h1>
+            <p className="text-xl text-purple-100">
+              Información verificada y descargable sobre Barcelona.
+              <br />
+              <strong className="text-white">
+                Gratis, abierta y para todos.
+              </strong>
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* ¿Qué son estos datos? */}
       <section className="py-16 bg-gray-50">
@@ -35,9 +49,10 @@ export function DatosPage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
                 ¿Qué encontrarás aquí?
               </h2>
-              
+
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                Todos los datos que ves en esta web, listos para descargar.<br/>
+                Todos los datos que ves en esta web, listos para descargar.
+                <br />
                 En formatos fáciles de usar (Excel, CSV, JSON).
               </p>
 
@@ -48,19 +63,27 @@ export function DatosPage() {
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
-                    <span className="text-gray-700">Información de los 73 barrios de Barcelona</span>
+                    <span className="text-gray-700">
+                      Información de los 73 barrios de Barcelona
+                    </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
-                    <span className="text-gray-700">Datos de renta, empleo, población, envejecimiento</span>
+                    <span className="text-gray-700">
+                      Datos de renta, empleo, población, envejecimiento
+                    </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
-                    <span className="text-gray-700">Actualizaciones mensuales</span>
+                    <span className="text-gray-700">
+                      Actualizaciones mensuales
+                    </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
-                    <span className="text-gray-700">Fuentes oficiales del Ayuntamiento de Barcelona</span>
+                    <span className="text-gray-700">
+                      Fuentes oficiales del Ayuntamiento de Barcelona
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -70,11 +93,15 @@ export function DatosPage() {
                   <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
                     <CheckCircle className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900">GRATIS Y PARA TODOS</h3>
+                  <h3 className="text-xl font-bold text-gray-900">
+                    GRATIS Y PARA TODOS
+                  </h3>
                 </div>
                 <p className="text-gray-700">
-                  No hace falta registro. No hay restricciones.<br/>
-                  <strong>Úsalos para lo que quieras</strong> (estudios, proyectos, reportajes...).
+                  No hace falta registro. No hay restricciones.
+                  <br />
+                  <strong>Úsalos para lo que quieras</strong> (estudios,
+                  proyectos, reportajes...).
                 </p>
               </div>
             </div>
@@ -91,7 +118,6 @@ export function DatosPage() {
             </h2>
 
             <div className="grid md:grid-cols-2 gap-6">
-              
               {/* Periodismo */}
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-8 border-2 border-blue-200">
                 <div className="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mb-6">
@@ -200,7 +226,7 @@ export function DatosPage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
                 - Garantía de Calidad
               </h2>
-              
+
               <p className="text-lg text-gray-700 mb-6">
                 Todos nuestros datos están:
               </p>
@@ -209,32 +235,48 @@ export function DatosPage() {
                 <div className="flex items-start gap-3 p-4 bg-green-50 rounded-lg border border-green-200">
                   <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
                   <div>
-                    <div className="font-bold text-gray-900 mb-1">Verificados con fuentes oficiales</div>
-                    <div className="text-sm text-gray-600">Ayuntamiento de Barcelona</div>
+                    <div className="font-bold text-gray-900 mb-1">
+                      Verificados con fuentes oficiales
+                    </div>
+                    <div className="text-sm text-gray-600">
+                      Ayuntamiento de Barcelona
+                    </div>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3 p-4 bg-green-50 rounded-lg border border-green-200">
                   <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
                   <div>
-                    <div className="font-bold text-gray-900 mb-1">Actualizados regularmente</div>
-                    <div className="text-sm text-gray-600">Datos frescos cada mes</div>
+                    <div className="font-bold text-gray-900 mb-1">
+                      Actualizados regularmente
+                    </div>
+                    <div className="text-sm text-gray-600">
+                      Datos frescos cada mes
+                    </div>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3 p-4 bg-green-50 rounded-lg border border-green-200">
                   <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
                   <div>
-                    <div className="font-bold text-gray-900 mb-1">Documentados</div>
-                    <div className="text-sm text-gray-600">Sabes de dónde vienen</div>
+                    <div className="font-bold text-gray-900 mb-1">
+                      Documentados
+                    </div>
+                    <div className="text-sm text-gray-600">
+                      Sabes de dónde vienen
+                    </div>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3 p-4 bg-green-50 rounded-lg border border-green-200">
                   <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
                   <div>
-                    <div className="font-bold text-gray-900 mb-1">Sin manipulaciones ni sesgos</div>
-                    <div className="text-sm text-gray-600">Datos tal como son</div>
+                    <div className="font-bold text-gray-900 mb-1">
+                      Sin manipulaciones ni sesgos
+                    </div>
+                    <div className="text-sm text-gray-600">
+                      Datos tal como son
+                    </div>
                   </div>
                 </div>
               </div>
@@ -247,32 +289,34 @@ export function DatosPage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div 
-  className="rounded-2xl p-8 text-white"
-  style={{
-    backgroundImage: 'linear-gradient(to bottom right, rgba(63, 80, 107, 0.9), rgba(118, 120, 124, 0.9)), url(../images/2.png)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat'
-  }}
->
+            <div
+              className="rounded-2xl p-8 text-white"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to bottom right, rgba(63, 80, 107, 0.9), rgba(118, 120, 124, 0.9)), url(../images/2.png)",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
               <div className="flex items-center gap-4 mb-6">
-                
                 <h2 className="text-3xl font-bold">
-                   Uso Responsable en Inteligencia Artificial
+                  Uso Responsable en Inteligencia Artificial
                 </h2>
               </div>
-              
+
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-6">
                 <h3 className="font-bold text-xl mb-3">¿Qué es esto?</h3>
                 <p className="text-blue-100 leading-relaxed">
-                  La inteligencia artificial (IA) aprende de datos. Si los datos son malos o falsos, 
-                  la IA aprende cosas incorrectas.
+                  La inteligencia artificial (IA) aprende de datos. Si los datos
+                  son malos o falsos, la IA aprende cosas incorrectas.
                 </p>
               </div>
 
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-6">
-                <h3 className="font-bold text-xl mb-4">Por eso es importante:</h3>
+                <h3 className="font-bold text-xl mb-4">
+                  Por eso es importante:
+                </h3>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 flex-shrink-0 mt-1" />
@@ -290,7 +334,9 @@ export function DatosPage() {
               </div>
 
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-6">
-                <h3 className="font-bold text-xl mb-4">Nuestros datos son perfectos para entrenar IA porque:</h3>
+                <h3 className="font-bold text-xl mb-4">
+                  Nuestros datos son perfectos para entrenar IA porque:
+                </h3>
                 <div className="grid md:grid-cols-2 gap-3">
                   <div className="flex items-start gap-2">
                     <span className="text-green-400">✓</span>
@@ -312,11 +358,20 @@ export function DatosPage() {
               </div>
 
               <div className="bg-yellow-500/20 border-2 border-yellow-400/50 rounded-xl p-6">
-                <h3 className="font-bold text-xl mb-3">💡 Ejemplo de uso en IA:</h3>
+                <h3 className="font-bold text-xl mb-3">
+                  💡 Ejemplo de uso en IA:
+                </h3>
                 <p className="text-blue-100">
-                  Puedes crear un chatbot que responda preguntas como:<br/>
-                  <em className="text-yellow-200">"¿Qué barrio de Barcelona necesita más ayuda con el empleo?"</em><br/><br/>
-                  Y la respuesta se basará en <strong className="text-white">datos reales, no en opiniones.</strong>
+                  Puedes crear un chatbot que responda preguntas como:
+                  <br />
+                  <em className="text-yellow-200">
+                    "¿Qué barrio de Barcelona necesita más ayuda con el empleo?"
+                  </em>
+                  <br />
+                  <br />Y la respuesta se basará en{" "}
+                  <strong className="text-white">
+                    datos reales, no en opiniones.
+                  </strong>
                 </p>
               </div>
             </div>
@@ -333,7 +388,6 @@ export function DatosPage() {
             </h2>
 
             <div className="grid md:grid-cols-3 gap-6">
-              
               {/* Excel */}
               <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-green-200 hover:border-green-400 transition-all">
                 <div className="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mb-4 mx-auto">
@@ -343,7 +397,8 @@ export function DatosPage() {
                   Formato Excel
                 </h3>
                 <p className="text-gray-600 text-sm mb-4 text-center">
-                  .xlsx<br/>
+                  .xlsx
+                  <br />
                   Para análisis en Excel
                 </p>
                 <button className="w-full px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-all flex items-center justify-center gap-2">
@@ -361,7 +416,8 @@ export function DatosPage() {
                   Formato CSV
                 </h3>
                 <p className="text-gray-600 text-sm mb-4 text-center">
-                  .csv<br/>
+                  .csv
+                  <br />
                   Para importar a programas
                 </p>
                 <button className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all flex items-center justify-center gap-2">
@@ -379,7 +435,8 @@ export function DatosPage() {
                   Formato JSON
                 </h3>
                 <p className="text-gray-600 text-sm mb-4 text-center">
-                  .json<br/>
+                  .json
+                  <br />
                   Para desarrolladores
                 </p>
                 <button className="w-full px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition-all flex items-center justify-center gap-2">
@@ -391,9 +448,12 @@ export function DatosPage() {
 
             <div className="mt-8 bg-blue-50 border-2 border-blue-200 rounded-xl p-6 text-center">
               <p className="text-gray-700">
-                <strong>¿No sabes cuál elegir?</strong><br/>
-                Usa Excel si trabajas con hojas de cálculo.<br/>
-                Usa CSV si necesitas importar a otros programas.<br/>
+                <strong>¿No sabes cuál elegir?</strong>
+                <br />
+                Usa Excel si trabajas con hojas de cálculo.
+                <br />
+                Usa CSV si necesitas importar a otros programas.
+                <br />
                 Usa JSON si eres desarrollador.
               </p>
             </div>

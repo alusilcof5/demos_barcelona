@@ -23,21 +23,30 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
-          <Link 
-            to="/" 
-            className="flex items-center gap-3 group"
-            aria-label="Observatori BCN - Pàgina d'inici"
-          >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl blur-sm opacity-50 group-hover:opacity-75 transition-opacity"></div>
-            </div>
-            <div>
-              <h1 className="font-bold text-xl text-gray-900 group-hover:text-blue-600 transition-colors">
-                Observatori BCN
-              </h1>
-              <p className="text-xs text-gray-500">Open Data Day 2026</p>
-            </div>
-          </Link>
+<Link 
+  to="/" 
+  className="flex items-center gap-3 group"
+  aria-label="CIVIXDATA"
+>
+  {/* Logo image */}
+  <div className="relative w-20 h-20">
+    <img 
+      src="./images/logo1.png" 
+      alt="Logo Observatori BCN" 
+      className="rounded-xl object-cover w-full h-full"
+    />
+    <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl blur-sm opacity-50 group-hover:opacity-75 transition-opacity"></div>
+  </div>
+
+  {/* Texto */}
+  <div>
+    <h1 className="font-bold text-xl text-gray-900 group-hover:text-blue-600 transition-colors">
+      CIVIXDATA
+    </h1>
+    <p className="text-xs text-gray-500">Open Data Day 2026</p>
+  </div>
+</Link>
+
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex gap-2" aria-label="Navegació principal">

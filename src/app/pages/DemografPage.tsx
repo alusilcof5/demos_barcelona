@@ -317,7 +317,7 @@ export function DemografPage() {
         
         {/* TU BARRIO EN 4 NÚMEROS */}
         <h3 className="text-2xl font-bold text-gray-900 mb-6">
-          📊 Tu barrio en 4 números
+          Tu barrio en 4 números
         </h3>
 
         <div className="grid md:grid-cols-2 gap-6 mb-8">
@@ -329,7 +329,7 @@ export function DemografPage() {
                 <DollarSign className="w-6 h-6 text-white" />
               </div>
               <div className="flex-1">
-                <h4 className="font-bold text-lg text-gray-900">💰 INGRESOS</h4>
+                <h4 className="font-bold text-lg text-gray-900">INGRESOS</h4>
                 <div className="text-3xl font-bold text-gray-900 mt-2">
                   {barrioSeleccionado.ingresos.toLocaleString()}€
                 </div>
@@ -352,7 +352,7 @@ export function DemografPage() {
             </div>
 
             <div className="bg-white/70 rounded-lg p-4 border border-blue-300">
-              <p className="text-sm font-semibold text-gray-900 mb-2">💬 ¿Qué significa?</p>
+              <p className="text-sm font-semibold text-gray-900 mb-2">¿Qué significa?</p>
               <p className="text-sm text-gray-700">
                 {barrioSeleccionado.ingresos < mediaBarcelona.ingresos 
                   ? `Las familias de ${selectedBarrio} tienen menos dinero disponible para cubrir necesidades básicas.`
@@ -369,7 +369,7 @@ export function DemografPage() {
                 <Briefcase className="w-6 h-6 text-white" />
               </div>
               <div className="flex-1">
-                <h4 className="font-bold text-lg text-gray-900">💼 EMPLEO</h4>
+                <h4 className="font-bold text-lg text-gray-900">EMPLEO</h4>
                 <div className="text-3xl font-bold text-gray-900 mt-2">
                   {barrioSeleccionado.paro}%
                 </div>
@@ -394,7 +394,7 @@ export function DemografPage() {
             </div>
 
             <div className="bg-white/70 rounded-lg p-4 border border-purple-300">
-              <p className="text-sm font-semibold text-gray-900 mb-2">💬 ¿Qué significa?</p>
+              <p className="text-sm font-semibold text-gray-900 mb-2">¿Qué significa?</p>
               <p className="text-sm text-gray-700">
                 {barrioSeleccionado.paro > mediaBarcelona.paro 
                   ? `Casi 1 de cada ${Math.round(100/barrioSeleccionado.paro)} personas que busca trabajo no lo encuentra.`
@@ -411,7 +411,7 @@ export function DemografPage() {
                 <User className="w-6 h-6 text-white" />
               </div>
               <div className="flex-1">
-                <h4 className="font-bold text-lg text-gray-900">👴 POBLACIÓN MAYOR</h4>
+                <h4 className="font-bold text-lg text-gray-900">POBLACIÓN MAYOR</h4>
                 <div className="text-3xl font-bold text-gray-900 mt-2">
                   {barrioSeleccionado.envejecimiento}
                 </div>
@@ -433,7 +433,7 @@ export function DemografPage() {
             </div>
 
             <div className="bg-white/70 rounded-lg p-4 border border-orange-300">
-              <p className="text-sm font-semibold text-gray-900 mb-2">💬 ¿Qué significa?</p>
+              <p className="text-sm font-semibold text-gray-900 mb-2">¿Qué significa?</p>
               <p className="text-sm text-gray-700">
                 Hay {barrioSeleccionado.envejecimiento > mediaBarcelona.envejecimiento ? 'más' : 'menos'} personas mayores que jóvenes. 
                 {barrioSeleccionado.envejecimiento > mediaBarcelona.envejecimiento 
@@ -451,7 +451,7 @@ export function DemografPage() {
                 <Users className="w-6 h-6 text-white" />
               </div>
               <div className="flex-1">
-                <h4 className="font-bold text-lg text-gray-900">🌍 POBLACIÓN EXTRANJERA</h4>
+                <h4 className="font-bold text-lg text-gray-900">POBLACIÓN EXTRANJERA</h4>
                 <div className="text-3xl font-bold text-gray-900 mt-2">
                   {barrioSeleccionado.extranjeros}%
                 </div>

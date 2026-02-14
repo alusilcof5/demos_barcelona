@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Search, TrendingUp, TrendingDown, AlertCircle, CheckCircle, Users, DollarSign, Briefcase, User } from 'lucide-react';
 import { MapContainer, TileLayer, Polygon, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -8,6 +8,16 @@ export function DemografPage() {
   const { t } = useLanguage();
   const [selectedBarrio, setSelectedBarrio] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const barriosData = {
     'El Raval': {
@@ -142,99 +152,138 @@ export function DemografPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section
-        className="py-12"
-        style={{
-          backgroundImage: 'linear-gradient(to bottom right, rgba(63, 80, 107, 0.9), rgba(118, 120, 124, 0.9)), url(./images/2.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
-      >
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <br />
-            <h1 className="text-3xl md:text-5xl font-bold text-white mb-6">
+    <div className="min-h-screen bg-white">
+      {/* Hero Section - Estilo azul profesional */}
+      <section className="relative py-20 md:py-28 overflow-hidden">
+        {/* Fondo con imagen */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="./images/2.png" 
+            alt="Barcelona background" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-800/85 to-blue-900/90"></div>
+        </div>
+
+        {/* Patrón de puntos con parallax */}
+        <div 
+          className="absolute inset-0 opacity-10 z-0"
+          style={{
+            transform: `translateY(${scrollY * 0.3}px)`
+          }}
+        >
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
+            backgroundSize: '40px 40px'
+          }}></div>
+        </div>
+
+        <div 
+          className="container mx-auto px-4 md:px-8 relative z-10"
+          style={{
+            transform: `translateY(${scrollY * -0.2}px)`,
+            opacity: Math.max(0, 1 - scrollY / 600)
+          }}
+        >
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               {t('demograf.hero.title')}
             </h1>
-            <p className="text-xl text-blue-100 mb-8">
+            <p className="text-lg md:text-xl text-blue-100 leading-relaxed">
               {t('demograf.hero.subtitle')}
             </p>
           </div>
         </div>
+
+        {/* Ola decorativa */}
+        <div className="absolute bottom-0 left-0 right-0 z-0">
+          <svg className="w-full h-12 md:h-16 text-white" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0 C300,80 600,80 900,40 L1200,0 L1200,120 L0,120 Z" fill="currentColor"></path>
+          </svg>
+        </div>
       </section>
 
-      {/* Legend Section */}
-      <section className="py-8 bg-white border-b-2 border-gray-200">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-              {t('demograf.legend.title')}
-            </h2>
-            
-            <div className="bg-blue-50 border border-blue-100 rounded-xl p-6 mb-6" style={{ background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)' }}>
-              <h3 className="font-bold text-lg text-gray-900 mb-4">
+      {/* Legend Section - Estilo profesional */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                {t('demograf.legend.title')}
+              </h2>
+              <div className="w-20 h-1 bg-blue-600 mx-auto mb-4"></div>
+              <p className="text-lg text-slate-600">
                 {t('demograf.legend.subtitle')}
-              </h3>
-              
-              <div className="grid md:grid-cols-4 gap-4">
-                <div className="flex items-start gap-3 p-4 bg-green-50 rounded-lg border-2 border-green-300">
-                  <div className="w-6 h-6 bg-green-500 rounded-full flex-shrink-0 mt-1"></div>
-                  <div>
-                    <div className="font-bold text-green-900">🟢 {t('demograf.legend.low.title')}</div>
-                    <div className="text-sm text-gray-700">{t('demograf.legend.low.description')}</div>
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-4 gap-6 mb-8">
+              {/* Verde - Baja */}
+              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border-l-4 border-green-500">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                    <span className="text-2xl">🟢</span>
                   </div>
+                  <h3 className="font-bold text-lg text-slate-900">{t('demograf.legend.low.title')}</h3>
                 </div>
-
-                <div className="flex items-start gap-3 p-4 bg-yellow-50 rounded-lg border-2 border-yellow-300">
-                  <div className="w-6 h-6 bg-yellow-500 rounded-full flex-shrink-0 mt-1"></div>
-                  <div>
-                    <div className="font-bold text-yellow-900">🟡 {t('demograf.legend.medium.title')}</div>
-                    <div className="text-sm text-gray-700">{t('demograf.legend.medium.description')}</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 p-4 bg-orange-50 rounded-lg border-2 border-orange-300">
-                  <div className="w-6 h-6 bg-orange-500 rounded-full flex-shrink-0 mt-1"></div>
-                  <div>
-                    <div className="font-bold text-orange-900">🟠 {t('demograf.legend.high.title')}</div>
-                    <div className="text-sm text-gray-700">{t('demograf.legend.high.description')}</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 p-4 bg-red-50 rounded-lg border-2 border-red-300">
-                  <div className="w-6 h-6 bg-red-600 rounded-full flex-shrink-0 mt-1"></div>
-                  <div>
-                    <div className="font-bold text-red-900">🔴 {t('demograf.legend.veryHigh.title')}</div>
-                    <div className="text-sm text-gray-700">{t('demograf.legend.veryHigh.description')}</div>
-                  </div>
-                </div>
+                <p className="text-sm text-slate-600">{t('demograf.legend.low.description')}</p>
               </div>
 
-              <div className="mt-4 p-4 bg-blue-100 rounded-lg border-2 border-blue-300">
-                <p className="text-blue-900 font-medium text-center">
-                  💡 {t('demograf.legend.info')}
-                </p>
+              {/* Amarillo - Media */}
+              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border-l-4 border-yellow-500">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center">
+                    <span className="text-2xl">🟡</span>
+                  </div>
+                  <h3 className="font-bold text-lg text-slate-900">{t('demograf.legend.medium.title')}</h3>
+                </div>
+                <p className="text-sm text-slate-600">{t('demograf.legend.medium.description')}</p>
               </div>
 
-              <div className="mt-4 text-center">
-                <p className="text-gray-700 font-medium">
-                  👆 {t('demograf.legend.tip')}
-                </p>
+              {/* Naranja - Alta */}
+              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border-l-4 border-orange-500">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
+                    <span className="text-2xl">🟠</span>
+                  </div>
+                  <h3 className="font-bold text-lg text-slate-900">{t('demograf.legend.high.title')}</h3>
+                </div>
+                <p className="text-sm text-slate-600">{t('demograf.legend.high.description')}</p>
               </div>
+
+              {/* Rojo - Muy Alta */}
+              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border-l-4 border-red-600">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
+                    <span className="text-2xl">🔴</span>
+                  </div>
+                  <h3 className="font-bold text-lg text-slate-900">{t('demograf.legend.veryHigh.title')}</h3>
+                </div>
+                <p className="text-sm text-slate-600">{t('demograf.legend.veryHigh.description')}</p>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-6 text-white shadow-lg mb-6">
+              <p className="font-medium text-center text-lg">
+                💡 {t('demograf.legend.info')}
+              </p>
+            </div>
+
+            <div className="text-center">
+              <p className="text-slate-700 font-medium text-lg">
+                👆 {t('demograf.legend.tip')}
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="py-8 bg-gray-100">
-        <div className="container mx-auto px-4">
+      {/* Map Section - Con estilo profesional */}
+      <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
+        <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="bg-white rounded-2xl p-8 shadow-xl">
-              <MapContainer center={[41.385, 2.173]} zoom={12} style={{ height: '400px', width: '100%' }}>
+            <div className="bg-white rounded-2xl p-8 shadow-xl border border-slate-200">
+              <MapContainer center={[41.385, 2.173]} zoom={12} style={{ height: '700px', width: '100%', borderRadius: '12px' }}>
                 <TileLayer
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -268,36 +317,40 @@ export function DemografPage() {
 
       {/* Barrio Details */}
       {barrioSeleccionado && selectedBarrio && (
-        <section className="py-12 bg-blue-50 border border-blue-100" style={{ background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)' }}>
-          <div className="container mx-auto px-4">
-            <div className="max-w-5xl mx-auto">
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="max-w-6xl mx-auto">
               {(() => {
                 const color = getColor(barrioSeleccionado.necesidad);
-                const bgClass = color === 'green' ? 'bg-green-50 border-green-300' : 
-                                color === 'yellow' ? 'bg-yellow-50 border-yellow-300' : 
-                                color === 'orange' ? 'bg-orange-50 border-orange-300' : 
-                                'bg-red-50 border-red-300';
-                const textClass = color === 'green' ? 'text-green-700' : 
-                                  color === 'yellow' ? 'text-yellow-700' : 
-                                  color === 'orange' ? 'text-orange-700' : 
-                                  'text-red-700';
+                const borderClass = color === 'green' ? 'border-green-500' : 
+                                   color === 'yellow' ? 'border-yellow-500' : 
+                                   color === 'orange' ? 'border-orange-500' : 
+                                   'border-red-600';
+                const bgClass = color === 'green' ? 'bg-green-50' : 
+                               color === 'yellow' ? 'bg-yellow-50' : 
+                               color === 'orange' ? 'bg-orange-50' : 
+                               'bg-red-50';
+                const iconBgClass = color === 'green' ? 'bg-green-500' : 
+                                   color === 'yellow' ? 'bg-yellow-500' : 
+                                   color === 'orange' ? 'bg-orange-500' : 
+                                   'bg-red-600';
                 const emoji = color === 'green' ? '🟢' : 
-                              color === 'yellow' ? '🟡' : 
-                              color === 'orange' ? '🟠' : 
-                              '🔴';
-                const icon = color === 'green' ? <CheckCircle className="w-12 h-12 text-green-600" /> : 
-                            <AlertCircle className={`w-12 h-12 ${color === 'yellow' ? 'text-yellow-600' : color === 'orange' ? 'text-orange-600' : 'text-red-600'}`} />;
+                             color === 'yellow' ? '🟡' : 
+                             color === 'orange' ? '🟠' : 
+                             '🔴';
                 
                 return (
-                  <div className={`rounded-2xl p-6 mb-8 border-3 ${bgClass}`}>
+                  <div className={`rounded-xl p-8 mb-8 shadow-lg border-l-4 ${borderClass} ${bgClass}`}>
                     <div className="flex items-center gap-4">
-                      {icon}
+                      <div className={`w-16 h-16 ${iconBgClass} rounded-xl flex items-center justify-center`}>
+                        <span className="text-3xl">{emoji}</span>
+                      </div>
                       <div>
-                        <h2 className="text-3xl font-bold text-gray-900">{selectedBarrio}</h2>
-                        <p className={`text-xl font-semibold ${textClass}`}>
-                          {emoji} {t('demograf.barrio.needLevel')} {barrioSeleccionado.nivel.toUpperCase()}
+                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900">{selectedBarrio}</h2>
+                        <p className="text-xl font-semibold text-slate-700 mt-1">
+                          {t('demograf.barrio.needLevel')} {barrioSeleccionado.nivel.toUpperCase()}
                         </p>
-                        <p className="text-gray-600 mt-1">
+                        <p className="text-slate-600 mt-1">
                           Nivel: <strong>{barrioSeleccionado.necesidad}/100</strong>
                         </p>
                       </div>
@@ -306,27 +359,27 @@ export function DemografPage() {
                 );
               })()}
               
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+              <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8">
                 {t('demograf.barrio.inNumbers')}
               </h3>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
-                {/* Income Card */}
-                <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border-2 border-blue-200">
+              
+                <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all border border-slate-100 hover:border-blue-300">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <DollarSign className="w-6 h-6 text-white" />
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <DollarSign className="w-8 h-8 text-white" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-bold text-lg text-gray-900">{t('demograf.barrio.income.title')}</h4>
-                      <div className="text-3xl font-bold text-gray-900 mt-2">
+                      <h4 className="font-bold text-xl text-slate-900">{t('demograf.barrio.income.title')}</h4>
+                      <div className="text-4xl font-bold text-slate-900 mt-2">
                         {barrioSeleccionado.ingresos.toLocaleString()}€
                       </div>
-                      <p className="text-sm text-gray-600">{t('demograf.barrio.income.unit')}</p>
+                      <p className="text-sm text-slate-600 mt-1">{t('demograf.barrio.income.unit')}</p>
                     </div>
                   </div>
                   
-                  <div className={`flex items-center gap-2 mb-3 ${
+                  <div className={`flex items-center gap-2 mb-4 ${
                     barrioSeleccionado.ingresos < mediaBarcelona.ingresos ? 'text-red-700' : 'text-green-700'
                   }`}>
                     {barrioSeleccionado.ingresos < mediaBarcelona.ingresos ? (
@@ -340,9 +393,9 @@ export function DemografPage() {
                     </span>
                   </div>
 
-                  <div className="bg-white/70 rounded-lg p-4 border border-blue-300">
-                    <p className="text-sm font-semibold text-gray-900 mb-2">{t('demograf.barrio.income.whatMeans')}</p>
-                    <p className="text-sm text-gray-700">
+                  <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                    <p className="text-sm font-semibold text-slate-900 mb-2">{t('demograf.barrio.income.whatMeans')}</p>
+                    <p className="text-sm text-slate-700 leading-relaxed">
                       {barrioSeleccionado.ingresos < mediaBarcelona.ingresos 
                         ? t('demograf.barrio.income.low')
                         : t('demograf.barrio.income.high')
@@ -352,21 +405,21 @@ export function DemografPage() {
                 </div>
 
                 {/* Employment Card */}
-                <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 border-2 border-purple-200">
+                <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all border border-slate-100 hover:border-blue-300">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Briefcase className="w-6 h-6 text-white" />
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Briefcase className="w-8 h-8 text-white" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-bold text-lg text-gray-900">{t('demograf.barrio.employment.title')}</h4>
-                      <div className="text-3xl font-bold text-gray-900 mt-2">
+                      <h4 className="font-bold text-xl text-slate-900">{t('demograf.barrio.employment.title')}</h4>
+                      <div className="text-4xl font-bold text-slate-900 mt-2">
                         {barrioSeleccionado.paro}%
                       </div>
-                      <p className="text-sm text-gray-600">{t('demograf.barrio.employment.unit')}</p>
+                      <p className="text-sm text-slate-600 mt-1">{t('demograf.barrio.employment.unit')}</p>
                     </div>
                   </div>
                   
-                  <div className={`flex items-center gap-2 mb-3 ${
+                  <div className={`flex items-center gap-2 mb-4 ${
                     barrioSeleccionado.paro > mediaBarcelona.paro ? 'text-red-700' : 'text-green-700'
                   }`}>
                     {barrioSeleccionado.paro > mediaBarcelona.paro ? (
@@ -382,9 +435,9 @@ export function DemografPage() {
                     </span>
                   </div>
 
-                  <div className="bg-white/70 rounded-lg p-4 border border-purple-300">
-                    <p className="text-sm font-semibold text-gray-900 mb-2">{t('demograf.barrio.employment.whatMeans')}</p>
-                    <p className="text-sm text-gray-700">
+                  <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                    <p className="text-sm font-semibold text-slate-900 mb-2">{t('demograf.barrio.employment.whatMeans')}</p>
+                    <p className="text-sm text-slate-700 leading-relaxed">
                       {barrioSeleccionado.paro > mediaBarcelona.paro 
                         ? `${Math.round(100/barrioSeleccionado.paro)} ${t('demograf.barrio.employment.high')}`
                         : t('demograf.barrio.employment.low')
@@ -394,21 +447,21 @@ export function DemografPage() {
                 </div>
 
                 {/* Aging Card */}
-                <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-6 border-2 border-orange-200">
+                <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all border border-slate-100 hover:border-blue-300">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <User className="w-6 h-6 text-white" />
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <User className="w-8 h-8 text-white" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-bold text-lg text-gray-900">{t('demograf.barrio.aging.title')}</h4>
-                      <div className="text-3xl font-bold text-gray-900 mt-2">
+                      <h4 className="font-bold text-xl text-slate-900">{t('demograf.barrio.aging.title')}</h4>
+                      <div className="text-4xl font-bold text-slate-900 mt-2">
                         {barrioSeleccionado.envejecimiento}
                       </div>
-                      <p className="text-sm text-gray-600">{t('demograf.barrio.aging.unit')}</p>
+                      <p className="text-sm text-slate-600 mt-1">{t('demograf.barrio.aging.unit')}</p>
                     </div>
                   </div>
                   
-                  <div className={`flex items-center gap-2 mb-3 ${
+                  <div className={`flex items-center gap-2 mb-4 ${
                     barrioSeleccionado.envejecimiento > mediaBarcelona.envejecimiento ? 'text-orange-700' : 'text-blue-700'
                   }`}>
                     {barrioSeleccionado.envejecimiento > mediaBarcelona.envejecimiento ? (
@@ -421,9 +474,9 @@ export function DemografPage() {
                     </span>
                   </div>
 
-                  <div className="bg-white/70 rounded-lg p-4 border border-orange-300">
-                    <p className="text-sm font-semibold text-gray-900 mb-2">{t('demograf.barrio.aging.whatMeans')}</p>
-                    <p className="text-sm text-gray-700">
+                  <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                    <p className="text-sm font-semibold text-slate-900 mb-2">{t('demograf.barrio.aging.whatMeans')}</p>
+                    <p className="text-sm text-slate-700 leading-relaxed">
                       {barrioSeleccionado.envejecimiento > mediaBarcelona.envejecimiento 
                         ? t('demograf.barrio.aging.high')
                         : t('demograf.barrio.aging.low')
@@ -433,22 +486,22 @@ export function DemografPage() {
                 </div>
 
                 {/* Foreign Population Card */}
-                <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 border-2 border-green-200">
+                <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all border border-slate-100 hover:border-blue-300">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Users className="w-6 h-6 text-white" />
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Users className="w-8 h-8 text-white" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-bold text-lg text-gray-900">{t('demograf.barrio.foreign.title')}</h4>
-                      <div className="text-3xl font-bold text-gray-900 mt-2">
+                      <h4 className="font-bold text-xl text-slate-900">{t('demograf.barrio.foreign.title')}</h4>
+                      <div className="text-4xl font-bold text-slate-900 mt-2">
                         {barrioSeleccionado.extranjeros}%
                       </div>
-                      <p className="text-sm text-gray-600">{t('demograf.barrio.foreign.unit')}</p>
+                      <p className="text-sm text-slate-600 mt-1">{t('demograf.barrio.foreign.unit')}</p>
                     </div>
                   </div>
                   
-                  <div className={`flex items-center gap-2 mb-3 ${
-                    barrioSeleccionado.extranjeros > mediaBarcelona.extranjeros ? 'text-blue-700' : 'text-gray-700'
+                  <div className={`flex items-center gap-2 mb-4 ${
+                    barrioSeleccionado.extranjeros > mediaBarcelona.extranjeros ? 'text-blue-700' : 'text-slate-700'
                   }`}>
                     {barrioSeleccionado.extranjeros > mediaBarcelona.extranjeros ? (
                       <TrendingUp className="w-5 h-5" />
@@ -463,9 +516,9 @@ export function DemografPage() {
                     </span>
                   </div>
 
-                  <div className="bg-white/70 rounded-lg p-4 border border-green-300">
-                    <p className="text-sm font-semibold text-gray-900 mb-2">💬 {t('demograf.barrio.foreign.whatMeans')}</p>
-                    <p className="text-sm text-gray-700">
+                  <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                    <p className="text-sm font-semibold text-slate-900 mb-2">💬 {t('demograf.barrio.foreign.whatMeans')}</p>
+                    <p className="text-sm text-slate-700 leading-relaxed">
                       {barrioSeleccionado.extranjeros > mediaBarcelona.extranjeros 
                         ? t('demograf.barrio.foreign.high')
                         : t('demograf.barrio.foreign.low')
@@ -475,55 +528,59 @@ export function DemografPage() {
                 </div>
               </div>
 
-              {/* Conclusion Section */}
-              <div 
-                className="rounded-2xl p-8 text-white"
-                style={{
-                  backgroundImage: 'linear-gradient(to bottom right, rgba(63, 80, 107, 0.9), rgba(118, 120, 124, 0.9)), url(../images/2.png)',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat'
-                }}
-              >
-                <h3 className="text-2xl font-bold mb-4">{t('demograf.barrio.conclusion.title')}</h3>
-                <p className="text-lg mb-6">
-                  {t('demograf.barrio.conclusion.intro').replace('{barrio}', selectedBarrio)}
-                </p>
-                
-                <div className="grid md:grid-cols-2 gap-4">
-                  {barrioSeleccionado.paro > mediaBarcelona.paro && (
-                    <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4 flex items-center gap-3">
-                      <CheckCircle className="w-6 h-6 flex-shrink-0" />
-                      <span>{t('demograf.barrio.conclusion.employment')}</span>
-                    </div>
-                  )}
-                  {barrioSeleccionado.ingresos < mediaBarcelona.ingresos && (
-                    <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4 flex items-center gap-3">
-                      <CheckCircle className="w-6 h-6 flex-shrink-0" />
-                      <span>{t('demograf.barrio.conclusion.economic')}</span>
-                    </div>
-                  )}
-                  {barrioSeleccionado.extranjeros > mediaBarcelona.extranjeros && (
-                    <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4 flex items-center gap-3">
-                      <CheckCircle className="w-6 h-6 flex-shrink-0" />
-                      <span>{t('demograf.barrio.conclusion.integration')}</span>
-                    </div>
-                  )}
-                  {barrioSeleccionado.envejecimiento > mediaBarcelona.envejecimiento && (
-                    <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4 flex items-center gap-3">
-                      <CheckCircle className="w-6 h-6 flex-shrink-0" />
-                      <span>{t('demograf.barrio.conclusion.elderly')}</span>
-                    </div>
-                  )}
+              {/* Conclusion Section - Azul profesional */}
+              <div className="relative rounded-2xl p-8 text-white overflow-hidden shadow-xl">
+                {/* Fondo */}
+                <div className="absolute inset-0 z-0">
+                  <img 
+                    src="../images/2.png" 
+                    alt="Background" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-800/85 to-blue-900/90"></div>
                 </div>
 
-                <div className="mt-6 flex gap-4">
-                  <button className="px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition-all">
-                    {t('demograf.barrio.conclusion.compare')}
-                  </button>
-                  <button className="px-6 py-3 bg-white/20 backdrop-blur-sm border-2 border-white/50 text-white rounded-lg font-semibold hover:bg-white/30 transition-all">
-                    {t('demograf.barrio.conclusion.downloadReport')}
-                  </button>
+                <div className="relative z-10">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4">{t('demograf.barrio.conclusion.title')}</h3>
+                  <p className="text-lg mb-8 text-blue-100">
+                    {t('demograf.barrio.conclusion.intro').replace('{barrio}', selectedBarrio)}
+                  </p>
+                  
+                  <div className="grid md:grid-cols-2 gap-4 mb-8">
+                    {barrioSeleccionado.paro > mediaBarcelona.paro && (
+                      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 flex items-center gap-3 border border-white/20">
+                        <CheckCircle className="w-6 h-6 flex-shrink-0" />
+                        <span>{t('demograf.barrio.conclusion.employment')}</span>
+                      </div>
+                    )}
+                    {barrioSeleccionado.ingresos < mediaBarcelona.ingresos && (
+                      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 flex items-center gap-3 border border-white/20">
+                        <CheckCircle className="w-6 h-6 flex-shrink-0" />
+                        <span>{t('demograf.barrio.conclusion.economic')}</span>
+                      </div>
+                    )}
+                    {barrioSeleccionado.extranjeros > mediaBarcelona.extranjeros && (
+                      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 flex items-center gap-3 border border-white/20">
+                        <CheckCircle className="w-6 h-6 flex-shrink-0" />
+                        <span>{t('demograf.barrio.conclusion.integration')}</span>
+                      </div>
+                    )}
+                    {barrioSeleccionado.envejecimiento > mediaBarcelona.envejecimiento && (
+                      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 flex items-center gap-3 border border-white/20">
+                        <CheckCircle className="w-6 h-6 flex-shrink-0" />
+                        <span>{t('demograf.barrio.conclusion.elderly')}</span>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <button className="px-8 py-4 bg-white hover:bg-blue-50 text-blue-900 rounded-lg font-semibold transition-all shadow-lg">
+                      {t('demograf.barrio.conclusion.compare')}
+                    </button>
+                    <button className="px-8 py-4 bg-transparent hover:bg-white/10 border-2 border-white/30 hover:border-white/50 text-white rounded-lg font-semibold transition-all backdrop-blur-sm">
+                      {t('demograf.barrio.conclusion.downloadReport')}
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -533,17 +590,17 @@ export function DemografPage() {
 
       {/* No Selection Message */}
       {!barrioSeleccionado && (
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+        <section className="py-20 bg-gradient-to-b from-white to-blue-50">
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
                 👆 {t('demograf.noSelection.title')}
               </h2>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-xl text-slate-600 mb-8">
                 {t('demograf.noSelection.subtitle')}
               </p>
-              <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6">
-                <p className="text-gray-700">
+              <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-8 text-white shadow-lg">
+                <p className="text-lg">
                   💡 <strong>Consejo:</strong> {t('demograf.noSelection.tip')}
                 </p>
               </div>

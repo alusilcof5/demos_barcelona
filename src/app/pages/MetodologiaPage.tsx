@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BookOpen, BarChart3, Microscope, CheckCircle, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { metodologiaTranslations } from '../i18n/MetodlogiaTranslations';
@@ -11,121 +11,162 @@ export function MetodologiaPage() {
   
   const [nivelActivo, setNivelActivo] = useState<NivelExplicacion>('simple');
   const [seccionExpandida, setSeccionExpandida] = useState<string | null>('que-hacemos');
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleSeccion = (seccion: string) => {
     setSeccionExpandida(seccionExpandida === seccion ? null : seccion);
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       
-      {/* Header */}
-      <section 
-        className="py-16"
-        style={{
-          backgroundImage: 'linear-gradient(to bottom right, rgba(63, 80, 107, 0.9), rgba(118, 120, 124, 0.9)), url(../images/4.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
-      >
-        <div className="container mx-auto px-4">
+      {/* Header - Estilo azul profesional */}
+      <section className="relative py-20 md:py-28 overflow-hidden">
+        {/* Fondo con imagen */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="../images/4.png" 
+            alt="Background" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-800/85 to-blue-900/90"></div>
+        </div>
+
+        {/* Patrón de puntos con parallax */}
+        <div 
+          className="absolute inset-0 opacity-10 z-0"
+          style={{
+            transform: `translateY(${scrollY * 0.3}px)`
+          }}
+        >
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
+            backgroundSize: '40px 40px'
+          }}></div>
+        </div>
+
+        <div 
+          className="container mx-auto px-4 md:px-8 relative z-10"
+          style={{
+            transform: `translateY(${scrollY * -0.2}px)`,
+            opacity: Math.max(0, 1 - scrollY / 600)
+          }}
+        >
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               {t.header.title}
             </h1>
-            <p className="text-xl text-green-100">
+            <p className="text-lg md:text-xl text-blue-100 leading-relaxed">
               {t.header.subtitle}<br/>
               <strong className="text-white">{t.header.subtitleBold}</strong>
             </p>
           </div>
         </div>
+
+        {/* Ola decorativa */}
+        <div className="absolute bottom-0 left-0 right-0 z-0">
+          <svg className="w-full h-12 md:h-16 text-white" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0 C300,80 600,80 900,40 L1200,0 L1200,120 L0,120 Z" fill="currentColor"></path>
+          </svg>
+        </div>
       </section>
 
-     
-      <section className="py-8 bg-white border-b-2 border-gray-200">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-3">
+      {/* Level Selector - Diseño profesional con colores verde, gris y azul */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
                 {t.levelSelector.title}
               </h2>
-              <p className="text-gray-600">
+              <div className="w-20 h-1 bg-blue-600 mx-auto mb-4"></div>
+              <p className="text-lg text-slate-600">
                 {t.levelSelector.subtitle}
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-4">
+            <div className="grid md:grid-cols-3 gap-6">
               
-            
+              {/* Simple - VERDE */}
               <button
                 onClick={() => setNivelActivo('simple')}
-                className={`p-6 rounded-xl border-3 transition-all text-left ${
+                className={`p-8 rounded-xl border-2 transition-all text-left shadow-lg hover:shadow-xl ${
                   nivelActivo === 'simple'
-                    ? 'bg-green-50 border-green-500 shadow-lg'
-                    : 'bg-white border-gray-200 hover:border-green-300'
+                    ? 'bg-green-50 border-green-500 scale-105'
+                    : 'bg-white border-slate-200 hover:border-green-300'
                 }`}
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                    nivelActivo === 'simple' ? 'bg-green-500' : 'bg-gray-200'
+                <div className="flex items-start gap-4 mb-4">
+                  <div className={`w-16 h-16 rounded-xl flex items-center justify-center transition-all ${
+                    nivelActivo === 'simple' ? 'bg-gradient-to-br from-green-500 to-green-600' : 'bg-slate-100'
                   }`}>
-                    <BookOpen className={`w-6 h-6 ${nivelActivo === 'simple' ? 'text-white' : 'text-gray-600'}`} />
+                    <BookOpen className={`w-8 h-8 ${nivelActivo === 'simple' ? 'text-white' : 'text-slate-400'}`} />
                   </div>
-                  <div>
-                    <h3 className="font-bold text-lg text-gray-900">{t.levelSelector.simple.title}</h3>
-                    <p className="text-sm text-gray-600">{t.levelSelector.simple.subtitle}</p>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-xl text-slate-900 mb-1">{t.levelSelector.simple.title}</h3>
+                    <p className="text-sm text-slate-600">{t.levelSelector.simple.subtitle}</p>
                   </div>
                 </div>
-                <p className="text-sm text-gray-700">
+                <p className="text-slate-700 leading-relaxed">
                   {t.levelSelector.simple.description}
                 </p>
               </button>
 
+              {/* Intermedio - AZUL */}
               <button
                 onClick={() => setNivelActivo('intermedio')}
-                className={`p-6 rounded-xl border-3 transition-all text-left ${
+                className={`p-8 rounded-xl border-2 transition-all text-left shadow-lg hover:shadow-xl ${
                   nivelActivo === 'intermedio'
-                    ? 'bg-blue-50 border-blue-500 shadow-lg'
-                    : 'bg-white border-gray-200 hover:border-blue-300'
+                    ? 'bg-blue-50 border-blue-500 scale-105'
+                    : 'bg-white border-slate-200 hover:border-blue-300'
                 }`}
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                    nivelActivo === 'intermedio' ? 'bg-blue-500' : 'bg-gray-200'
+                <div className="flex items-start gap-4 mb-4">
+                  <div className={`w-16 h-16 rounded-xl flex items-center justify-center transition-all ${
+                    nivelActivo === 'intermedio' ? 'bg-gradient-to-br from-blue-500 to-blue-600' : 'bg-slate-100'
                   }`}>
-                    <BarChart3 className={`w-6 h-6 ${nivelActivo === 'intermedio' ? 'text-white' : 'text-gray-600'}`} />
+                    <BarChart3 className={`w-8 h-8 ${nivelActivo === 'intermedio' ? 'text-white' : 'text-slate-400'}`} />
                   </div>
-                  <div>
-                    <h3 className="font-bold text-lg text-gray-900">{t.levelSelector.intermediate.title}</h3>
-                    <p className="text-sm text-gray-600">{t.levelSelector.intermediate.subtitle}</p>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-xl text-slate-900 mb-1">{t.levelSelector.intermediate.title}</h3>
+                    <p className="text-sm text-slate-600">{t.levelSelector.intermediate.subtitle}</p>
                   </div>
                 </div>
-                <p className="text-sm text-gray-700">
+                <p className="text-slate-700 leading-relaxed">
                   {t.levelSelector.intermediate.description}
                 </p>
               </button>
 
+              {/* Técnico - GRIS */}
               <button
                 onClick={() => setNivelActivo('tecnico')}
-                className={`p-6 rounded-xl border-3 transition-all text-left ${
+                className={`p-8 rounded-xl border-2 transition-all text-left shadow-lg hover:shadow-xl ${
                   nivelActivo === 'tecnico'
-                    ? 'bg-gray-50 border-gray-500 shadow-lg'
-                    : 'bg-white border-gray-200 hover:border-gray-300'
+                    ? 'bg-slate-50 border-slate-500 scale-105'
+                    : 'bg-white border-slate-200 hover:border-slate-300'
                 }`}
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                    nivelActivo === 'tecnico' ? 'bg-gray-800' : 'bg-gray-200'
+                <div className="flex items-start gap-4 mb-4">
+                  <div className={`w-16 h-16 rounded-xl flex items-center justify-center transition-all ${
+                    nivelActivo === 'tecnico' ? 'bg-gradient-to-br from-slate-700 to-slate-800' : 'bg-slate-100'
                   }`}>
-                    <Microscope className={`w-6 h-6 ${nivelActivo === 'tecnico' ? 'text-white' : 'text-gray-600'}`} />
+                    <Microscope className={`w-8 h-8 ${nivelActivo === 'tecnico' ? 'text-white' : 'text-slate-400'}`} />
                   </div>
-                  <div>
-                    <h3 className="font-bold text-lg text-gray-900">{t.levelSelector.technical.title}</h3>
-                    <p className="text-sm text-gray-600">{t.levelSelector.technical.subtitle}</p>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-xl text-slate-900 mb-1">{t.levelSelector.technical.title}</h3>
+                    <p className="text-sm text-slate-600">{t.levelSelector.technical.subtitle}</p>
                   </div>
                 </div>
-                <p className="text-sm text-gray-700">
+                <p className="text-slate-700 leading-relaxed">
                   {t.levelSelector.technical.description}
                 </p>
               </button>
@@ -134,71 +175,73 @@ export function MetodologiaPage() {
         </div>
       </section>
 
-
+      {/* Contenido Simple */}
       {nivelActivo === 'simple' && (
-        <section className="py-12 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto space-y-6">
+        <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="max-w-5xl mx-auto space-y-6">
               
-          
-              <div className="bg-white rounded-xl shadow-lg border-2 border-green-200 overflow-hidden">
+              {/* Qué Hacemos - VERDE */}
+              <div className="bg-white rounded-xl shadow-lg border-l-4 border-green-500 overflow-hidden">
                 <button
                   onClick={() => toggleSeccion('que-hacemos')}
                   className="w-full p-6 flex items-center justify-between hover:bg-green-50 transition-all"
                 >
-                  <h3 className="text-2xl font-bold text-gray-900">{t.simple.whatWeDo.title}</h3>
+                  <h3 className="text-2xl font-bold text-slate-900">{t.simple.whatWeDo.title}</h3>
                   {seccionExpandida === 'que-hacemos' ? (
                     <ChevronUp className="w-6 h-6 text-green-600" />
                   ) : (
-                    <ChevronDown className="w-6 h-6 text-gray-400" />
+                    <ChevronDown className="w-6 h-6 text-slate-400" />
                   )}
                 </button>
                 
                 {seccionExpandida === 'que-hacemos' && (
                   <div className="p-6 pt-0 border-t border-green-100">
-                    <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                    <p className="text-lg text-slate-700 leading-relaxed mb-6">
                       {t.simple.whatWeDo.text}
                     </p>
-                    <div className="bg-green-50 rounded-lg p-4 border border-green-200">
-                      <p className="text-gray-700">
-                        <strong>{t.simple.whatWeDo.summary}</strong> {t.simple.whatWeDo.summaryText}
+                    <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 border border-green-200">
+                      <p className="text-slate-700 leading-relaxed">
+                        <strong className="text-slate-900">{t.simple.whatWeDo.summary}</strong> {t.simple.whatWeDo.summaryText}
                       </p>
                     </div>
                   </div>
                 )}
               </div>
 
-              <div className="bg-white rounded-xl shadow-lg border-2 border-blue-200 overflow-hidden">
+              {/* De Dónde Salen - AZUL */}
+              <div className="bg-white rounded-xl shadow-lg border-l-4 border-blue-500 overflow-hidden">
                 <button
                   onClick={() => toggleSeccion('de-donde-salen')}
                   className="w-full p-6 flex items-center justify-between hover:bg-blue-50 transition-all"
                 >
-                  <h3 className="text-2xl font-bold text-gray-900">{t.simple.dataSource.title}</h3>
+                  <h3 className="text-2xl font-bold text-slate-900">{t.simple.dataSource.title}</h3>
                   {seccionExpandida === 'de-donde-salen' ? (
                     <ChevronUp className="w-6 h-6 text-blue-600" />
                   ) : (
-                    <ChevronDown className="w-6 h-6 text-gray-400" />
+                    <ChevronDown className="w-6 h-6 text-slate-400" />
                   )}
                 </button>
                 
                 {seccionExpandida === 'de-donde-salen' && (
                   <div className="p-6 pt-0 border-t border-blue-100">
-                    <p className="text-lg text-gray-700 mb-6">
-                      {t.simple.dataSource.intro} <strong>{t.simple.dataSource.introOrg}</strong>.<br/>
+                    <p className="text-lg text-slate-700 leading-relaxed mb-6">
+                      {t.simple.dataSource.intro} <strong className="text-slate-900">{t.simple.dataSource.introOrg}</strong>.<br/>
                       {t.simple.dataSource.introExtra}
                     </p>
 
-                    <div className="bg-blue-50 rounded-lg p-6 border border-blue-200 mb-6">
-                      <h4 className="font-bold text-lg text-gray-900 mb-4">
+                    <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 border border-blue-200 mb-6">
+                      <h4 className="font-bold text-xl text-slate-900 mb-4">
                         {t.simple.dataSource.typesTitle}
                       </h4>
                       
                       <div className="space-y-4">
                         {t.simple.dataSource.types.map((type, index) => (
-                          <div key={index} className="flex items-start gap-3">
+                          <div key={index} className="flex items-start gap-3 bg-white/50 rounded-lg p-4">
+                            <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                             <div>
-                              <div className="font-semibold text-gray-900">{type.title}</div>
-                              <div className="text-gray-700 text-sm">{type.description}</div>
+                              <div className="font-semibold text-slate-900">{type.title}</div>
+                              <div className="text-slate-700 text-sm mt-1">{type.description}</div>
                             </div>
                           </div>
                         ))}
@@ -209,37 +252,38 @@ export function MetodologiaPage() {
                       href="https://opendata-ajuntament.barcelona.cat/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all"
+                      className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all shadow-lg"
                     >
                       {t.simple.dataSource.viewSources}
-                      <ExternalLink className="w-4 h-4" />
+                      <ExternalLink className="w-5 h-5" />
                     </a>
                   </div>
                 )}
               </div>
 
-              <div className="bg-white rounded-xl shadow-lg border-2 border-purple-200 overflow-hidden">
+              {/* Fiabilidad - VERDE */}
+              <div className="bg-white rounded-xl shadow-lg border-l-4 border-green-500 overflow-hidden">
                 <button
                   onClick={() => toggleSeccion('fiabilidad')}
-                  className="w-full p-6 flex items-center justify-between hover:bg-purple-50 transition-all"
+                  className="w-full p-6 flex items-center justify-between hover:bg-green-50 transition-all"
                 >
-                  <h3 className="text-2xl font-bold text-gray-900">{t.simple.reliability.title}</h3>
+                  <h3 className="text-2xl font-bold text-slate-900">{t.simple.reliability.title}</h3>
                   {seccionExpandida === 'fiabilidad' ? (
-                    <ChevronUp className="w-6 h-6 text-purple-600" />
+                    <ChevronUp className="w-6 h-6 text-green-600" />
                   ) : (
-                    <ChevronDown className="w-6 h-6 text-gray-400" />
+                    <ChevronDown className="w-6 h-6 text-slate-400" />
                   )}
                 </button>
                 
                 {seccionExpandida === 'fiabilidad' && (
-                  <div className="p-6 pt-0 border-t border-purple-100">
+                  <div className="p-6 pt-0 border-t border-green-100">
                     <div className="grid md:grid-cols-2 gap-4">
                       {t.simple.reliability.items.map((item, index) => (
-                        <div key={index} className="flex items-start gap-3 p-4 bg-purple-50 rounded-lg border border-purple-200">
+                        <div key={index} className="flex items-start gap-3 p-5 bg-gradient-to-br from-green-50 to-green-100 rounded-lg border border-green-200">
                           <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
                           <div>
-                            <div className="font-semibold text-gray-900 mb-1">{item.title}</div>
-                            <div className="text-sm text-gray-700">{item.description}</div>
+                            <div className="font-semibold text-slate-900 mb-2">{item.title}</div>
+                            <div className="text-sm text-slate-700 leading-relaxed">{item.description}</div>
                           </div>
                         </div>
                       ))}
@@ -248,43 +292,45 @@ export function MetodologiaPage() {
                 )}
               </div>
 
-              <div className="bg-white rounded-xl shadow-lg border-2 border-orange-200 overflow-hidden">
+              {/* Cálculo de Necesidad - AZUL */}
+              <div className="bg-white rounded-xl shadow-lg border-l-4 border-blue-500 overflow-hidden">
                 <button
                   onClick={() => toggleSeccion('calculo-necesidad')}
-                  className="w-full p-6 flex items-center justify-between hover:bg-orange-50 transition-all"
+                  className="w-full p-6 flex items-center justify-between hover:bg-blue-50 transition-all"
                 >
-                  <h3 className="text-2xl font-bold text-gray-900">{t.simple.needCalculation.title}</h3>
+                  <h3 className="text-2xl font-bold text-slate-900">{t.simple.needCalculation.title}</h3>
                   {seccionExpandida === 'calculo-necesidad' ? (
-                    <ChevronUp className="w-6 h-6 text-orange-600" />
+                    <ChevronUp className="w-6 h-6 text-blue-600" />
                   ) : (
-                    <ChevronDown className="w-6 h-6 text-gray-400" />
+                    <ChevronDown className="w-6 h-6 text-slate-400" />
                   )}
                 </button>
                 
                 {seccionExpandida === 'calculo-necesidad' && (
-                  <div className="p-6 pt-0 border-t border-orange-100">
-                    <p className="text-lg text-gray-700 mb-6">
-                      {t.simple.needCalculation.intro} <strong>{t.simple.needCalculation.introNumbers}</strong>
+                  <div className="p-6 pt-0 border-t border-blue-100">
+                    <p className="text-lg text-slate-700 leading-relaxed mb-6">
+                      {t.simple.needCalculation.intro} <strong className="text-slate-900">{t.simple.needCalculation.introNumbers}</strong>
                     </p>
 
                     <div className="space-y-4 mb-6">
                       {t.simple.needCalculation.factors.map((factor, index) => (
-                        <div key={index} className="flex items-start gap-3 p-4 bg-orange-50 rounded-lg">
+                        <div key={index} className="flex items-start gap-3 p-5 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg border border-blue-200">
+                          <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                           <div>
-                            <div className="font-semibold text-gray-900">{factor.title}</div>
-                            <div className="text-gray-700">{factor.description}</div>
+                            <div className="font-semibold text-slate-900">{factor.title}</div>
+                            <div className="text-slate-700 mt-1">{factor.description}</div>
                           </div>
                         </div>
                       ))}
                     </div>
 
-                    <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6 mb-6">
-                      <h4 className="font-bold text-lg mb-4 text-gray-900">{t.simple.needCalculation.resultTitle}</h4>
+                    <div className="bg-slate-50 rounded-xl p-6 mb-6 border border-slate-200">
+                      <h4 className="font-bold text-xl mb-4 text-slate-900">{t.simple.needCalculation.resultTitle}</h4>
                       <div className="space-y-3">
                         {t.simple.needCalculation.ranges.map((range, index) => (
-                          <div key={index} className="flex items-center gap-3">
-                            <div className={`w-16 h-8 bg-${range.color}-500 rounded`}></div>
-                            <span className="font-semibold text-gray-900">{range.label}</span>
+                          <div key={index} className="flex items-center gap-4 p-3 bg-white rounded-lg">
+                            <div className={`w-20 h-10 bg-${range.color}-500 rounded shadow-sm`}></div>
+                            <span className="font-semibold text-slate-900">{range.label}</span>
                           </div>
                         ))}
                       </div>
@@ -292,13 +338,13 @@ export function MetodologiaPage() {
 
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-xl p-6 border-2 border-red-200">
-                        <h4 className="font-bold text-lg text-gray-900 mb-3">
+                        <h4 className="font-bold text-xl text-slate-900 mb-4">
                           {t.simple.needCalculation.exampleHigh.title}
                         </h4>
-                        <ul className="space-y-2 text-sm text-gray-700">
+                        <ul className="space-y-3 text-slate-700">
                           {t.simple.needCalculation.exampleHigh.items.map((item, index) => (
                             <li key={index} className="flex items-start gap-2">
-                              <span className="text-red-600">•</span>
+                              <span className="text-red-600 font-bold">•</span>
                               <span>{item}</span>
                             </li>
                           ))}
@@ -306,13 +352,13 @@ export function MetodologiaPage() {
                       </div>
 
                       <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 border-2 border-green-200">
-                        <h4 className="font-bold text-lg text-gray-900 mb-3">
+                        <h4 className="font-bold text-xl text-slate-900 mb-4">
                           {t.simple.needCalculation.exampleLow.title}
                         </h4>
-                        <ul className="space-y-2 text-sm text-gray-700">
+                        <ul className="space-y-3 text-slate-700">
                           {t.simple.needCalculation.exampleLow.items.map((item, index) => (
                             <li key={index} className="flex items-start gap-2">
-                              <span className="text-green-600">•</span>
+                              <span className="text-green-600 font-bold">•</span>
                               <span>{item}</span>
                             </li>
                           ))}
@@ -324,34 +370,38 @@ export function MetodologiaPage() {
               </div>
             </div>
 
-            
-            <div className="mt-12 max-w-4xl mx-auto">
-              <div 
-                className="rounded-2xl p-8 text-white"
-                style={{
-                  backgroundImage: 'linear-gradient(to bottom right, rgba(63, 80, 107, 0.9), rgba(118, 120, 124, 0.9)), url(../images/2.png)',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat'
-                }}
-              >
-                <h3 className="text-2xl font-bold mb-4">{t.simple.moreDetails.title}</h3>
-                <p className="text-blue-100 mb-6">
-                  {t.simple.moreDetails.text}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button
-                    onClick={() => setNivelActivo('intermedio')}
-                    className="px-8 py-4 bg-white text-blue-600 rounded-xl font-bold hover:bg-blue-50 transition-all"
-                  >
-                    {t.simple.moreDetails.buttonIntermediate}
-                  </button>
-                  <button
-                    onClick={() => setNivelActivo('tecnico')}
-                    className="px-8 py-4 bg-white/20 backdrop-blur-sm border-2 border-white/50 text-white rounded-xl font-semibold hover:bg-white/30 transition-all"
-                  >
-                    {t.simple.moreDetails.buttonTechnical}
-                  </button>
+            {/* More Details CTA - Azul profesional */}
+            <div className="mt-16 max-w-5xl mx-auto">
+              <div className="relative rounded-2xl p-8 md:p-12 text-white overflow-hidden shadow-xl">
+                {/* Fondo */}
+                <div className="absolute inset-0 z-0">
+                  <img 
+                    src="../images/2.png" 
+                    alt="Background" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-800/85 to-blue-900/90"></div>
+                </div>
+
+                <div className="relative z-10">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4">{t.simple.moreDetails.title}</h3>
+                  <p className="text-lg text-blue-100 mb-8 leading-relaxed">
+                    {t.simple.moreDetails.text}
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <button
+                      onClick={() => setNivelActivo('intermedio')}
+                      className="px-8 py-4 bg-white hover:bg-blue-50 text-blue-900 rounded-lg font-semibold transition-all shadow-lg"
+                    >
+                      {t.simple.moreDetails.buttonIntermediate}
+                    </button>
+                    <button
+                      onClick={() => setNivelActivo('tecnico')}
+                      className="px-8 py-4 bg-transparent hover:bg-white/10 border-2 border-white/30 hover:border-white/50 text-white rounded-lg font-semibold transition-all backdrop-blur-sm"
+                    >
+                      {t.simple.moreDetails.buttonTechnical}
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -359,40 +409,46 @@ export function MetodologiaPage() {
         </section>
       )}
 
+      {/* Contenido Intermedio - AZUL */}
       {nivelActivo === 'intermedio' && (
-        <section className="py-12 bg-white">
-          <div className="container mx-auto px-4">
+        <section className="py-16 bg-gradient-to-b from-white to-blue-50">
+          <div className="container mx-auto px-4 md:px-8">
             <div className="max-w-4xl mx-auto">
-              <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-8 text-center">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <div className="bg-white rounded-xl shadow-xl p-8 md:p-12 border-l-4 border-blue-500">
+                <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
                   {t.intermediate.title}
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-lg text-slate-700 leading-relaxed mb-6">
                   {t.intermediate.text}
                 </p>
-                <p className="text-gray-600 mt-4 italic">
-                  {t.intermediate.development}
-                </p>
+                <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
+                  <p className="text-slate-600 italic">
+                    {t.intermediate.development}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </section>
       )}
 
+      {/* Contenido Técnico - GRIS */}
       {nivelActivo === 'tecnico' && (
-        <section className="py-12 bg-white">
-          <div className="container mx-auto px-4">
+        <section className="py-16 bg-gradient-to-b from-white to-slate-50">
+          <div className="container mx-auto px-4 md:px-8">
             <div className="max-w-4xl mx-auto">
-              <div className="bg-gray-100 border-2 border-gray-300 rounded-xl p-8 text-center">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <div className="bg-white rounded-xl shadow-xl p-8 md:p-12 border-l-4 border-slate-700">
+                <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
                   {t.technical.title}
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-lg text-slate-700 leading-relaxed mb-6">
                   {t.technical.text}
                 </p>
-                <p className="text-gray-600 mt-4 italic">
-                  {t.technical.development}
-                </p>
+                <div className="bg-slate-100 rounded-lg p-6 border border-slate-300">
+                  <p className="text-slate-600 italic">
+                    {t.technical.development}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

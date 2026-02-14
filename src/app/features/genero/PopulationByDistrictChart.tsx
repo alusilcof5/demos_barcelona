@@ -1,8 +1,12 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useGenderStore } from './store';
+import { useLanguage } from '../../i18n/LanguageContext';
+import { generoTranslations } from '../../i18n/GeneroTranslations';
 
 export function PopulationByDistrictChart() {
-  const { data, selectedDistrict, setSelectedDistrict } = useGenderStore();
+  const { data } = useGenderStore();
+  const { language } = useLanguage();
+  const t = generoTranslations[language];
 
   if (!data) return null;
 
@@ -10,19 +14,19 @@ export function PopulationByDistrictChart() {
     .sort((a, b) => (b.poblacio_homes + b.poblacio_dones) - (a.poblacio_homes + a.poblacio_dones))
     .map(item => ({
       districte: item.districte,
-      'Hombres': item.poblacio_homes,
-      'Mujeres': item.poblacio_dones,
-      'Total': item.poblacio_homes + item.poblacio_dones
+      [t.charts.wageGap.men]: item.poblacio_homes,
+      [t.charts.wageGap.women]: item.poblacio_dones,
+      Total: item.poblacio_homes + item.poblacio_dones
     }));
 
   return (
     <div className="bg-white rounded-xl p-6 border-2 border-gray-200 shadow-sm">
       <div className="mb-6">
         <h3 className="text-xl font-bold text-gray-900 mb-2">
-          Distribución de Población por Distrito
+          {t.charts.populationByDistrict.title}
         </h3>
         <p className="text-sm text-gray-600">
-          Población total desagregada por género en cada distrito
+          {t.charts.populationByDistrict.subtitle}
         </p>
       </div>
 
@@ -54,7 +58,7 @@ export function PopulationByDistrictChart() {
               padding: '12px'
             }}
             formatter={(value: number, name: string) => [
-              value.toLocaleString() + ' habitantes',
+              value.toLocaleString() + ' ' + t.charts.populationByDistrict.inhabitants,
               name
             ]}
             cursor={{ fill: 'rgba(59, 130, 246, 0.1)' }}
@@ -63,15 +67,15 @@ export function PopulationByDistrictChart() {
             wrapperStyle={{ paddingTop: '20px' }}
           />
           <Bar
-            dataKey="Hombres"
+            dataKey={t.charts.wageGap.men}
             stackId="a"
-            fill="#3b82f6"
+            fill="#3943B7"
             radius={[0, 0, 0, 0]}
           />
           <Bar
-            dataKey="Mujeres"
+            dataKey={t.charts.wageGap.women}
             stackId="a"
-            fill="#ec4899"
+            fill="#A35DD5"
             radius={[0, 8, 8, 0]}
           />
         </BarChart>
@@ -79,15 +83,10 @@ export function PopulationByDistrictChart() {
 
       <div className="mt-6 bg-blue-50 rounded-lg p-4 border border-blue-200">
         <div className="flex items-start gap-3">
-          <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
-            <span className="text-white font-bold text-sm">ℹ</span>
-          </div>
           <div>
-            <div className="font-semibold text-gray-900 mb-1">Contexto Demográfico</div>
+            <div className="font-semibold text-gray-900 mb-1">{t.charts.populationByDistrict.contextTitle}</div>
             <p className="text-sm text-gray-700 leading-relaxed">
-              La distribución de población por género es relativamente equilibrada en todos los 
-              distritos. Los distritos más poblados (Eixample, Sant Martí) muestran patrones 
-              similares al resto de la ciudad.
+              {t.charts.populationByDistrict.contextText}
             </p>
           </div>
         </div>

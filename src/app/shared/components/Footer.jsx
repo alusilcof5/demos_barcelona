@@ -156,7 +156,7 @@ export function Footer() {
               </p>
             </div>
 
-            {/* Enlaces legales */}
+           
             <div className="flex items-center gap-4 text-xs text-gray-500">
               <a href="#terms" className="hover:text-gray-300 transition-colors">
                 Termes d'ús
@@ -172,17 +172,11 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Badge "Made with love" */}
-         
-
-          {/* Logos de colaboradores */}
           <div className="mt-6 flex items-center justify-center gap-8 opacity-50">
-            <div className="text-xs text-gray-600">
-              <span className="font-semibold">Col·labora:</span>
-            </div>
+
             <div className="flex items-center gap-6">
-              <span className="text-sm text-gray-600">Ajuntament de Barcelona</span>
-              <span className="text-sm text-gray-600">Open Data BCN</span>
+              <span className="text-sm text-gray-500">Se emplearon herramientas de diseño asistido:</span>
+              <span className="text-sm text-gray-500">Figma, Claude</span>
             </div>
           </div>
         </div>

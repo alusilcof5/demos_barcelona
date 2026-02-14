@@ -209,10 +209,9 @@ export function HomePage() {
                 </div>
               </div>
 
-              {/* Datos */}
               <div className="group">
                 <div className="bg-slate-50 rounded-xl p-8 border border-slate-200 hover:border-blue-500 transition-all h-full">
-                  <div className="w-12 h-12 bg-slate-900 rounded-lg flex items-center justify-center mb-6">
+                  <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-6">
                     <Database className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-3">
@@ -231,7 +230,6 @@ export function HomePage() {
                 </div>
               </div>
 
-              {/* Metodología */}
               <div className="group">
                 <div className="bg-slate-50 rounded-xl p-8 border border-slate-200 hover:border-blue-500 transition-all h-full">
                   <div className="w-12 h-12 bg-slate-600 rounded-lg flex items-center justify-center mb-6">
@@ -258,7 +256,6 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Transparencia y confianza */}
       <section className="py-20 bg-slate-900">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
@@ -335,7 +332,6 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* CTA Final - Simple y directo */}
       <section className="py-20 bg-white border-t border-slate-200">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
@@ -361,7 +357,6 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Estilos para el patrón de grid */}
       <style>{`
         .bg-grid-pattern {
           background-image: 

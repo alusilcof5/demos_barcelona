@@ -10,8 +10,13 @@ import {
   FileJson,
   File,
 } from "lucide-react";
+import { useLanguage } from '../i18n/LanguageContext';
+import { datosTranslations } from '../i18n/datosTranslations';
 
 export function DatosPage() {
+  const { language } = useLanguage();
+  const t = datosTranslations[language];
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -28,13 +33,13 @@ export function DatosPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Datos para Todos
+              {t.header.title}
             </h1>
             <p className="text-xl text-purple-100">
-              Información verificada y descargable sobre Barcelona.
+              {t.header.subtitle}
               <br />
               <strong className="text-white">
-                Gratis, abierta y para todos.
+                {t.header.subtitleBold}
               </strong>
             </p>
           </div>
@@ -47,44 +52,26 @@ export function DatosPage() {
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-purple-200">
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                ¿Qué encontrarás aquí?
+                {t.whatYouFind.title}
               </h2>
 
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                Todos los datos que ves en esta web, listos para descargar.
+                {t.whatYouFind.description}
                 <br />
-                En formatos fáciles de usar (Excel, CSV, JSON).
+                {t.whatYouFind.descriptionExtra}
               </p>
 
               <div className="bg-purple-50 rounded-xl p-6 border-2 border-purple-200 mb-6">
                 <h3 className="font-bold text-lg text-gray-900 mb-4">
-                  Incluye:
+                  {t.whatYouFind.includesTitle}
                 </h3>
                 <ul className="space-y-3">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
-                    <span className="text-gray-700">
-                      Información de los 73 barrios de Barcelona
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
-                    <span className="text-gray-700">
-                      Datos de renta, empleo, población, envejecimiento
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
-                    <span className="text-gray-700">
-                      Actualizaciones mensuales
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
-                    <span className="text-gray-700">
-                      Fuentes oficiales del Ayuntamiento de Barcelona
-                    </span>
-                  </li>
+                  {t.whatYouFind.includes.map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                      <span className="text-gray-700">{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
@@ -94,14 +81,13 @@ export function DatosPage() {
                     <CheckCircle className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900">
-                    GRATIS Y PARA TODOS
+                    {t.whatYouFind.freeTitle}
                   </h3>
                 </div>
                 <p className="text-gray-700">
-                  No hace falta registro. No hay restricciones.
+                  {t.whatYouFind.freeDescription}
                   <br />
-                  <strong>Úsalos para lo que quieras</strong> (estudios,
-                  proyectos, reportajes...).
+                  <strong>{t.whatYouFind.freeDescriptionBold}</strong> {t.whatYouFind.freeDescriptionExtra}
                 </p>
               </div>
             </div>
@@ -114,7 +100,7 @@ export function DatosPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-              ¿Para qué puedes usar estos datos?
+              {t.uses.title}
             </h2>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -124,21 +110,15 @@ export function DatosPage() {
                   <Newspaper className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  - Periodismo
+                  {t.uses.journalism.title}
                 </h3>
                 <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 font-bold">•</span>
-                    <span>Escribir artículos con datos reales</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 font-bold">•</span>
-                    <span>Contrastar información</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 font-bold">•</span>
-                    <span>Hacer visualizaciones</span>
-                  </li>
+                  {t.uses.journalism.items.map((item, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="text-blue-600 font-bold">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
@@ -148,21 +128,15 @@ export function DatosPage() {
                   <GraduationCap className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  - Educación
+                  {t.uses.education.title}
                 </h3>
                 <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold">•</span>
-                    <span>Proyectos de clase</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold">•</span>
-                    <span>Trabajos de investigación</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold">•</span>
-                    <span>Aprender análisis de datos</span>
-                  </li>
+                  {t.uses.education.items.map((item, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="text-green-600 font-bold">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
@@ -172,21 +146,15 @@ export function DatosPage() {
                   <Building2 className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  - Decisiones Públicas
+                  {t.uses.publicDecisions.title}
                 </h3>
                 <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-purple-600 font-bold">•</span>
-                    <span>Planificación urbana</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-purple-600 font-bold">•</span>
-                    <span>Asignación de presupuestos</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-purple-600 font-bold">•</span>
-                    <span>Evaluación de políticas</span>
-                  </li>
+                  {t.uses.publicDecisions.items.map((item, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="text-purple-600 font-bold">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
@@ -196,21 +164,15 @@ export function DatosPage() {
                   <Bot className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  - Inteligencia Artificial
+                  {t.uses.ai.title}
                 </h3>
                 <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-orange-600 font-bold">•</span>
-                    <span>Entrenar modelos con datos reales</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-orange-600 font-bold">•</span>
-                    <span>Crear chatbots informativos</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-orange-600 font-bold">•</span>
-                    <span>Sistemas de recomendación</span>
-                  </li>
+                  {t.uses.ai.items.map((item, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="text-orange-600 font-bold">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -224,61 +186,27 @@ export function DatosPage() {
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-green-200">
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                - Garantía de Calidad
+                {t.quality.title}
               </h2>
 
               <p className="text-lg text-gray-700 mb-6">
-                Todos nuestros datos están:
+                {t.quality.description}
               </p>
 
               <div className="grid md:grid-cols-2 gap-4">
-                <div className="flex items-start gap-3 p-4 bg-green-50 rounded-lg border border-green-200">
-                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-                  <div>
-                    <div className="font-bold text-gray-900 mb-1">
-                      Verificados con fuentes oficiales
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      Ayuntamiento de Barcelona
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 p-4 bg-green-50 rounded-lg border border-green-200">
-                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-                  <div>
-                    <div className="font-bold text-gray-900 mb-1">
-                      Actualizados regularmente
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      Datos frescos cada mes
+                {t.quality.items.map((item, index) => (
+                  <div key={index} className="flex items-start gap-3 p-4 bg-green-50 rounded-lg border border-green-200">
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+                    <div>
+                      <div className="font-bold text-gray-900 mb-1">
+                        {item.title}
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        {item.description}
+                      </div>
                     </div>
                   </div>
-                </div>
-
-                <div className="flex items-start gap-3 p-4 bg-green-50 rounded-lg border border-green-200">
-                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-                  <div>
-                    <div className="font-bold text-gray-900 mb-1">
-                      Documentados
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      Sabes de dónde vienen
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 p-4 bg-green-50 rounded-lg border border-green-200">
-                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-                  <div>
-                    <div className="font-bold text-gray-900 mb-1">
-                      Sin manipulaciones ni sesgos
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      Datos tal como son
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -301,76 +229,59 @@ export function DatosPage() {
             >
               <div className="flex items-center gap-4 mb-6">
                 <h2 className="text-3xl font-bold">
-                  Uso Responsable en Inteligencia Artificial
+                  {t.aiUsage.title}
                 </h2>
               </div>
 
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-6">
-                <h3 className="font-bold text-xl mb-3">¿Qué es esto?</h3>
+                <h3 className="font-bold text-xl mb-3">{t.aiUsage.whatIsThis.title}</h3>
                 <p className="text-blue-100 leading-relaxed">
-                  La inteligencia artificial (IA) aprende de datos. Si los datos
-                  son malos o falsos, la IA aprende cosas incorrectas.
+                  {t.aiUsage.whatIsThis.text}
                 </p>
               </div>
 
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-6">
                 <h3 className="font-bold text-xl mb-4">
-                  Por eso es importante:
+                  {t.aiUsage.whyImportant.title}
                 </h3>
                 <ul className="space-y-3">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 flex-shrink-0 mt-1" />
-                    <span>Usar datos verificados (como estos)</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 flex-shrink-0 mt-1" />
-                    <span>Saber de dónde vienen</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 flex-shrink-0 mt-1" />
-                    <span>Poder comprobarlos</span>
-                  </li>
+                  {t.aiUsage.whyImportant.items.map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 flex-shrink-0 mt-1" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-6">
                 <h3 className="font-bold text-xl mb-4">
-                  Nuestros datos son perfectos para entrenar IA porque:
+                  {t.aiUsage.perfectFor.title}
                 </h3>
                 <div className="grid md:grid-cols-2 gap-3">
-                  <div className="flex items-start gap-2">
-                    <span className="text-green-400">✓</span>
-                    <span>Son 100% reales (de fuentes oficiales)</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-green-400">✓</span>
-                    <span>Están bien explicados</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-green-400">✓</span>
-                    <span>No tienen sesgos políticos</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-green-400">✓</span>
-                    <span>Se actualizan regularmente</span>
-                  </div>
+                  {t.aiUsage.perfectFor.items.map((item, index) => (
+                    <div key={index} className="flex items-start gap-2">
+                      <span className="text-green-400">✓</span>
+                      <span>{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
 
               <div className="bg-yellow-500/20 border-2 border-yellow-400/50 rounded-xl p-6">
                 <h3 className="font-bold text-xl mb-3">
-                  💡 Ejemplo de uso en IA:
+                  {t.aiUsage.example.title}
                 </h3>
                 <p className="text-blue-100">
-                  Puedes crear un chatbot que responda preguntas como:
+                  {t.aiUsage.example.text}
                   <br />
                   <em className="text-yellow-200">
-                    "¿Qué barrio de Barcelona necesita más ayuda con el empleo?"
+                    {t.aiUsage.example.question}
                   </em>
                   <br />
-                  <br />Y la respuesta se basará en{" "}
+                  <br />{t.aiUsage.example.answer}{" "}
                   <strong className="text-white">
-                    datos reales, no en opiniones.
+                    {t.aiUsage.example.answerBold}
                   </strong>
                 </p>
               </div>
@@ -384,7 +295,7 @@ export function DatosPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-              Descarga los Datos
+              {t.downloads.title}
             </h2>
 
             <div className="grid md:grid-cols-3 gap-6">
@@ -394,16 +305,16 @@ export function DatosPage() {
                   <FileSpreadsheet className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="font-bold text-xl text-gray-900 mb-2 text-center">
-                  Formato Excel
+                  {t.downloads.excel.title}
                 </h3>
                 <p className="text-gray-600 text-sm mb-4 text-center">
-                  .xlsx
+                  {t.downloads.excel.format}
                   <br />
-                  Para análisis en Excel
+                  {t.downloads.excel.description}
                 </p>
                 <button className="w-full px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-all flex items-center justify-center gap-2">
                   <Download className="w-5 h-5" />
-                  Descargar
+                  {t.downloads.excel.button}
                 </button>
               </div>
 
@@ -413,48 +324,48 @@ export function DatosPage() {
                   <File className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="font-bold text-xl text-gray-900 mb-2 text-center">
-                  Formato CSV
+                  {t.downloads.csv.title}
                 </h3>
                 <p className="text-gray-600 text-sm mb-4 text-center">
-                  .csv
+                  {t.downloads.csv.format}
                   <br />
-                  Para importar a programas
+                  {t.downloads.csv.description}
                 </p>
                 <button className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all flex items-center justify-center gap-2">
                   <Download className="w-5 h-5" />
-                  Descargar
+                  {t.downloads.csv.button}
                 </button>
               </div>
 
               {/* JSON */}
               <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-purple-200 hover:border-purple-400 transition-all">
-                <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                <div className="w-16 h-16 bg-gray-500 rounded-2xl flex items-center justify-center mb-4 mx-auto">
                   <FileJson className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="font-bold text-xl text-gray-900 mb-2 text-center">
-                  Formato JSON
+                  {t.downloads.json.title}
                 </h3>
                 <p className="text-gray-600 text-sm mb-4 text-center">
-                  .json
+                  {t.downloads.json.format}
                   <br />
-                  Para desarrolladores
+                  {t.downloads.json.description}
                 </p>
-                <button className="w-full px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition-all flex items-center justify-center gap-2">
+                <button className="w-full px-6 py-3 bg-gray-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition-all flex items-center justify-center gap-2">
                   <Download className="w-5 h-5" />
-                  Descargar
+                  {t.downloads.json.button}
                 </button>
               </div>
             </div>
 
             <div className="mt-8 bg-blue-50 border-2 border-blue-200 rounded-xl p-6 text-center">
               <p className="text-gray-700">
-                <strong>¿No sabes cuál elegir?</strong>
+                <strong>{t.downloads.help.title}</strong>
                 <br />
-                Usa Excel si trabajas con hojas de cálculo.
+                {t.downloads.help.excel}
                 <br />
-                Usa CSV si necesitas importar a otros programas.
+                {t.downloads.help.csv}
                 <br />
-                Usa JSON si eres desarrollador.
+                {t.downloads.help.json}
               </p>
             </div>
           </div>

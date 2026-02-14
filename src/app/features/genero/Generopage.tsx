@@ -1,13 +1,17 @@
-/* import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { AlertCircle, Users } from 'lucide-react';
 import { useGenderStore } from './store';
 import { GenderStatsCards } from './GenderStatsCards';
 import { WageGapChart } from './Wage.GapCahart';
 import { PopulationByDistrictChart } from './PopulationByDistrictChart';
 import { IncomeByAgeChart } from './IncomeByAgeChart';
+import { useLanguage } from '../../i18n/LanguageContext';
+import { generoTranslations } from '../../i18n/GeneroTranslations';
 
 export function GeneroPage() {
   const { data, isLoading, error, fetchGenderData } = useGenderStore();
+  const { language } = useLanguage();
+  const t = generoTranslations[language];
 
   useEffect(() => {
     fetchGenderData();
@@ -18,7 +22,7 @@ export function GeneroPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Carregant dades de gènere...</p>
+          <p className="text-gray-600">{t.loading}</p>
         </div>
       </div>
     );
@@ -30,14 +34,14 @@ export function GeneroPage() {
         <div className="bg-red-50 border-2 border-red-200 rounded-xl p-8 max-w-md">
           <div className="flex items-center gap-3 mb-4">
             <AlertCircle className="w-8 h-8 text-red-600" />
-            <h2 className="text-xl font-bold text-red-900">Error</h2>
+            <h2 className="text-xl font-bold text-red-900">{t.error}</h2>
           </div>
           <p className="text-red-700 mb-4">{error}</p>
           <button
             onClick={fetchGenderData}
             className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
           >
-            Tornar a intentar
+            {t.retry}
           </button>
         </div>
       </div>
@@ -49,6 +53,7 @@ export function GeneroPage() {
   return (
     <div className="min-h-screen bg-gray-50">
     
+      {/* Header */}
       <section 
         className="py-16"
         style={{
@@ -63,18 +68,17 @@ export function GeneroPage() {
             <div className="flex items-center justify-center gap-3 mb-6">
               <Users className="w-12 h-12 text-white" />
               <h1 className="text-4xl md:text-5xl font-bold text-white">
-                Análisis de Género
+                {t.header.title}
               </h1>
             </div>
             <p className="text-xl text-purple-100">
-              Desagregación de datos por género en Barcelona<br/>
-              <strong className="text-white">Renta, empleo y demografía</strong>
+              {t.header.subtitle}<br/>
+              <strong className="text-white">{t.header.subtitleBold}</strong>
             </p>
           </div>
         </div>
       </section>
 
-      
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
@@ -89,14 +93,13 @@ export function GeneroPage() {
            
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-gray-900 mb-3">
-                Análisis Temporal y Demográfico
+                {t.charts.sectionTitle}
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
-                Evolución de las diferencias de género en ingresos, empleo y distribución poblacional
+                {t.charts.sectionSubtitle}
               </p>
             </div>
 
-          
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <WageGapChart />
               <IncomeByAgeChart />
@@ -107,7 +110,6 @@ export function GeneroPage() {
         </div>
       </section>
 
-     
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
@@ -120,38 +122,34 @@ export function GeneroPage() {
                 backgroundRepeat: 'no-repeat'
               }}
             >
-              <h3 className="text-2xl font-bold mb-4">Conclusiones Clave</h3>
+              <h3 className="text-2xl font-bold mb-4">{t.conclusions.title}</h3>
               
               <div className="space-y-4">
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                  <div className="font-semibold mb-2">📊 Brecha Salarial Persistente</div>
+                  <div className="font-semibold mb-2">{t.conclusions.wageGap.title}</div>
                   <p className="text-blue-100">
-                    Aunque ha disminuido en los últimos años, la brecha salarial sigue siendo 
-                    significativa, especialmente en grupos de edad entre 35-54 años.
+                    {t.conclusions.wageGap.text}
                   </p>
                 </div>
 
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                  <div className="font-semibold mb-2">👥 Distribución Equilibrada</div>
+                  <div className="font-semibold mb-2">{t.conclusions.distribution.title}</div>
                   <p className="text-blue-100">
-                    La distribución de población por género es relativamente equilibrada en todos 
-                    los distritos de Barcelona, con ligera mayoría femenina.
+                    {t.conclusions.distribution.text}
                   </p>
                 </div>
 
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                  <div className="font-semibold mb-2">💼 Empleo y Género</div>
+                  <div className="font-semibold mb-2">{t.conclusions.employment.title}</div>
                   <p className="text-blue-100">
-                    Las diferencias en tasas de desempleo entre géneros varían según la coyuntura 
-                    económica, pero históricamente afectan más a las mujeres.
+                    {t.conclusions.employment.text}
                   </p>
                 </div>
               </div>
 
               <div className="mt-6 pt-6 border-t border-white/20">
                 <p className="text-sm text-blue-200">
-                  <strong className="text-white">Fuentes:</strong> Open Data Barcelona - 
-                  Datos de renta, población y empleo desagregados por sexo (2000-2025)
+                  <strong className="text-white">{t.conclusions.sources}</strong> {t.conclusions.sourcesText}
                 </p>
               </div>
             </div>
@@ -161,4 +159,4 @@ export function GeneroPage() {
 
     </div>
   );
-} */
+}

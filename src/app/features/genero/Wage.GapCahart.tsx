@@ -1,8 +1,12 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useGenderStore } from './store';
+import { useLanguage } from '../../i18n/LanguageContext';
+import { generoTranslations } from '../../i18n/GeneroTranslations';
 
 export function WageGapChart() {
   const { data } = useGenderStore();
+  const { language } = useLanguage();
+  const t = generoTranslations[language];
 
   if (!data) return null;
 
@@ -10,19 +14,19 @@ export function WageGapChart() {
     .slice(-10)
     .map(item => ({
       any: item.any.toString(),
-      'Hombres': item.renda_homes,
-      'Mujeres': item.renda_dones,
-      'Brecha %': item.brecha
+      [t.charts.wageGap.men]: item.renda_homes,
+      [t.charts.wageGap.women]: item.renda_dones,
+      [t.charts.wageGap.gap]: item.brecha
     }));
 
   return (
     <div className="bg-white rounded-xl p-6 border-2 border-gray-200 shadow-sm">
       <div className="mb-6">
         <h3 className="text-xl font-bold text-gray-900 mb-2">
-          Evolución de la Brecha Salarial
+          {t.charts.wageGap.title}
         </h3>
         <p className="text-sm text-gray-600">
-          Comparación de ingresos anuales por género (últimos 10 años)
+          {t.charts.wageGap.subtitle}
         </p>
       </div>
 
@@ -47,7 +51,7 @@ export function WageGapChart() {
               padding: '12px'
             }}
             formatter={(value: number, name: string) => {
-              if (name === 'Brecha %') {
+              if (name === t.charts.wageGap.gap) {
                 return [`${value.toFixed(1)}%`, name];
               }
               return [`${value.toLocaleString()}€`, name];
@@ -59,18 +63,18 @@ export function WageGapChart() {
           />
           <Line
             type="monotone"
-            dataKey="Hombres"
-            stroke="#3b82f6"
+            dataKey={t.charts.wageGap.men}
+            stroke="#1e40af"
             strokeWidth={3}
-            dot={{ fill: '#3b82f6', r: 4 }}
+            dot={{ fill: '#1e40af', r: 4 }}
             activeDot={{ r: 6 }}
           />
           <Line
             type="monotone"
-            dataKey="Mujeres"
-            stroke="#ec4899"
+            dataKey={t.charts.wageGap.women}
+            stroke="#7c3aed"
             strokeWidth={3}
-            dot={{ fill: '#ec4899', r: 4 }}
+            dot={{ fill: '#7c3aed', r: 4 }}
             activeDot={{ r: 6 }}
           />
         </LineChart>
@@ -78,15 +82,19 @@ export function WageGapChart() {
 
       <div className="mt-6 grid grid-cols-2 gap-4">
         <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-          <div className="text-sm text-blue-700 font-medium mb-1">Renta Masculina 2024</div>
+          <div className="text-sm text-blue-700 font-medium mb-1">
+            {t.charts.wageGap.maleIncome} {chartData[chartData.length - 1].any}
+          </div>
           <div className="text-2xl font-bold text-blue-900">
-            {chartData[chartData.length - 1]['Hombres'].toLocaleString()}€
+            {chartData[chartData.length - 1][t.charts.wageGap.men].toLocaleString()}€
           </div>
         </div>
         <div className="bg-pink-50 rounded-lg p-4 border border-pink-200">
-          <div className="text-sm text-pink-700 font-medium mb-1">Renta Femenina 2024</div>
+          <div className="text-sm text-pink-700 font-medium mb-1">
+            {t.charts.wageGap.femaleIncome} {chartData[chartData.length - 1].any}
+          </div>
           <div className="text-2xl font-bold text-pink-900">
-            {chartData[chartData.length - 1]['Mujeres'].toLocaleString()}€
+            {chartData[chartData.length - 1][t.charts.wageGap.women].toLocaleString()}€
           </div>
         </div>
       </div>

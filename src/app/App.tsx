@@ -1,10 +1,24 @@
 import React from "react";
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
+// Componente ScrollToTop integrado
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 export default function App() {
   return (
     <div className="app-container">
+      {/* ScrollToTop se ejecuta en cada cambio de ruta */}
+      <ScrollToTop />
+      
       <header>
         <h1>Mi Aplicación</h1>
         <nav>

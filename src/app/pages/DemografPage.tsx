@@ -165,18 +165,7 @@ export function DemografPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-800/85 to-blue-900/90"></div>
         </div>
 
-        {/* Patrón de puntos con parallax */}
-        <div 
-          className="absolute inset-0 opacity-10 z-0"
-          style={{
-            transform: `translateY(${scrollY * 0.3}px)`
-          }}
-        >
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }}></div>
-        </div>
+        
 
         <div 
           className="container mx-auto px-4 md:px-8 relative z-10"

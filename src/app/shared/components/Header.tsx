@@ -38,7 +38,7 @@ export function Header() {
             <div className="relative w-20 h-20">
               <img
                 src="./images/logo1.png"
-                alt="Logo Observatori BCN"
+                alt="Logo CIVIXDATA BCN"
                 className="rounded-xl object-cover w-full h-full"
               />
             </div>
@@ -67,8 +67,6 @@ export function Header() {
               >
                 {t('header.nav.home')}
               </Link>
-
-              {/* DESPLEGABLE DATOS */}
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setDatosOpen(!datosOpen)}

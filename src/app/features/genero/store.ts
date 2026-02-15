@@ -108,7 +108,7 @@ export const useGenderStore = create<GenderStoreState>((set) => ({
       console.log('[GenderStore] Cargando datos del JSON...');
 
       // Cargar el JSON
-      const response = await fetch('/geojson/renda-edat-sexe.json');
+      const response = await fetch('/data/renda-edat-sexe.json');
       if (!response.ok) {
         throw new Error(`Error cargando JSON: ${response.statusText}`);
       }

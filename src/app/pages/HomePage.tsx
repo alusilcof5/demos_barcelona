@@ -19,12 +19,12 @@ export function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       
-      {/* Hero Section - Azul profesional con gradiente */}
+      
       <section className="relative py-20 md:py-32 overflow-hidden">
         
-        {/* Video/Imagen de fondo */}
+       
         <div className="absolute inset-0 z-0">
-          {/* Opción 1: Video de fondo - descomenta para usar */}
+         
            <video 
             autoPlay 
             loop 
@@ -35,13 +35,10 @@ export function HomePage() {
             <source src="/images/data.webm" type="video/webm" />
           </video>
 
-          
-          
-          {/* Overlay azul con gradiente */}
           <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-800/85 to-blue-900/90"></div>
         </div>
 
-        {/* Patrón de fondo sutil con parallax */}
+       
         <div 
           className="absolute inset-0 opacity-10 z-0"
           style={{
@@ -62,8 +59,7 @@ export function HomePage() {
           }}
         >
           <div className="max-w-6xl mx-auto">
-            
-            {/* Badge */}
+        
             <div className="flex justify-center mb-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/20 backdrop-blur-sm border border-blue-400/30 rounded-full">
                 <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
@@ -71,17 +67,17 @@ export function HomePage() {
               </div>
             </div>
 
-            {/* Título principal */}
+    
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-6 leading-tight">
               {t('home.hero.title')}
             </h1>
             
-            {/* Subtítulo */}
+     
             <p className="text-lg md:text-xl text-blue-100 text-center mb-10 leading-relaxed max-w-3xl mx-auto">
               {t('home.hero.subtitle')}
             </p>
 
-            {/* CTAs */}
+    
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 to="/demograf"
@@ -102,7 +98,7 @@ export function HomePage() {
           </div>
         </div>
 
-        {/* Decoración ondulada inferior */}
+
         <div className="absolute bottom-0 left-0 right-0">
           <svg className="w-full h-12 md:h-16 text-white" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path d="M0,0 C300,80 600,80 900,40 L1200,0 L1200,120 L0,120 Z" fill="currentColor"></path>
@@ -110,7 +106,6 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Métricas clave - Fondo blanco limpio */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-6xl mx-auto">
@@ -163,12 +158,11 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Problema vs Solución - Diseño profesional */}
+  
       <section className="py-20 bg-gradient-to-b from-slate-50 to-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-6xl mx-auto">
-            
-            {/* Header de sección */}
+         
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
                 {t('home.problem.title')}
@@ -182,7 +176,7 @@ export function HomePage() {
             {/* Comparación lado a lado */}
             <div className="grid md:grid-cols-2 gap-8 mb-8">
               
-              {/* El Raval - Vulnerabilidad alta */}
+             
               <div 
                 className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all border-l-4 border-red-500"
                 style={{
@@ -246,7 +240,6 @@ export function HomePage() {
 
             </div>
 
-            {/* Insight */}
             <div 
               className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-8 text-white shadow-lg transition-transform duration-300"
               style={{
@@ -266,7 +259,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Características - Diseño con iconos grandes */}
+
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-6xl mx-auto">
@@ -283,7 +276,7 @@ export function HomePage() {
 
             <div className="grid md:grid-cols-3 gap-8">
               
-              {/* Mapa */}
+
               <div 
                 className="group bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all border border-slate-100 hover:border-blue-300"
                 style={{
@@ -335,7 +328,6 @@ export function HomePage() {
                 </Link>
               </div>
 
-              {/* Metodología */}
               <div 
                 className="group bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all border border-slate-100 hover:border-blue-300"
                 style={{
@@ -366,14 +358,13 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Transparencia - Fondo azul oscuro */}
       <section 
         className="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden"
         style={{
           backgroundPosition: `center ${scrollY * 0.1}px`
         }}
       >
-        {/* Efecto de partículas flotantes */}
+   
         <div 
           className="absolute inset-0 opacity-5"
           style={{
@@ -461,7 +452,6 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* CTA Final - Azul limpio */}
       <section className="py-20 bg-gradient-to-b from-white to-blue-50">
         <div 
           className="container mx-auto px-4 md:px-8"

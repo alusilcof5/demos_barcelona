@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'; // ✅ CORREGIDO: Cambiado de 'react-router' a 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { Database, Github, Mail, Heart, ExternalLink, FileText, BookOpen } from 'lucide-react';
 
 export function Footer() {
@@ -8,10 +8,9 @@ export function Footer() {
     <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-gray-300 mt-16">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          {/* Columna 1: Sobre el proyecto */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <h3 className="font-semibold text-white text-lg">Observatori BCN</h3>
+              <h3 className="font-semibold text-white text-lg">CIVIXDATA</h3>
             </div>
             <p className="text-sm text-gray-400 mb-4">
               Eina de codi obert per visualitzar desigualtats urbanes a Barcelona amb dades públiques verificables.
@@ -22,7 +21,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Columna 2: Dades */}
           <div>
             <h4 className="font-semibold text-white mb-4 flex items-center gap-2">
               Dades i Metodologia
@@ -48,22 +46,10 @@ export function Footer() {
                 <Link to="/corpus" className="hover:text-white transition-colors">
                   Descarregar corpus (JSON)
                 </Link>
-              </li>
-              <li>
-                <a 
-                  href="https://github.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors flex items-center gap-1"
-                >
-                  Documentació API
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </li>
+              </li>              
             </ul>
           </div>
 
-          {/* Columna 3: Ajuda */}
           <div>
             <h4 className="font-semibold text-white mb-4 flex items-center gap-2">
               Ajuda i Recursos
@@ -80,17 +66,6 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <a 
-                  href="" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors flex items-center gap-1"
-                >
-                  Reportar errors
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </li>
-              <li>
                 <a href="#tutorials" className="hover:text-white transition-colors">
                   Guies d'ús
                 </a>
@@ -98,7 +73,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Columna 4: Contacte */}
           <div>
             <h4 className="font-semibold text-white mb-4 flex items-center gap-2">
               <Mail className="w-4 h-4" />
@@ -139,10 +113,8 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Separador */}
         <div className="border-t border-gray-700 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            {/* Copyright y créditos */}
             <div className="text-sm text-gray-500 text-center md:text-left">
               <p>
                 © {currentYear} Observatori BCN · Dades obertes al servei de la ciutadania

@@ -43,7 +43,7 @@ export function RecordViewer() {
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[2000] flex items-center justify-center p-4">
       <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        {/* Header */}
+     
         <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-start justify-between">
           <div>
             <h2 className="text-2xl font-bold text-gray-900">{record.barri}</h2>
@@ -60,9 +60,9 @@ export function RecordViewer() {
           </button>
         </div>
 
-        {/* Contingut */}
+     
         <div className="p-6 space-y-6">
-          {/* Categoria */}
+        
           <div>
             <div className="flex items-center gap-3 mb-2">
               <span className={`px-3 py-1.5 rounded-full text-sm text-white font-medium ${categoryInfo.color}`}>
@@ -75,7 +75,7 @@ export function RecordViewer() {
             <p className="text-sm text-gray-600">{categoryInfo.description}</p>
           </div>
 
-          {/* Text generat */}
+     
           <div>
             <h3 className="font-semibold text-gray-900 mb-2">Descripció</h3>
             <p className="text-gray-700 leading-relaxed bg-gray-50 p-4 rounded-lg">
@@ -83,7 +83,6 @@ export function RecordViewer() {
             </p>
           </div>
 
-          {/* Indicadors */}
           <div>
             <h3 className="font-semibold text-gray-900 mb-3">Indicadors</h3>
             <div className="grid grid-cols-2 gap-3">
@@ -117,7 +116,6 @@ export function RecordViewer() {
             </div>
           </div>
 
-          {/* Metadata */}
           <div className="pt-4 border-t border-gray-200">
             <div className="flex items-center gap-2 text-sm text-gray-500">
               <Calendar className="w-4 h-4" />

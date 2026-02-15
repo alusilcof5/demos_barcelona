@@ -40,7 +40,7 @@ export function CorpusExplorer() {
         </div>
       </div>
 
-      {/* Llista de registres */}
+   
       <div className="divide-y divide-gray-200 max-h-[600px] overflow-y-auto">
         {filteredRecords.length === 0 ? (
           <div className="p-8 text-center text-gray-500">

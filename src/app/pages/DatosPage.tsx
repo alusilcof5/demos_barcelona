@@ -31,7 +31,6 @@ export function DatosPage() {
   return (
     <div className="min-h-screen bg-white">
       
-      {/* Header - Estilo azul profesional */}
       <section className="relative py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
@@ -82,7 +81,6 @@ export function DatosPage() {
         </div>
       </section>
 
-      {/* ¿Qué son estos datos? */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-5xl mx-auto">
@@ -131,7 +129,7 @@ export function DatosPage() {
         </div>
       </section>
 
-      {/* ¿Para qué puedes usar estos datos? - Colores informativos mantenidos */}
+    
       <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-6xl mx-auto">
@@ -144,7 +142,6 @@ export function DatosPage() {
 
             <div className="grid md:grid-cols-2 gap-6">
               
-              {/* Periodismo - AZUL (comunicación/medios) */}
               <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all border-l-4 border-blue-500">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6">
                   <Newspaper className="w-8 h-8 text-white" />
@@ -162,7 +159,6 @@ export function DatosPage() {
                 </ul>
               </div>
 
-              {/* Educación - VERDE (crecimiento/aprendizaje) */}
               <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all border-l-4 border-green-500">
                 <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-6">
                   <GraduationCap className="w-8 h-8 text-white" />
@@ -180,7 +176,6 @@ export function DatosPage() {
                 </ul>
               </div>
 
-              {/* Decisiones Públicas - PÚRPURA (gobierno/institucional) */}
               <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all border-l-4 border-purple-500">
                 <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-6">
                   <Building2 className="w-8 h-8 text-white" />
@@ -198,7 +193,7 @@ export function DatosPage() {
                 </ul>
               </div>
 
-              {/* IA - NARANJA (innovación/tecnología avanzada) */}
+     
               <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all border-l-4 border-orange-500">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6">
                   <Bot className="w-8 h-8 text-white" />
@@ -220,7 +215,6 @@ export function DatosPage() {
         </div>
       </section>
 
-      {/* Garantía de calidad - VERDE (confianza/verificado) */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-5xl mx-auto">
@@ -253,7 +247,7 @@ export function DatosPage() {
         </div>
       </section>
 
-      {/* Uso en IA explicado simple */}
+
       <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-5xl mx-auto">
@@ -333,7 +327,6 @@ export function DatosPage() {
         </div>
       </section>
 
-      {/* Descargas - Colores específicos por tipo de archivo */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-6xl mx-auto">
@@ -345,8 +338,7 @@ export function DatosPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-6 mb-8">
-              
-              {/* Excel - VERDE (datos abiertos/accesible) */}
+
               <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border-2 border-green-200 hover:border-green-400">
                 <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-4 mx-auto">
                   <FileSpreadsheet className="w-8 h-8 text-white" />
@@ -365,7 +357,7 @@ export function DatosPage() {
                 </button>
               </div>
 
-              {/* CSV - AZUL (estándar/universal) */}
+
               <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border-2 border-blue-200 hover:border-blue-400">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 mx-auto">
                   <File className="w-8 h-8 text-white" />
@@ -384,7 +376,6 @@ export function DatosPage() {
                 </button>
               </div>
 
-              {/* JSON - GRIS (desarrollo/técnico) */}
               <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border-2 border-slate-200 hover:border-slate-400">
                 <div className="w-16 h-16 bg-gradient-to-br from-slate-600 to-slate-700 rounded-xl flex items-center justify-center mb-4 mx-auto">
                   <FileJson className="w-8 h-8 text-white" />

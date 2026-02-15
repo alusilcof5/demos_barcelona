@@ -18,7 +18,7 @@ async function fetchCSV(url: string): Promise<any[]> {
 
 
 async function fetchBarrisGeoJSON() {
-  const response = await fetch('/geojson/bcn-barris.geojson');
+  const response = await fetch('/data/bcn-barris.geojson');
   if (!response.ok) throw new Error(`Error cargando GeoJSON`);
   return await response.json();
 }

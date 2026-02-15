@@ -34,7 +34,7 @@ export function BarriDetail() {
   return (
     <div className="fixed bottom-6 right-6 w-96 max-w-[calc(100vw-3rem)] bg-white rounded-xl border-2 border-slate-200 shadow-2xl z-[1001] overflow-hidden">
       
-      {/* Header con código de color */}
+     
       <div className={`p-6 border-l-4 ${colors.border} ${colors.bg}`}>
         <div className="flex items-start justify-between mb-2">
           <div className="flex-1">
@@ -56,7 +56,7 @@ export function BarriDetail() {
           </button>
         </div>
 
-        {/* Índice de vulnerabilidad */}
+      
         <div className="mt-4">
           <div className="flex items-baseline gap-2 mb-2">
             <span className="text-4xl font-bold text-slate-900">
@@ -73,10 +73,8 @@ export function BarriDetail() {
         </div>
       </div>
 
-      {/* Indicadores principales */}
       <div className="p-6 space-y-4 max-h-[calc(100vh-20rem)] overflow-y-auto">
-        
-        {/* Población */}
+     
         <div className="flex items-start gap-4">
           <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center flex-shrink-0">
             <Users className="w-5 h-5 text-slate-700" />
@@ -108,7 +106,7 @@ export function BarriDetail() {
 
         <div className="border-t border-slate-100"></div>
 
-        {/* Paro */}
+    
         <div className="flex items-start gap-4">
           <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center flex-shrink-0">
             {barri.atur > 10 ? (
@@ -135,7 +133,7 @@ export function BarriDetail() {
 
         <div className="border-t border-slate-100"></div>
 
-        {/* Envejecimiento */}
+     
         <div className="flex items-start gap-4">
           <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center flex-shrink-0">
             <Calendar className="w-5 h-5 text-slate-700" />
@@ -151,7 +149,6 @@ export function BarriDetail() {
 
         <div className="border-t border-slate-100"></div>
 
-        {/* Población extranjera */}
         <div className="flex items-start gap-4">
           <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center flex-shrink-0">
             <Globe className="w-5 h-5 text-slate-700" />
@@ -172,7 +169,7 @@ export function BarriDetail() {
 
       </div>
 
-      {/* Footer del panel */}
+     
       <div className="p-6 bg-slate-50 border-t border-slate-200">
         <button className="w-full px-4 py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-lg font-medium transition-all flex items-center justify-center gap-2 group">
           Ver análisis detallado

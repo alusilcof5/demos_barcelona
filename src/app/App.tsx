@@ -2,7 +2,6 @@ import React from "react";
 import { Outlet, NavLink, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
-// Componente ScrollToTop integrado
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -16,8 +15,7 @@ function ScrollToTop() {
 export default function App() {
   return (
     <div className="app-container">
-      {/* ScrollToTop se ejecuta en cada cambio de ruta */}
-      <ScrollToTop />
+        <ScrollToTop />
       
       <header>
         <h1>Mi Aplicación</h1>
@@ -76,7 +74,7 @@ export default function App() {
       </main>
 
       <footer style={{ textAlign: "center", marginTop: "2rem" }}>
-        <p>© 2026 Mi Aplicación</p>
+        <p>© 2026 CIVIXDATA</p>
       </footer>
     </div>
   );

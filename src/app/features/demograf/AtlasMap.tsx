@@ -3,7 +3,6 @@ import L from 'leaflet';
 import { useDemografStore } from '../../demos.stores';
 import 'leaflet/dist/leaflet.css';
 
-// Fix per al problema dels marcadors de Leaflet
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
@@ -18,7 +17,7 @@ export function AtlasMap() {
 
   useEffect(() => {
     if (!mapRef.current) {
-      // Inicialitza el mapa
+     
       const map = L.map('atlas-map', {
         center: [41.3874, 2.1686],
         zoom: 12,
@@ -27,7 +26,6 @@ export function AtlasMap() {
         attributionControl: true
       });
 
-      // Capa base d'OpenStreetMap
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         maxZoom: 19
@@ -47,24 +45,24 @@ export function AtlasMap() {
   useEffect(() => {
     if (!mapRef.current || !geojson || barrisWithVulnerability.length === 0) return;
 
-    // Neteja la capa anterior
+   
     if (geoJsonLayerRef.current) {
       geoJsonLayerRef.current.remove();
     }
 
-    // Crea el mapa de vulnerabilitat
+  
     const vulnerabilityMap = new Map(
       barrisWithVulnerability.map(b => [b.id, b.vulnerability_score])
     );
 
-    // Funció per obtenir el color segons vulnerabilitat
+    
     const getColor = (score: number) => {
-      if (score > 0.7) return '#dc2626'; // Vermell fosc
-      if (score > 0.6) return '#ef4444'; // Vermell
-      if (score > 0.5) return '#f97316'; // Taronja
-      if (score > 0.4) return '#facc15'; // Groc
-      if (score > 0.3) return '#a3e635'; // Verd clar
-      return '#22c55e'; // Verd
+      if (score > 0.7) return '#dc2626'; 
+      if (score > 0.6) return '#ef4444'; 
+      if (score > 0.5) return '#f97316'; 
+      if (score > 0.4) return '#facc15'; 
+      if (score > 0.3) return '#a3e635'; 
+      return '#22c55e'; 
     };
 
     // Afegeix la nova capa
@@ -101,10 +99,10 @@ export function AtlasMap() {
             </div>
           `);
 
-          // Events accessibles
+          
           layer.on('click', () => {
             setSelectedBarri(barriId);
-            // Anuncia la selecció per a lectors de pantalla
+            
             const announcement = document.createElement('div');
             announcement.setAttribute('role', 'status');
             announcement.setAttribute('aria-live', 'polite');
@@ -132,14 +130,14 @@ export function AtlasMap() {
             }
           });
 
-          // Afegeix atributs accessibles al layer
+          
           const element = (layer as any)._path;
           if (element) {
             element.setAttribute('role', 'button');
             element.setAttribute('aria-label', `Barri ${barri.nom}, vulnerabilitat ${(barri.vulnerability_score * 100).toFixed(1)}%`);
             element.setAttribute('tabindex', '0');
             
-            // Suport per teclat
+            
             element.addEventListener('keydown', (e: KeyboardEvent) => {
               if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -153,7 +151,7 @@ export function AtlasMap() {
 
     geoJsonLayerRef.current = layer;
 
-    // Ajusta el zoom al contingut
+    
     if (mapRef.current) {
       mapRef.current.fitBounds(layer.getBounds(), {
         padding: [20, 20]
@@ -171,7 +169,7 @@ export function AtlasMap() {
         tabIndex={0}
       />
       
-      {/* Llegenda accessible */}
+    
       <div 
         className="absolute bottom-4 right-4 bg-white/95 backdrop-blur p-4 rounded-lg shadow-lg border border-gray-200 z-[1000]"
         role="region"

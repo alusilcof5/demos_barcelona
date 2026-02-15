@@ -153,9 +153,9 @@ export function DemografPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section - Estilo azul profesional */}
+
       <section className="relative py-20 md:py-28 overflow-hidden">
-        {/* Fondo con imagen */}
+
         <div className="absolute inset-0 z-0">
           <img 
             src="./images/2.png" 
@@ -165,7 +165,7 @@ export function DemografPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-800/85 to-blue-900/90"></div>
         </div>
 
-        {/* Patrón de puntos con parallax */}
+{/* PArallax
         <div 
           className="absolute inset-0 opacity-10 z-0"
           style={{
@@ -195,7 +195,7 @@ export function DemografPage() {
           </div>
         </div>
 
-        {/* Ola decorativa */}
+ */}   
         <div className="absolute bottom-0 left-0 right-0 z-0">
           <svg className="w-full h-12 md:h-16 text-white" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path d="M0,0 C300,80 600,80 900,40 L1200,0 L1200,120 L0,120 Z" fill="currentColor"></path>
@@ -203,7 +203,6 @@ export function DemografPage() {
         </div>
       </section>
 
-      {/* Legend Section - Estilo profesional */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-6xl mx-auto">
@@ -218,7 +217,7 @@ export function DemografPage() {
             </div>
             
             <div className="grid md:grid-cols-4 gap-6 mb-8">
-              {/* Verde - Baja */}
+          
               <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border-l-4 border-green-500">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
@@ -229,7 +228,6 @@ export function DemografPage() {
                 <p className="text-sm text-slate-600">{t('demograf.legend.low.description')}</p>
               </div>
 
-              {/* Amarillo - Media */}
               <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border-l-4 border-yellow-500">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center">
@@ -278,7 +276,7 @@ export function DemografPage() {
         </div>
       </section>
 
-      {/* Map Section - Con estilo profesional */}
+
       <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-6xl mx-auto">
@@ -315,7 +313,7 @@ export function DemografPage() {
         </div>
       </section>
 
-      {/* Barrio Details */}
+      
       {barrioSeleccionado && selectedBarrio && (
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 md:px-8">
@@ -404,7 +402,6 @@ export function DemografPage() {
                   </div>
                 </div>
 
-                {/* Employment Card */}
                 <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all border border-slate-100 hover:border-blue-300">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -446,7 +443,6 @@ export function DemografPage() {
                   </div>
                 </div>
 
-                {/* Aging Card */}
                 <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all border border-slate-100 hover:border-blue-300">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -485,7 +481,6 @@ export function DemografPage() {
                   </div>
                 </div>
 
-                {/* Foreign Population Card */}
                 <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all border border-slate-100 hover:border-blue-300">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -528,9 +523,9 @@ export function DemografPage() {
                 </div>
               </div>
 
-              {/* Conclusion Section - Azul profesional */}
+
               <div className="relative rounded-2xl p-8 text-white overflow-hidden shadow-xl">
-                {/* Fondo */}
+
                 <div className="absolute inset-0 z-0">
                   <img 
                     src="../images/2.png" 
@@ -588,7 +583,6 @@ export function DemografPage() {
         </section>
       )}
 
-      {/* No Selection Message */}
       {!barrioSeleccionado && (
         <section className="py-20 bg-gradient-to-b from-white to-blue-50">
           <div className="container mx-auto px-4 md:px-8">

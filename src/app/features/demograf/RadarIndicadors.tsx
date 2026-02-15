@@ -16,7 +16,7 @@ export function RadarIndicadors() {
   
   if (!barri) return null;
 
-  // Calcula la mitjana de Barcelona per comparar
+ 
   const avgBarri = {
     renda_normalized: barrisWithVulnerability.reduce((sum, b) => sum + b.renda_normalized, 0) / barrisWithVulnerability.length,
     atur_normalized: barrisWithVulnerability.reduce((sum, b) => sum + b.atur_normalized, 0) / barrisWithVulnerability.length,

@@ -1,8 +1,3 @@
-/**
- * LiveRegion - Component per anunciar canvis als lectors de pantalla
- * Ús: announce('Barri seleccionat: El Raval')
- */
-
 import { useEffect, useRef } from 'react';
 
 export function useLiveRegion() {

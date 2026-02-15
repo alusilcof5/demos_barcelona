@@ -14,7 +14,7 @@ export function CorpusStats() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      {/* Estadístiques generals */}
+   
       <div className="space-y-4">
         <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white p-6 rounded-lg shadow-lg">
           <div className="flex items-center gap-3 mb-2">
@@ -53,7 +53,7 @@ export function CorpusStats() {
         </div>
       </div>
 
-      {/* Gràfic de distribució */}
+    
       <div className="bg-white border border-gray-200 rounded-lg p-6">
         <h3 className="font-semibold text-lg text-gray-900 mb-4">
           Distribució per Categoria

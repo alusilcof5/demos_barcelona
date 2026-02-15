@@ -29,9 +29,9 @@ export function MetodologiaPage() {
   return (
     <div className="min-h-screen bg-white">
       
-      {/* Header - Estilo azul profesional */}
+    
       <section className="relative py-20 md:py-28 overflow-hidden">
-        {/* Fondo con imagen */}
+
         <div className="absolute inset-0 z-0">
           <img 
             src="../images/4.png" 
@@ -41,7 +41,6 @@ export function MetodologiaPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-800/85 to-blue-900/90"></div>
         </div>
 
-        {/* Patrón de puntos con parallax */}
         <div 
           className="absolute inset-0 opacity-10 z-0"
           style={{
@@ -72,7 +71,7 @@ export function MetodologiaPage() {
           </div>
         </div>
 
-        {/* Ola decorativa */}
+  
         <div className="absolute bottom-0 left-0 right-0 z-0">
           <svg className="w-full h-12 md:h-16 text-white" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path d="M0,0 C300,80 600,80 900,40 L1200,0 L1200,120 L0,120 Z" fill="currentColor"></path>
@@ -80,7 +79,7 @@ export function MetodologiaPage() {
         </div>
       </section>
 
-      {/* Level Selector - Diseño profesional con colores verde, gris y azul */}
+      
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-6xl mx-auto">
@@ -96,7 +95,7 @@ export function MetodologiaPage() {
 
             <div className="grid md:grid-cols-3 gap-6">
               
-              {/* Simple - VERDE */}
+             
               <button
                 onClick={() => setNivelActivo('simple')}
                 className={`p-8 rounded-xl border-2 transition-all text-left shadow-lg hover:shadow-xl ${
@@ -121,7 +120,7 @@ export function MetodologiaPage() {
                 </p>
               </button>
 
-              {/* Intermedio - AZUL */}
+              
               <button
                 onClick={() => setNivelActivo('intermedio')}
                 className={`p-8 rounded-xl border-2 transition-all text-left shadow-lg hover:shadow-xl ${
@@ -146,7 +145,7 @@ export function MetodologiaPage() {
                 </p>
               </button>
 
-              {/* Técnico - GRIS */}
+           
               <button
                 onClick={() => setNivelActivo('tecnico')}
                 className={`p-8 rounded-xl border-2 transition-all text-left shadow-lg hover:shadow-xl ${
@@ -175,13 +174,13 @@ export function MetodologiaPage() {
         </div>
       </section>
 
-      {/* Contenido Simple */}
+     
       {nivelActivo === 'simple' && (
         <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
           <div className="container mx-auto px-4 md:px-8">
             <div className="max-w-5xl mx-auto space-y-6">
               
-              {/* Qué Hacemos - VERDE */}
+           
               <div className="bg-white rounded-xl shadow-lg border-l-4 border-green-500 overflow-hidden">
                 <button
                   onClick={() => toggleSeccion('que-hacemos')}
@@ -209,7 +208,7 @@ export function MetodologiaPage() {
                 )}
               </div>
 
-              {/* De Dónde Salen - AZUL */}
+            
               <div className="bg-white rounded-xl shadow-lg border-l-4 border-blue-500 overflow-hidden">
                 <button
                   onClick={() => toggleSeccion('de-donde-salen')}
@@ -261,7 +260,6 @@ export function MetodologiaPage() {
                 )}
               </div>
 
-              {/* Fiabilidad - VERDE */}
               <div className="bg-white rounded-xl shadow-lg border-l-4 border-green-500 overflow-hidden">
                 <button
                   onClick={() => toggleSeccion('fiabilidad')}
@@ -292,7 +290,6 @@ export function MetodologiaPage() {
                 )}
               </div>
 
-              {/* Cálculo de Necesidad - AZUL */}
               <div className="bg-white rounded-xl shadow-lg border-l-4 border-blue-500 overflow-hidden">
                 <button
                   onClick={() => toggleSeccion('calculo-necesidad')}
@@ -370,7 +367,6 @@ export function MetodologiaPage() {
               </div>
             </div>
 
-            {/* More Details CTA - Azul profesional */}
             <div className="mt-16 max-w-5xl mx-auto">
               <div className="relative rounded-2xl p-8 md:p-12 text-white overflow-hidden shadow-xl">
                 {/* Fondo */}
@@ -409,7 +405,7 @@ export function MetodologiaPage() {
         </section>
       )}
 
-      {/* Contenido Intermedio - AZUL */}
+ 
       {nivelActivo === 'intermedio' && (
         <section className="py-16 bg-gradient-to-b from-white to-blue-50">
           <div className="container mx-auto px-4 md:px-8">
@@ -432,7 +428,6 @@ export function MetodologiaPage() {
         </section>
       )}
 
-      {/* Contenido Técnico - GRIS */}
       {nivelActivo === 'tecnico' && (
         <section className="py-16 bg-gradient-to-b from-white to-slate-50">
           <div className="container mx-auto px-4 md:px-8">

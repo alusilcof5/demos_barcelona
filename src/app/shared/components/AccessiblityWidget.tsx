@@ -60,7 +60,6 @@ export default function AccessibilityWidget() {
 
   return (
     <>
-      {/* Botón flotante con animación */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="fixed bottom-6 left-6 z-[9999] w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-700 hover:from-indigo-700 hover:to-purple-800 text-white rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none focus:ring-4 focus:ring-indigo-400"
@@ -74,17 +73,15 @@ export default function AccessibilityWidget() {
         <Accessibility className="w-8 h-8" aria-hidden="true" />
       </button>
 
-      {/* Panel de opciones */}
       {isOpen && (
         <>
-          {/* Overlay oscuro */}
+       
           <div 
             className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[9998]"
             onClick={() => setIsOpen(false)}
             aria-hidden="true"
           />
           
-          {/* Panel */}
           <div
             ref={panelRef}
             className="fixed bottom-24 left-6 z-[9999] w-96 bg-white rounded-2xl shadow-2xl border-2 border-gray-200 overflow-hidden focus:outline-none"
@@ -113,10 +110,8 @@ export default function AccessibilityWidget() {
               </button>
             </div>
 
-            {/* Contenido */}
             <div className="p-5 space-y-6 max-h-[65vh] overflow-y-auto">
               
-              {/* Tamaño de texto */}
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
                   <Type className="w-5 h-5 text-indigo-600" />
@@ -147,7 +142,6 @@ export default function AccessibilityWidget() {
                 </div>
               </div>
 
-              {/* Contraste */}
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
                   <Contrast className="w-5 h-5 text-indigo-600" />
@@ -178,7 +172,6 @@ export default function AccessibilityWidget() {
                 </div>
               </div>
 
-              {/* Resaltado de foco */}
               <div className="p-4 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl border border-gray-200">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
@@ -208,7 +201,6 @@ export default function AccessibilityWidget() {
                 </p>
               </div>
 
-              {/* Lector de pantalla */}
               <div className="p-4 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl border border-gray-200">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
@@ -245,7 +237,6 @@ export default function AccessibilityWidget() {
 
             </div>
 
-            {/* Footer */}
             <div className="px-5 py-4 bg-gradient-to-r from-gray-50 to-gray-100 border-t-2 border-gray-200 text-center">
               <p className="text-xs text-gray-600">
                 Compleix amb <span className="font-bold text-indigo-700">WCAG 2.1 nivell AA</span>
@@ -255,7 +246,6 @@ export default function AccessibilityWidget() {
         </>
       )}
 
-      {/* Estilos globales COMPLETOS Y FUNCIONALES */}
       <style>{`
         @keyframes slideUp {
           from {

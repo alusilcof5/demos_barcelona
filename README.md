@@ -241,7 +241,7 @@ Para más detalles, consulta la [metodología completa](src/app/pages/Metodologi
 ```
 demos_barcelona/
 ├── public/
-│   ├── geojson/           # GeoJSON de barrios
+│   ├── data/           
 │   └── images/            # Imágenes de la app
 ├── src/
 │   ├── app/

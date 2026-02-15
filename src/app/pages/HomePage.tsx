@@ -32,7 +32,7 @@ export function HomePage() {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="/images/data.webm" type="video/webm" />
+            <source src="/images/data.mp4" type="video/mp4" />
           </video>
 
           <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-800/85 to-blue-900/90"></div>

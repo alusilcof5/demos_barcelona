@@ -34,7 +34,7 @@ export function MetodologiaPage() {
 
         <div className="absolute inset-0 z-0">
           <img 
-            src="../images/4.png" 
+            src="../images/4.webp" 
             alt="Background" 
             className="w-full h-full object-cover"
           />
@@ -372,7 +372,7 @@ export function MetodologiaPage() {
                 {/* Fondo */}
                 <div className="absolute inset-0 z-0">
                   <img 
-                    src="../images/2.png" 
+                    src="../images/2.webp" 
                     alt="Background" 
                     className="w-full h-full object-cover"
                   />

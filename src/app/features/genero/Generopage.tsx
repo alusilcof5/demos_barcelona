@@ -69,7 +69,7 @@ export function GeneroPage() {
 
         <div className="absolute inset-0 z-0">
           <img 
-            src="../images/2.png" 
+            src="../images/2.webp" 
             alt="Background" 
             className="w-full h-full object-cover"
           />
@@ -195,7 +195,7 @@ export function GeneroPage() {
               
               <div className="absolute inset-0 z-0">
                 <img 
-                  src="../images/2.png" 
+                  src="../images/2.webp" 
                   alt="Background" 
                   className="w-full h-full object-cover"
                 />

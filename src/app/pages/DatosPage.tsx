@@ -34,7 +34,7 @@ export function DatosPage() {
       <section className="relative py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="../images/2.png" 
+            src="../images/5.webp" 
             alt="Background" 
             className="w-full h-full object-cover"
           />

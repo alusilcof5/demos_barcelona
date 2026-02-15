@@ -1,12 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import { RootLayout } from "./pages/RootLayout";
 import { HomePage } from "./pages/HomePage";
-import { DatosPage } from "./pages/DatosPage";
+import  { DatosPage } from "./pages/DatosPage";
 import { MetodologiaPage } from "./pages/MetodologiaPage";
-import { DemografPage } from "./pages/DemografPage";
 import { GeneroPage } from "./features/genero";
- 
-
+import { DemografPage } from "./pages/DemografPage";
 
 export const router = createBrowserRouter([
   {
@@ -15,8 +13,8 @@ export const router = createBrowserRouter([
     children: [
       { index: true, Component: HomePage },
       { path: "demograf", Component: DemografPage },
-      { path: "genero", Component: GeneroPage }, 
-      { path: "corpus", Component: DatosPage },
+      { path: "genero", Component: GeneroPage },
+      { path: "datos", Component: DatosPage },
       { path: "metodologia", Component: MetodologiaPage },
     ],
   },

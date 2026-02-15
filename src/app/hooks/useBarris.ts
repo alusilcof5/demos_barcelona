@@ -30,33 +30,34 @@ export function useBarris() {
     staleTime: Infinity, // Les dades no canvien sovint
   });
 
-  useEffect(() => {
-    if (data) {
-      setBarris(data.barris);
-      setGeoJSON(data.geojson);
-      setLoading(false);
-    }
-  }, [data, setBarris, setGeoJSON, setLoading]);
+ useEffect(() => {
+  if (data) {
+    console.log('✅ Datos cargados en useBarris:', data.barris.length, 'barris');
+    setBarris(data.barris);
+    setGeoJSON(data.geojson);
+    setLoading(false);
+  }
+}, [data, setBarris, setGeoJSON, setLoading]);
 
-  useEffect(() => {
-    if (queryError) {
-      setError(queryError.message);
-      setLoading(false);
-    }
-  }, [queryError, setError, setLoading]);
+useEffect(() => {
+  if (queryError) {
+    console.error('❌ Error en useBarris:', queryError);
+    setError(queryError.message || 'Error desconegut carregant dades');
+    setLoading(false);
+  }
+}, [queryError, setError, setLoading]);
 
-  // Recalcula la vulnerabilitat quan canvien els pesos
-  useEffect(() => {
-    if (barris.length > 0) {
-      const calculated = calculateVulnerability(barris, weights);
-      setBarrisWithVulnerability(calculated);
-    }
-  }, [barris, weights, setBarrisWithVulnerability]);
+useEffect(() => {
+  if (barris.length > 0) {
+    const calculated = calculateVulnerability(barris, weights);
+    setBarrisWithVulnerability(calculated);
+  }
+}, [barris, weights, setBarrisWithVulnerability]);
 
-  return {
-    barris,
-    barrisWithVulnerability,
-    geojson,
+return {
+  barris,
+  barrisWithVulnerability,
+  geojson,
     isLoading: queryLoading || isLoading,
     error: queryError?.message || error
   };

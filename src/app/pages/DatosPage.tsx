@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+ import { useState, useEffect } from "react";
 import {
   Download,
   CheckCircle,
@@ -327,90 +327,6 @@ export function DatosPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                {t.downloads.title}
-              </h2>
-              <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-
-              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border-2 border-green-200 hover:border-green-400">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-4 mx-auto">
-                  <FileSpreadsheet className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="font-bold text-xl text-slate-900 mb-2 text-center">
-                  {t.downloads.excel.title}
-                </h3>
-                <p className="text-slate-600 text-sm mb-4 text-center leading-relaxed">
-                  {t.downloads.excel.format}
-                  <br />
-                  {t.downloads.excel.description}
-                </p>
-                <button className="w-full px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-all flex items-center justify-center gap-2 shadow-md">
-                  <Download className="w-5 h-5" />
-                  {t.downloads.excel.button}
-                </button>
-              </div>
-
-
-              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border-2 border-blue-200 hover:border-blue-400">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 mx-auto">
-                  <File className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="font-bold text-xl text-slate-900 mb-2 text-center">
-                  {t.downloads.csv.title}
-                </h3>
-                <p className="text-slate-600 text-sm mb-4 text-center leading-relaxed">
-                  {t.downloads.csv.format}
-                  <br />
-                  {t.downloads.csv.description}
-                </p>
-                <button className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all flex items-center justify-center gap-2 shadow-md">
-                  <Download className="w-5 h-5" />
-                  {t.downloads.csv.button}
-                </button>
-              </div>
-
-              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border-2 border-slate-200 hover:border-slate-400">
-                <div className="w-16 h-16 bg-gradient-to-br from-slate-600 to-slate-700 rounded-xl flex items-center justify-center mb-4 mx-auto">
-                  <FileJson className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="font-bold text-xl text-slate-900 mb-2 text-center">
-                  {t.downloads.json.title}
-                </h3>
-                <p className="text-slate-600 text-sm mb-4 text-center leading-relaxed">
-                  {t.downloads.json.format}
-                  <br />
-                  {t.downloads.json.description}
-                </p>
-                <button className="w-full px-6 py-3 bg-slate-600 hover:bg-slate-700 text-white rounded-lg font-semibold transition-all flex items-center justify-center gap-2 shadow-md">
-                  <Download className="w-5 h-5" />
-                  {t.downloads.json.button}
-                </button>
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-6 text-white shadow-lg">
-              <p className="text-center leading-relaxed">
-                <strong className="text-xl">{t.downloads.help.title}</strong>
-                <br />
-                <span className="text-blue-100">
-                  {t.downloads.help.excel}
-                  <br />
-                  {t.downloads.help.csv}
-                  <br />
-                  {t.downloads.help.json}
-                </span>
-              </p>
-            </div>
           </div>
-        </div>
-      </section>
-    </div>
   );
 }

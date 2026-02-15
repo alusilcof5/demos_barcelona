@@ -1,0 +1,74 @@
+district_code,barrio_code,barrio_name,centroid_lat,centroid_lon
+01,01,el Raval,41.375515,2.175872
+01,02,el Barri Gòtic,41.378794,2.179427
+01,03,la Barceloneta,41.375569,2.189811
+01,04,"Sant Pere, Santa Caterina i la Ribera",41.385317,2.186944
+02,05,el Fort Pienc,41.396245,2.179636
+02,06,la Sagrada Família,41.404908,2.177402
+02,07,la Dreta de l'Eixample,41.394502,2.17153
+02,08,l'Antiga Esquerra de l'Eixample,41.390452,2.152135
+02,09,la Nova Esquerra de l'Eixample,41.381847,2.147844
+02,10,Sant Antoni,41.37817,2.159719
+03,11,el Poble-sec,41.366076,2.155406
+03,12,la Marina del Prat Vermell,41.340752,2.157333
+03,13,la Marina de Port,41.361991,2.143456
+03,14,la Font de la Guatlla,41.368017,2.144386
+03,15,Hostafrancs,41.376011,2.142481
+03,16,la Bordeta,41.371135,2.136154
+03,17,Sants - Badal,41.373745,2.128044
+03,18,Sants,41.375883,2.138546
+04,19,les Corts,41.387506,2.131611
+04,20,la Maternitat i Sant Ramon,41.381812,2.118475
+04,21,Pedralbes,41.395557,2.107094
+05,22,"Vallvidrera, el Tibidabo i les Planes",41.416353,2.099757
+05,23,Sarrià,41.4042,2.115079
+05,24,les Tres Torres,41.398304,2.129365
+05,25,Sant Gervasi - la Bonanova,41.410169,2.128424
+05,26,Sant Gervasi - Galvany,41.399094,2.141696
+05,27,el Putxet i el Farró,41.406785,2.142433
+06,28,Vallcarca i els Penitents,41.418348,2.138882
+06,29,el Coll,41.417226,2.148754
+06,30,la Salut,41.414334,2.153014
+06,31,la Vila de Gràcia,41.405015,2.155827
+06,32,el Camp d'en Grassot i Gràcia Nova,41.406668,2.163055
+07,33,el Baix Guinardó,41.413644,2.167568
+07,34,Can Baró,41.418094,2.162249
+07,35,el Guinardó,41.420565,2.168209
+07,36,la Font d'en Fargues,41.423027,2.166513
+07,37,el Carmel,41.420404,2.158087
+07,38,la Teixonera,41.424321,2.149332
+07,39,Sant Genís dels Agudells,41.42604,2.132447
+07,40,Montbau,41.434669,2.135974
+07,41,la Vall d'Hebron,41.432073,2.150638
+07,42,la Clota,41.429085,2.151911
+07,43,Horta,41.444007,2.147717
+08,44,Vilapicina i la Torre Llobeta,41.42913,2.173945
+08,45,Porta,41.433864,2.177534
+08,46,el Turó de la Peira,41.43333,2.167356
+08,47,Can Peguera,41.434513,2.165961
+08,48,la Guineueta,41.43817,2.168075
+08,49,Canyelles,41.44535,2.16254
+08,50,les Roquetes,41.450151,2.176269
+08,51,Verdun,41.442444,2.175113
+08,52,la Prosperitat,41.44207,2.180281
+08,53,la Trinitat Nova,41.452787,2.184123
+08,54,Torre Baró,41.453778,2.175096
+08,55,Ciutat Meridiana,41.46046,2.175324
+08,56,Vallbona,41.462013,2.185162
+09,57,la Trinitat Vella,41.455273,2.190475
+09,58,Baró de Viver,41.445723,2.198229
+09,59,el Bon Pastor,41.434347,2.201381
+09,60,Sant Andreu,41.43663,2.192452
+09,61,la Sagrera,41.424358,2.193011
+09,62,el Congrés i els Indians,41.423532,2.180236
+09,63,Navas,41.418022,2.185633
+10,64,el Camp de l'Arpa del Clot,41.412129,2.183196
+10,65,el Clot,41.409858,2.190048
+10,66,el Parc i la Llacuna del Poblenou,41.399702,2.188856
+10,67,la Vila Olímpica del Poblenou,41.387944,2.20087
+10,68,el Poblenou,41.397349,2.206251
+10,69,Diagonal Mar i el Front Marítim del Poblenou,41.401543,2.215949
+10,70,el Besòs i el Maresme,41.408046,2.224
+10,71,Provençals del Poblenou,41.412922,2.202858
+10,72,Sant Martí de Provençals,41.41538,2.197925
+10,73,la Verneda i la Pau,41.42495,2.200497

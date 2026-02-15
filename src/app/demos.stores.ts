@@ -1,7 +1,3 @@
-/**
- * Store global de l'aplicació amb Zustand
- */
-
 import { create } from 'zustand';
 import type { BarriData, BarriVulnerability, Weights } from './core/vulnerability';
 import { DEFAULT_WEIGHTS } from './core/datasets';
@@ -16,7 +12,7 @@ interface DemografState {
   weights: Weights;
   selectedBarri: string | null;
   
-  // Loading
+  // Loading ← IMPORTANTE
   isLoading: boolean;
   error: string | null;
   
@@ -26,8 +22,8 @@ interface DemografState {
   setGeoJSON: (geojson: any) => void;
   setWeights: (weights: Weights) => void;
   setSelectedBarri: (barriId: string | null) => void;
-  setLoading: (loading: boolean) => void;
-  setError: (error: string | null) => void;
+  setLoading: (loading: boolean) => void; // ← IMPORTANTE
+  setError: (error: string | null) => void; // ← IMPORTANTE
   resetWeights: () => void;
 }
 

@@ -17,7 +17,7 @@ export function RootLayout() {
           {/* Skip link */}
           <a
             href="#main-content"
-            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[9999] bg-blue-600 text-white px-4 py-2 rounded-lg"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-4 focus:z-[9999] bg-blue-600 text-white px-4 py-2 rounded-lg"
           >
             Saltar al contenido principal
           </a>

@@ -51,7 +51,7 @@ export function IncomeByAgeChart() {
           data={chartData}
           margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+          <CartesianGrid strokeDasharray="2 2" stroke="#e5e7eb" />
           
           <XAxis 
             dataKey="edat" 

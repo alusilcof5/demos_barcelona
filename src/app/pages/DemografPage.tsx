@@ -390,7 +390,7 @@ export function DemografPage() {
         {/* Fondo con imagen */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="../images/3.webp" 
+            src="../images/2.webp" 
             alt="Barcelona background" 
             className="w-full h-full object-cover"
           />
@@ -537,7 +537,7 @@ export function DemografPage() {
                     <CircleMarker
                       key={barri.nom}
                       center={[barri.centroide.lat, barri.centroide.lon]}
-                      radius={barri.nom === selectedBarri ? 45 : 30}
+                      radius={barri.nom === selectedBarri ? 25 : 15}
                       pathOptions={{
                         fillColor: getHexColor(barri.vulnerability_score),
                         fillOpacity: barri.nom === selectedBarri ? 1 : 0.85,

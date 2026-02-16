@@ -60,7 +60,7 @@ export function CorpusStats() {
         </h3>
         <ResponsiveContainer width="100%" height={200}>
           <BarChart data={chartData}>
-            <CartesianGrid strokeDasharray="3 3" />
+            <CartesianGrid strokeDasharray="2 2" />
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />

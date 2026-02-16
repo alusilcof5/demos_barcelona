@@ -36,7 +36,7 @@ export function PopulationByDistrictChart() {
           layout="vertical"
           margin={{ left: 120, right: 20 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+          <CartesianGrid strokeDasharray="2 2" stroke="#e5e7eb" />
           <XAxis 
             type="number"
             stroke="#6b7280"

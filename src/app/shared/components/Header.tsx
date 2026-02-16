@@ -10,45 +10,32 @@ export function Header() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { language, setLanguage, t } = useLanguage();
 
-  /* =====================================================
-     NAV STRUCTURE
-     Inicio | Datos | Población ▼ | Metodología
-  ===================================================== */
-
   const NAV_ITEMS = [
-    { label: 'Inicio', path: '/' },
-    { label: 'Datos', path: '/datos' },
-    {
-      label: 'Población',
-      dropdown: [
-        {
-          label: 'Qui viu a Barcelona',
-          path: '/demograf',
-          hover: 'hover:bg-blue-50',
-        },
-        {
-          label: 'Bretxa de gènere',
-          path: '/genero',
-          hover: 'hover:bg-pink-50',
-        },
-      ],
-    },
-    { label: 'Metodología', path: '/metodologia' },
-  ];
-
-  /* =====================================================
-     HELPERS
-  ===================================================== */
+  { label: t('header.nav.home'), path: '/' },
+  {
+    label: t('header.nav.demograf'),
+    dropdown: [
+      {
+        label: t('header.nav.demograf'),
+        path: '/demograf',
+        hover: 'hover:bg-blue-50',
+      },
+      {
+        label: t('Brecha de genero'),
+        path: '/genero',
+        hover: 'hover:bg-pink-50',
+      },
+    ],
+  },
+  { label: t('header.nav.methodology'), path: '/sobre-el-proyecto' },
+  { label: t('Contacto'), path: '/contacto' },
+];
 
   const isPathActive = (path?: string) =>
     path ? location.pathname === path : false;
 
   const isDropdownActive = (dropdown?: any[]) =>
     dropdown?.some((item) => item.path === location.pathname);
-
-  /* =====================================================
-     CLOSE DROPDOWN OUTSIDE CLICK
-  ===================================================== */
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -64,10 +51,6 @@ export function Header() {
     return () =>
       document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-
-  /* =====================================================
-     COMPONENT
-  ===================================================== */
 
   return (
     <header className="border-b bg-white sticky top-0 z-[9999] shadow-sm">
@@ -95,12 +78,10 @@ export function Header() {
             </div>
           </Link>
 
-          {/* ================= DESKTOP ================= */}
           <div className="hidden md:flex items-center gap-4">
             <nav className="flex gap-2">
               {NAV_ITEMS.map((item) => {
 
-                /* NORMAL LINKS */
                 if (!item.dropdown) {
                   return (
                     <Link
@@ -117,7 +98,6 @@ export function Header() {
                   );
                 }
 
-                /* POBLACIÓN DROPDOWN */
                 const active = isDropdownActive(item.dropdown);
 
                 return (
@@ -175,7 +155,6 @@ export function Header() {
             </button>
           </div>
 
-          {/* MOBILE BUTTON */}
           <div className="md:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -186,7 +165,6 @@ export function Header() {
           </div>
         </div>
 
-        {/* ================= MOBILE MENU ================= */}
         {mobileMenuOpen && (
           <nav className="md:hidden pb-4 border-t pt-4">
             {NAV_ITEMS.map((item) => {

@@ -61,7 +61,7 @@ const translations = {
         demografAria: "Explorar l'atlas demogràfic",
         corpus: "Dates",
         corpusAria: "Veure el corpus de dades",
-        methodology: "Cómo se ha fet",
+        methodology: "Sobre el projecte",
         methodologyAria: "Llegir la metodologia"
       },
       mobileMenu: {
@@ -76,7 +76,7 @@ const translations = {
         title: "Desigualtats urbanes a Barcelona",
         subtitle: "Visualitza i analitza les diferències socioeconòmiques entre barris amb dades verificades i transparents",
         exploreCTA: "Explorar mapa",
-        methodologyCTA: "Veure metodologia"
+        methodologyCTA: "Sobre el projecte"
       },
       
       metrics: {
@@ -146,13 +146,25 @@ const translations = {
             description: "CC BY 4.0 - Lliure ús amb atribució"
           }
         },
-        cta: "Veure metodologia completa"
+        cta: "Veure el projecte"
       },
 
       finalCta: {
         title: "Comença a explorar",
         subtitle: "Descobreix com està el teu barri o explora tota Barcelona",
         button: "Veure mapa interactiu"
+      }
+    },
+
+    charts: {
+      wageGap: {
+        title: "Evolució de la Renda per Gènere",
+        subtitle: "Comparativa de salari mitjà entre homes i dones (últims 10 anys)",
+        men: "Homes",
+        women: "Dones",
+        gap: "Bretxa",
+        maleIncome: "Renda homes",
+        femaleIncome: "Renda dones"
       }
     },
 
@@ -512,23 +524,21 @@ const translations = {
         title: "Dades i Metodologia",
         methodology: "Metodologia completa",
         openDataBCN: "Open Data BCN",
-        downloadCorpus: "Descarregar corpus (JSON)",
-        apiDocs: "Documentació API"
+        
+       
       },
 
       help: {
         title: "Ajuda i Recursos",
         faq: "Preguntes freqüents",
         accessibility: "Declaració d'accessibilitat",
-        reportBugs: "Reportar errors",
         guides: "Guies d'ús"
       },
 
       contact: {
         title: "Contacte i Comunitat",
         github: "GitHub",
-        twitter: "Twitter",
-        feedback: "Formulari de feedback"
+        
       },
 
       bottom: {
@@ -1036,7 +1046,6 @@ const translations = {
         title: "Datos y Metodología",
         methodology: "Metodología completa",
         openDataBCN: "Open Data BCN",
-        downloadCorpus: "Descargar corpus (JSON)",
         apiDocs: "Documentación API"
       },
 
@@ -1051,8 +1060,8 @@ const translations = {
       contact: {
         title: "Contacto y Comunidad",
         github: "GitHub",
-        twitter: "Twitter",
-        feedback: "Formulario de feedback"
+       
+
       },
 
       bottom: {

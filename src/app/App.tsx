@@ -56,7 +56,7 @@ export default function App() {
             </li>
             <li>
               <NavLink
-                to="/metodologia"
+                to="/sobre-el-proyecto"
                 style={({ isActive }) => ({
                   color: isActive ? "blue" : "black",
                   textDecoration: isActive ? "underline" : "none",

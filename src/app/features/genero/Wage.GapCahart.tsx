@@ -32,7 +32,7 @@ export function WageGapChart() {
 
       <ResponsiveContainer width="100%" height={350}>
         <LineChart data={chartData}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+          <CartesianGrid strokeDasharray="2 2" stroke="#e5e7eb" />
           <XAxis 
             dataKey="any" 
             stroke="#6b7280"
@@ -65,17 +65,17 @@ export function WageGapChart() {
             type="monotone"
             dataKey={t.charts.wageGap.men}
             stroke="#1e40af"
-            strokeWidth={3}
-            dot={{ fill: '#1e40af', r: 4 }}
-            activeDot={{ r: 6 }}
+            strokeWidth={2}
+            dot={false}
+            activeDot={{ r: 5 }}
           />
           <Line
             type="monotone"
             dataKey={t.charts.wageGap.women}
             stroke="#7c3aed"
-            strokeWidth={3}
-            dot={{ fill: '#7c3aed', r: 4 }}
-            activeDot={{ r: 6 }}
+            strokeWidth={2}
+            dot={false}
+            activeDot={{ r: 5 }}
           />
         </LineChart>
       </ResponsiveContainer>

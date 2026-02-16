@@ -11,6 +11,7 @@
   position: absolute;
   left: 0;
   top: 0;
+  
 }
 
 .leaflet-container {
@@ -24,6 +25,7 @@
   -moz-user-select: none;
   user-select: none;
   -webkit-user-drag: none;
+  
 }
 
 .leaflet-tile::selection {
@@ -48,6 +50,7 @@
 .leaflet-container .leaflet-overlay-pane svg {
   max-width: none !important;
   max-height: none !important;
+  
 }
 
 .leaflet-container .leaflet-marker-pane img,
@@ -284,6 +287,7 @@ svg.leaflet-zoom-animated {
 svg.leaflet-image-layer.leaflet-interactive path {
   pointer-events: visiblePainted;
   pointer-events: auto;
+  
 }
 
 .leaflet-container {

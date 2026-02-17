@@ -11,25 +11,28 @@ export function Header() {
   const { language, setLanguage, t } = useLanguage();
 
   const NAV_ITEMS = [
-  { label: t('header.nav.home'), path: '/' },
-  {
-    label: t('header.nav.demograf'),
-    dropdown: [
-      {
-        label: t('header.nav.demograf'),
-        path: '/demograf',
-        hover: 'hover:bg-blue-50',
-      },
-      {
-        label: t('Brecha de genero'),
-        path: '/genero',
-        hover: 'hover:bg-pink-50',
-      },
-    ],
-  },
-  { label: t('header.nav.methodology'), path: '/sobre-el-proyecto' },
-  { label: t('Contacto'), path: '/contacto' },
-];
+    { label: t('header.nav.home'), path: '/' },
+    {
+      label: t('header.nav.demograf'),
+      dropdown: [
+        {
+          label: t('header.nav.demograf'),
+          path: '/demograf',
+          hover: 'hover:bg-blue-50',
+        },
+        {
+          label: t('Brecha de genero'),
+          path: '/genero',
+          hover: 'hover:bg-pink-50',
+        },
+      ],
+    },
+    { label: t('Verificador'), path: '/verificador' }, 
+
+    { label: t('header.nav.methodology'), path: '/sobre-el-proyecto' },
+    
+    { label: t('Contacto'), path: '/contacto' },
+  ];
 
   const isPathActive = (path?: string) =>
     path ? location.pathname === path : false;
@@ -59,7 +62,6 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
 
-          {/* LOGO */}
           <Link to="/" className="flex items-center gap-3 group">
             <div className="relative w-20 h-20">
               <img
@@ -87,7 +89,7 @@ export function Header() {
                     <Link
                       key={item.path}
                       to={item.path!}
-                      className={`px-4 py-2 rounded-lg ${
+                      className={`px-4 py-2 rounded-lg transition-colors ${
                         isPathActive(item.path)
                           ? 'bg-blue-50 text-blue-700 font-medium'
                           : 'text-gray-600 hover:bg-gray-50'
@@ -108,7 +110,7 @@ export function Header() {
                   >
                     <button
                       onClick={() => setPoblacionOpen(!poblacionOpen)}
-                      className={`flex items-center gap-2 px-4 py-2 rounded-lg ${
+                      className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                         active
                           ? 'bg-blue-50 text-blue-700 font-medium'
                           : 'text-gray-600 hover:bg-gray-50'
@@ -129,7 +131,7 @@ export function Header() {
                             key={sub.path}
                             to={sub.path}
                             onClick={() => setPoblacionOpen(false)}
-                            className={`block px-4 py-3 ${sub.hover}`}
+                            className={`block px-4 py-3 ${sub.hover} transition-colors`}
                           >
                             {sub.label}
                           </Link>
@@ -146,7 +148,7 @@ export function Header() {
               onClick={() =>
                 setLanguage(language === 'ca' ? 'es' : 'ca')
               }
-              className="flex items-center gap-2 px-3 py-2 rounded-lg border hover:bg-gray-50"
+              className="flex items-center gap-2 px-3 py-2 rounded-lg border hover:bg-gray-50 transition-colors"
             >
               <Globe className="w-4 h-4" />
               <span className="text-sm font-semibold">
@@ -158,7 +160,7 @@ export function Header() {
           <div className="md:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2"
+              className="p-2 hover:bg-gray-50 rounded-lg transition-colors"
             >
               {mobileMenuOpen ? <X /> : <Menu />}
             </button>
@@ -166,7 +168,7 @@ export function Header() {
         </div>
 
         {mobileMenuOpen && (
-          <nav className="md:hidden pb-4 border-t pt-4">
+          <nav className="md:hidden pb-4 border-t pt-4 space-y-2">
             {NAV_ITEMS.map((item) => {
 
               if (!item.dropdown) {
@@ -175,7 +177,11 @@ export function Header() {
                     key={item.path}
                     to={item.path!}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block py-2"
+                    className={`block py-2 px-3 rounded-lg transition-colors ${
+                      isPathActive(item.path)
+                        ? 'bg-blue-50 text-blue-700 font-medium'
+                        : 'text-gray-600 hover:bg-gray-50'
+                    }`}
                   >
                     {item.label}
                   </Link>
@@ -187,12 +193,29 @@ export function Header() {
                   key={sub.path}
                   to={sub.path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block py-2"
+                  className={`block py-2 px-3 rounded-lg transition-colors ${
+                    isPathActive(sub.path)
+                      ? 'bg-blue-50 text-blue-700 font-medium'
+                      : 'text-gray-600 hover:bg-gray-50'
+                  }`}
                 >
                   {sub.label}
                 </Link>
               ));
             })}
+
+            <button
+              onClick={() => {
+                setLanguage(language === 'ca' ? 'es' : 'ca');
+                setMobileMenuOpen(false);
+              }}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg border hover:bg-gray-50 w-full transition-colors mt-4"
+            >
+              <Globe className="w-4 h-4" />
+              <span className="text-sm font-semibold">
+                {language.toUpperCase()}
+              </span>
+            </button>
           </nav>
         )}
       </div>

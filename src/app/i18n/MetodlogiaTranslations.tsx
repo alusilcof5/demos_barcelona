@@ -30,32 +30,32 @@ export const sobreElProyectoTranslations = {
     },
 
     solution: {
-      title: "Nuestra Solución",
-      intro: "Creamos una base de datos abierta y estructurada que conecta personas, eventos y medios de comunicación.",
-      
-      howItWorks: {
-        title: "¿Cómo funciona?",
-        steps: [
-          {
-            number: "1",
-            title: "Recopilación inteligente",
-            description: "Analizamos automáticamente miles de noticias de medios españoles cada día, identificando menciones a figuras públicas."
-          },
-          {
-            number: "2",
-            title: "Verificación de calidad",
-            description: "Cada dato pasa por filtros de calidad: verificamos fuentes, eliminamos duplicados y validamos la información."
-          },
-          {
-            number: "3",
-            title: "Organización clara",
-            description: "Conectamos cada mención con la persona, el medio, la fecha y el contexto, creando una red de información."
-          },
-          {
-            number: "4",
-            title: "Acceso libre y abierto",
-            description: "Todos los datos están disponibles gratuitamente para que cualquiera pueda usarlos, analizarlos o redistribuirlos."
-          }
+  title: "Transparència i fonts oficials",
+  intro: "Un verificador que garanteix informació fiable connectant directament amb les bases de dades de l'Ajuntament de Barcelona.",
+  
+  howItWorks: {
+    title: "De la font oficial a tu",
+    steps: [
+      {
+        number: "1",
+        title: "Fonts 100% oficials",
+        description: "Totes les dades provenen de l'API oficial d'Open Data Barcelona, gestionada per l'Ajuntament."
+      },
+      {
+        number: "2",
+        title: "Sense intermediaris",
+        description: "La informació es carrega directament des de la font cada vegada, sense bases de dades pròpies que puguin quedar obsoletes."
+      },
+      {
+        number: "3",
+        title: "Resposta contextualitzada",
+        description: "No només et donem xifres: comparem amb la mitjana, mostrem posicions al rànquing i oferim context útil."
+      },
+      {
+        number: "4",
+        title: "Verificació independent",
+        description: "Cada resposta inclou l'enllaç al dataset oficial perquè puguis comprovar les dades pel teu compte."
+      }
         ]
       },
 
@@ -155,26 +155,6 @@ export const sobreElProyectoTranslations = {
             "Participación en debates con datos"
           ]
         },
-        {
-          icon: "Building2",
-          title: "Organizaciones y ONGs",
-          description: "Monitoriza políticas públicas, identifica tendencias y fundamenta campañas con datos objetivos.",
-          tasks: [
-            "Evaluación de políticas públicas",
-            "Campañas de transparencia",
-            "Informes de rendición de cuentas"
-          ]
-        },
-        {
-          icon: "Bot",
-          title: "Desarrolladores de IA",
-          description: "Entrena modelos con datos limpios y estructurados, crea aplicaciones de análisis y desarrolla herramientas innovadoras.",
-          tasks: [
-            "Entrenamiento de modelos de lenguaje",
-            "Análisis predictivo de tendencias",
-            "Aplicaciones de verificación automática"
-          ]
-        }
       ]
     },
 
@@ -217,80 +197,38 @@ export const sobreElProyectoTranslations = {
     },
 
     data: {
-      title: "¿Qué contienen los datos?",
-      intro: "Cada registro en nuestra base de datos incluye:",
-      
-      fields: [
-        {
-          name: "Persona",
-          description: "Nombre completo y cargo de la figura pública mencionada"
-        },
-        {
-          name: "Medio",
-          description: "Nombre del medio de comunicación que publicó la noticia"
-        },
-        {
-          name: "Fecha",
-          description: "Cuándo se publicó la noticia (día, mes, año)"
-        },
-        {
-          name: "Titular",
-          description: "El título completo del artículo"
-        },
-        {
-          name: "Enlace",
-          description: "URL directa al artículo original para verificación"
-        },
-        {
-          name: "Contexto",
-          description: "Fragmento del artículo donde se menciona a la persona"
-        },
-        {
-          name: "Relevancia",
-          description: "Nivel de prominencia de la mención (alta, media, baja)"
-        }
+  title: "¿Cómo funciona el verificador?",
+  intro: "Nuestro verificador conecta directamente con Open Data Barcelona para ofrecerte:",
+  
+  fields: [
+    {
+      name: "Datos Oficiales Verificados",
+      description: "100% provenientes de la API oficial del Ajuntament de Barcelona"
+    },
+    {
+      name: "Consultas Inteligentes",
+      description: "Pregunta en lenguaje natural: '¿Qué barrio es más rico?', 'Compara Gràcia con Sarrià'"
+    },
+    {
+      name: "Renta Familiar",
+      description: "Renta disponible per cápita de 73 barrios de Barcelona (año 2022)"
+    },
+    {
+      name: "Rankings Automáticos",
+      description: "Top 5 de barrios por nivel de renta, comparaciones automáticas con la media"
+    },
+    {
+      name: "Búsqueda Flexible",
+      description: "El sistema encuentra barrios aunque no escribas el nombre exacto"
+    },
+    {
+      name: "Transparencia Total",
+      description: "Cada respuesta incluye enlace directo al dataset oficial para verificación"
+    }        
       ],
-
-      example: {
-        title: "Ejemplo real de registro:",
-        data: {
-          persona: "Pedro Sánchez",
-          cargo: "Presidente del Gobierno",
-          medio: "El País",
-          fecha: "15 de febrero de 2026",
-          titular: "El Gobierno anuncia nuevas medidas económicas",
-          relevancia: "Alta",
-          nota: "La mención aparece en el titular y es el tema principal del artículo"
-        }
-      }
     },
 
-    access: {
-      title: "Cómo Acceder a los Datos",
-      intro: "Múltiples formas de explorar y descargar la información:",
-      
-      methods: [
-        {
-          icon: "Globe",
-          title: "Explorador web interactivo",
-          description: "Busca, filtra y visualiza los datos directamente desde tu navegador. Perfecto para usuarios sin conocimientos técnicos.",
-          action: "Explorar ahora"
-        },
-        {
-          icon: "FileText",
-          title: "Descarga directa",
-          description: "Descarga conjuntos completos de datos en CSV o JSON. Ideal para análisis en Excel, Google Sheets o herramientas estadísticas.",
-          action: "Descargar datos"
-        },
-        {
-          icon: "Zap",
-          title: "API para desarrolladores",
-          description: "Integra los datos en tus propias aplicaciones con nuestra API gratuita. Incluye documentación completa.",
-          action: "Ver documentación"
-        }
-      ]
-    },
-
+    
     values: {
       title: "Nuestros Valores",
       intro: "Este proyecto se construye sobre principios fundamentales:",
@@ -362,32 +300,32 @@ export const sobreElProyectoTranslations = {
     },
 
     solution: {
-      title: "La Nostra Solució",
-      intro: "Creem una base de dades oberta i estructurada que connecta persones, esdeveniments i mitjans de comunicació.",
-      
-      howItWorks: {
-        title: "Com funciona?",
-        steps: [
-          {
-            number: "1",
-            title: "Recol·lecció intel·ligent",
-            description: "Analitzem automàticament milers de notícies de mitjans espanyols cada dia, identificant mencions a figures públiques."
-          },
-          {
-            number: "2",
-            title: "Verificació de qualitat",
-            description: "Cada dada passa per filtres de qualitat: verifiquem fonts, eliminem duplicats i validem la informació."
-          },
-          {
-            number: "3",
-            title: "Organització clara",
-            description: "Connectem cada menció amb la persona, el mitjà, la data i el context, creant una xarxa d'informació."
-          },
-          {
-            number: "4",
-            title: "Accés lliure i obert",
-            description: "Totes les dades estan disponibles gratuïtament perquè qualsevol pugui usar-les, analitzar-les o redistribuir-les."
-          }
+  title: "Transparencia y fuentes oficiales",
+  intro: "Un verificador que garantiza información fiable conectando directamente con las bases de datos del Ayuntamiento de Barcelona.",
+  
+  howItWorks: {
+    title: "De la fuente oficial a ti",
+    steps: [
+      {
+        number: "1",
+        title: "Fuentes 100% oficiales",
+        description: "Todos los datos provienen de la API oficial de Open Data Barcelona, gestionada por el Ayuntamiento."
+      },
+      {
+        number: "2",
+        title: "Sin intermediarios",
+        description: "La información se carga directamente desde la fuente cada vez, sin bases de datos propias que puedan quedar obsoletas."
+      },
+      {
+        number: "3",
+        title: "Respuesta contextualizada",
+        description: "No solo te damos cifras: comparamos con la media, mostramos posiciones en el ranking y ofrecemos contexto útil."
+      },
+      {
+        number: "4",
+        title: "Verificación independiente",
+        description: "Cada respuesta incluye el enlace al dataset oficial para que puedas comprobar los datos por tu cuenta."
+      }
         ]
       },
 
@@ -487,26 +425,6 @@ export const sobreElProyectoTranslations = {
             "Participació en debats amb dades"
           ]
         },
-        {
-          icon: "Building2",
-          title: "Organitzacions i ONGs",
-          description: "Monitoritza polítiques públiques, identifica tendències i fonamenta campanyes amb dades objectives.",
-          tasks: [
-            "Avaluació de polítiques públiques",
-            "Campanyes de transparència",
-            "Informes de rendició de comptes"
-          ]
-        },
-        {
-          icon: "Bot",
-          title: "Desenvolupadors d'IA",
-          description: "Entrena models amb dades netes i estructurades, crea aplicacions d'anàlisi i desenvolupa eines innovadores.",
-          tasks: [
-            "Entrenament de models de llenguatge",
-            "Anàlisi predictiu de tendències",
-            "Aplicacions de verificació automàtica"
-          ]
-        }
       ]
     },
 
@@ -549,78 +467,37 @@ export const sobreElProyectoTranslations = {
     },
 
     data: {
-      title: "Què contenen les dades?",
-      intro: "Cada registre a la nostra base de dades inclou:",
-      
-      fields: [
-        {
-          name: "Persona",
-          description: "Nom complet i càrrec de la figura pública mencionada"
-        },
-        {
-          name: "Mitjà",
-          description: "Nom del mitjà de comunicació que va publicar la notícia"
-        },
-        {
-          name: "Data",
-          description: "Quan es va publicar la notícia (dia, mes, any)"
-        },
-        {
-          name: "Titular",
-          description: "El títol complet de l'article"
-        },
-        {
-          name: "Enllaç",
-          description: "URL directa a l'article original per a verificació"
-        },
-        {
-          name: "Context",
-          description: "Fragment de l'article on es menciona la persona"
-        },
-        {
-          name: "Rellevància",
-          description: "Nivell de prominència de la menció (alta, mitjana, baixa)"
-        }
+  title: "Què pots verificar?",
+  intro: "El verificador et permet consultar dades oficials sobre:",
+  
+  fields: [
+    {
+      name: "Renda per Barris",
+      description: "Renda familiar disponible per càpita de cada barri de Barcelona (€/any)"
+    },
+    {
+      name: "Rànquings i Comparacions",
+      description: "Top de barris més rics o pobres, comparacions entre diferents zones"
+    },
+    {
+      name: "Estadístiques Generals",
+      description: "Renda mitjana de Barcelona, valors màxims i mínims per barri"
+    },
+    {
+      name: "Dades per Barri Específic",
+      description: "Consulta la renda de qualsevol barri i la seva posició al rànquing"
+    },
+    {
+      name: "Fonts Oficials",
+      description: "Totes les dades provenen directament de l'API d'Open Data Barcelona"
+    },
+    {
+      name: "Actualització en Temps Real",
+      description: "Les dades es carreguen directament des de la font oficial cada vegada que hi accedeixes"
+    }
       ],
 
-      example: {
-        title: "Exemple real de registre:",
-        data: {
-          persona: "Pedro Sánchez",
-          cargo: "President del Govern",
-          medio: "El País",
-          fecha: "15 de febrer de 2026",
-          titular: "El Govern anuncia noves mesures econòmiques",
-          relevancia: "Alta",
-          nota: "La menció apareix al titular i és el tema principal de l'article"
-        }
-      }
-    },
-
-    access: {
-      title: "Com Accedir a les Dades",
-      intro: "Múltiples formes d'explorar i descarregar la informació:",
       
-      methods: [
-        {
-          icon: "Globe",
-          title: "Explorador web interactiu",
-          description: "Cerca, filtra i visualitza les dades directament des del teu navegador. Perfecte per a usuaris sense coneixements tècnics.",
-          action: "Explorar ara"
-        },
-        {
-          icon: "FileText",
-          title: "Descàrrega directa",
-          description: "Descarrega conjunts complets de dades en CSV o JSON. Ideal per a anàlisis a Excel, Google Sheets o eines estadístiques.",
-          action: "Descarregar dades"
-        },
-        {
-          icon: "Zap",
-          title: "API per a desenvolupadors",
-          description: "Integra les dades a les teves pròpies aplicacions amb la nostra API gratuïta. Inclou documentació completa.",
-          action: "Veure documentació"
-        }
-      ]
     },
 
     values: {

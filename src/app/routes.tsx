@@ -5,7 +5,7 @@ import { ContactoPage } from "./pages/ContactPage";
 import { SobreElProyectoPage } from "./pages/MetodologiaPage";
 import { GeneroPage } from "./features/genero";
 import { DemografPage } from "./pages/DemografPage";
-import { FactCheckerPage } from "./pages/FactCheckerPage";
+import  FactCheckerPage  from "./pages/FactCheckerPage";
 
 export const router = createBrowserRouter([
   {
@@ -15,9 +15,10 @@ export const router = createBrowserRouter([
       { index: true, Component: HomePage },
       { path: "demograf", Component: DemografPage },
       { path: "genero", Component: GeneroPage },
+       { path: 'verificador', Component: FactCheckerPage },
       { path: "sobre-el-proyecto", Component: SobreElProyectoPage },
       { path: "contacto", Component: ContactoPage },
-      { path: '/verificador',  Component: FactCheckerPage }
+      
     ],
   },
 ]);

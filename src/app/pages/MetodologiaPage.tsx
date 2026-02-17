@@ -357,43 +357,6 @@ export function SobreElProyectoPage() {
         </div>
       </section>
 
-     
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                {t.access.title}
-              </h2>
-              <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
-              <p className="text-xl text-slate-700 leading-relaxed">
-                {t.access.intro}
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              {t.access.methods.map((method, index) => (
-                <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border-2 border-slate-200 hover:border-blue-500">
-                  <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4">
-                    {getIcon(method.icon)}
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">
-                    {method.title}
-                  </h3>
-                  <p className="text-slate-700 mb-6 leading-relaxed">
-                    {method.description}
-                  </p>
-                  <button className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all flex items-center justify-center gap-2 group">
-                    {method.action}
-                    <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-5xl mx-auto">

@@ -50,7 +50,6 @@ export function ContactoPage() {
     e.preventDefault();
     setFormStatus('sending');
 
-    // Simulación de envío (aquí irá tu lógica real de envío)
     setTimeout(() => {
       setFormStatus('success');
       setFormData({
@@ -61,7 +60,6 @@ export function ContactoPage() {
         organization: ""
       });
       
-      // Reset status después de 5 segundos
       setTimeout(() => {
         setFormStatus('idle');
       }, 5000);
@@ -71,7 +69,6 @@ export function ContactoPage() {
   return (
     <div className="min-h-screen bg-white">
       
-      {/* Hero Section */}
       <section className="relative py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
@@ -126,9 +123,10 @@ export function ContactoPage() {
 
       
       <section className="py-16 bg-white">
+        <div>
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-6 mb-16">
+            <div className="grid md:grid-cols-2 gap-6 mb-16">
               
               
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border-l-4 border-blue-500 hover:shadow-lg transition-all">
@@ -149,8 +147,7 @@ export function ContactoPage() {
                   <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
-
-             
+        
               <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 border-l-4 border-purple-500 hover:shadow-lg transition-all">
   <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-4">
     <Globe className="w-7 h-7 text-white" />
@@ -185,30 +182,10 @@ export function ContactoPage() {
     </a>
   </div>
 </div>
+</div>
 
 
-              {/* Location Card */}
-              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 border-l-4 border-green-500 hover:shadow-lg transition-all">
-                <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-4">
-                  <MapPin className="w-7 h-7 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
-                  {t.contactInfo.location.title}
-                </h3>
-                <p className="text-slate-700 mb-2">
-                  {t.contactInfo.location.description}
-                </p>
-                <p className="text-slate-600 text-sm">
-                  {t.contactInfo.location.address}
-                </p>
-              </div>
-            </div>
-
-            {/* Two Column Layout: Form + Info */}
-            <div className="grid lg:grid-cols-3 gap-8">
-              
-              {/* Contact Form */}
-              <div className="lg:col-span-2">
+              <div className="lg:col-span-1">
                 <div className="bg-white rounded-xl shadow-xl p-8 border-l-4 border-blue-500">
                   <h2 className="text-3xl font-bold text-slate-900 mb-6">
                     {t.form.title}
@@ -216,7 +193,7 @@ export function ContactoPage() {
                   
                   <form onSubmit={handleSubmit} className="space-y-6">
                     
-                    {/* Name Field */}
+                  
                     <div>
                       <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-2">
                         {t.form.fields.name.label} *
@@ -236,7 +213,7 @@ export function ContactoPage() {
                       </div>
                     </div>
 
-                    {/* Email Field */}
+                 
                     <div>
                       <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-2">
                         {t.form.fields.email.label} *
@@ -256,7 +233,7 @@ export function ContactoPage() {
                       </div>
                     </div>
 
-                    {/* Organization Field */}
+                  
                     <div>
                       <label htmlFor="organization" className="block text-sm font-semibold text-slate-700 mb-2">
                         {t.form.fields.organization.label}
@@ -275,8 +252,7 @@ export function ContactoPage() {
                       </div>
                     </div>
 
-                    {/* Subject Field */}
-                    <div>
+                    {/* Subject Field */} <div>
                       <label htmlFor="subject" className="block text-sm font-semibold text-slate-700 mb-2">
                         {t.form.fields.subject.label} *
                       </label>
@@ -300,7 +276,6 @@ export function ContactoPage() {
                       </div>
                     </div>
 
-                    {/* Message Field */}
                     <div>
                       <label htmlFor="message" className="block text-sm font-semibold text-slate-700 mb-2">
                         {t.form.fields.message.label} *
@@ -317,7 +292,6 @@ export function ContactoPage() {
                       />
                     </div>
 
-                    {/* Submit Button */}
                     <div>
                       <button
                         type="submit"
@@ -342,7 +316,6 @@ export function ContactoPage() {
                       </button>
                     </div>
 
-                    {/* Success/Error Messages */}
                     {formStatus === 'success' && (
                       <div className="bg-green-50 border-l-4 border-green-500 rounded-lg p-4 flex items-start gap-3">
                         <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
@@ -368,7 +341,6 @@ export function ContactoPage() {
 
               <div className="space-y-6">
                 
-                {/* FAQ Card */}
                 <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200">
                   <h3 className="text-xl font-bold text-slate-900 mb-4">
                     {t.sidebar.faq.title}
@@ -383,7 +355,6 @@ export function ContactoPage() {
                   </ul>
                 </div>
 
-                {/* Response Time Card */}
                 <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 border border-green-200">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
@@ -398,7 +369,7 @@ export function ContactoPage() {
                   </p>
                 </div>
 
-                {/* Privacy Notice */}
+
                 <div className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl p-6 border border-slate-200">
                   <h3 className="text-lg font-bold text-slate-900 mb-3">
                     {t.sidebar.privacy.title}
@@ -413,16 +384,15 @@ export function ContactoPage() {
         </div>
       </section>
 
-     {/* CTA Section */}
-<section className="relative py-16 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 overflow-hidden">
-  {/* Imagen de fondo */}
+      <section className="relative py-16 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 overflow-hidden">
+
   <div className="absolute inset-0 z-0">
     <img
       src="../images/2.webp"
       alt="Barcelona background"
       className="w-full h-full object-cover"
     />
-    {/* Overlay para mejorar legibilidad */}
+
     <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-blue-800/70 to-blue-900/80"></div>
   </div>
 

@@ -14,7 +14,6 @@ export function RootLayout() {
     <LanguageProvider>
       <QueryClientProvider client={queryClient}>
         <div className="min-h-screen bg-gray-50 flex flex-col">
-          {/* Skip link */}
           <a
             href="#main-content"
             className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-4 focus:z-[9999] bg-blue-600 text-white px-4 py-2 rounded-lg"

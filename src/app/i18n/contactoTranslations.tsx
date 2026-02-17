@@ -15,11 +15,6 @@ export const contactoTranslations = {
       social: {
         title: "Redes Sociales",
         description: "Síguenos para actualizaciones"
-      },
-      location: {
-        title: "Ubicación",
-        description: "Proyecto Open Data España",
-        address: "Barcelona, España"
       }
     },
 
@@ -115,11 +110,7 @@ export const contactoTranslations = {
         title: "Xarxes Socials",
         description: "Segueix-nos per actualitzacions"
       },
-      location: {
-        title: "Ubicació: Zona Franca",
-        description: "CIVIXDATA Barcelona",
-        address: "Barcelona, Espanya"
-      }
+
     },
 
     form: {

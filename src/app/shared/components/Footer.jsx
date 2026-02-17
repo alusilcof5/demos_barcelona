@@ -69,7 +69,7 @@ export function Footer() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           
-          {/* LOGO + DESCRIPTION */}
+
           <div>
             <div className="flex items-center gap-2 mb-4">
               <h3 className="font-semibold text-white text-lg">CIVIXDATA</h3>
@@ -83,7 +83,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* DATA Y METODOLOGÍA */}
           <div>
             <h4 className="font-semibold text-white mb-4 flex items-center gap-2">
               {translations.sections.data}
@@ -112,8 +111,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* AYUDA Y RECURSOS */}
-          <div>
+         <div>
             <h4 className="font-semibold text-white mb-4 flex items-center gap-2">
               {translations.sections.help}
             </h4>
@@ -134,14 +132,13 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <Link to="/contacto" className="hover:text-white transition-colors">
+                <Link to="/verificador" className="hover:text-white transition-colors">
                   {translations.links.contactForm}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* CONTACTO Y COMUNIDAD */}
           <div>
             <h4 className="font-semibold text-white mb-4 flex items-center gap-2">
               <Mail className="w-4 h-4" />
@@ -182,7 +179,7 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <Link to="/contacto" className="hover:text-white transition-colors">
+                <Link to="/verificador" className="hover:text-white transition-colors">
                   {translations.links.contactForm}
                 </Link>
               </li>
@@ -190,7 +187,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* BOTTOM */}
         <div className="border-t border-gray-700 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="text-sm text-gray-500 text-center md:text-left">
@@ -202,7 +198,6 @@ export function Footer() {
               </p>
             </div>
 
-            {/* LEGAL LINKS */}
             <div className="flex items-center gap-4 text-xs text-gray-500">
               <a href="#terms" className="hover:text-gray-300 transition-colors">
                 {translations.links.terms}
@@ -218,7 +213,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* TOOLS */}
           <div className="mt-6 flex items-center justify-center gap-8 opacity-50">
             <div className="flex items-center gap-6">
               <span className="text-sm text-gray-500">{translations.bottom.tools}</span>

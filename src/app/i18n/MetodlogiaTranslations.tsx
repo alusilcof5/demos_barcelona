@@ -29,32 +29,32 @@ export const sobreElProyectoTranslations = {
       ]
     },
 
-    solution: {
-  title: "Transparència i fonts oficials",
-  intro: "Un verificador que garanteix informació fiable connectant directament amb les bases de dades de l'Ajuntament de Barcelona.",
+     solution: {
+  title: "Transparencia y fuentes oficiales",
+  intro: "Un verificador que garantiza información fiable conectando directamente con las bases de datos del Ayuntamiento de Barcelona.",
   
   howItWorks: {
-    title: "De la font oficial a tu",
+    title: "De la fuente oficial a ti",
     steps: [
       {
         number: "1",
-        title: "Fonts 100% oficials",
-        description: "Totes les dades provenen de l'API oficial d'Open Data Barcelona, gestionada per l'Ajuntament."
+        title: "Fuentes 100% oficiales",
+        description: "Todos los datos provienen de la API oficial de Open Data Barcelona, gestionada por el Ayuntamiento."
       },
       {
         number: "2",
-        title: "Sense intermediaris",
-        description: "La informació es carrega directament des de la font cada vegada, sense bases de dades pròpies que puguin quedar obsoletes."
+        title: "Sin intermediarios",
+        description: "La información se carga directamente desde la fuente cada vez, sin bases de datos propias que puedan quedar obsoletas."
       },
       {
         number: "3",
-        title: "Resposta contextualitzada",
-        description: "No només et donem xifres: comparem amb la mitjana, mostrem posicions al rànquing i oferim context útil."
+        title: "Respuesta contextualizada",
+        description: "No solo te damos cifras: comparamos con la media, mostramos posiciones en el ranking y ofrecemos contexto útil."
       },
       {
         number: "4",
-        title: "Verificació independent",
-        description: "Cada resposta inclou l'enllaç al dataset oficial perquè puguis comprovar les dades pel teu compte."
+        title: "Verificación independiente",
+        description: "Cada respuesta incluye el enlace al dataset oficial para que puedas comprobar los datos por tu cuenta."
       }
         ]
       },
@@ -299,32 +299,32 @@ export const sobreElProyectoTranslations = {
       ]
     },
 
-    solution: {
-  title: "Transparencia y fuentes oficiales",
-  intro: "Un verificador que garantiza información fiable conectando directamente con las bases de datos del Ayuntamiento de Barcelona.",
+       solution: {
+  title: "Transparència i fonts oficials",
+  intro: "Un verificador que garanteix informació fiable connectant directament amb les bases de dades de l'Ajuntament de Barcelona.",
   
   howItWorks: {
-    title: "De la fuente oficial a ti",
+    title: "De la font oficial a tu",
     steps: [
       {
         number: "1",
-        title: "Fuentes 100% oficiales",
-        description: "Todos los datos provienen de la API oficial de Open Data Barcelona, gestionada por el Ayuntamiento."
+        title: "Fonts 100% oficials",
+        description: "Totes les dades provenen de l'API oficial d'Open Data Barcelona, gestionada per l'Ajuntament."
       },
       {
         number: "2",
-        title: "Sin intermediarios",
-        description: "La información se carga directamente desde la fuente cada vez, sin bases de datos propias que puedan quedar obsoletas."
+        title: "Sense intermediaris",
+        description: "La informació es carrega directament des de la font cada vegada, sense bases de dades pròpies que puguin quedar obsoletes."
       },
       {
         number: "3",
-        title: "Respuesta contextualizada",
-        description: "No solo te damos cifras: comparamos con la media, mostramos posiciones en el ranking y ofrecemos contexto útil."
+        title: "Resposta contextualitzada",
+        description: "No només et donem xifres: comparem amb la mitjana, mostrem posicions al rànquing i oferim context útil."
       },
       {
         number: "4",
-        title: "Verificación independiente",
-        description: "Cada respuesta incluye el enlace al dataset oficial para que puedas comprobar los datos por tu cuenta."
+        title: "Verificació independent",
+        description: "Cada resposta inclou l'enllaç al dataset oficial perquè puguis comprovar les dades pel teu compte."
       }
         ]
       },
